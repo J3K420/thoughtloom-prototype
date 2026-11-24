@@ -104,7 +104,7 @@ p,h1,h2{margin:0}
 .answer{display:flex;flex-direction:column;gap:0}
 .answer-zone{position:relative;height:44px;flex:none}
 .answer-zone .rail{position:absolute;left:0;right:0;top:18px;margin:0}
-.answer-zone input{position:absolute;inset:0;width:100%;height:44px;min-height:44px;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y}
+.answer-zone input{position:absolute;inset:0;width:100%;height:44px;min-height:44px;margin:0;opacity:0;cursor:pointer;touch-action:pan-y}
 .answer-zone:has(input:focus-visible){outline:3px solid var(--ink);outline-offset:2px;border-radius:8px}
 .answer-zone input,.scrub-zone input{-webkit-tap-highlight-color:transparent}
 .answer-zone input:focus{outline:none}
@@ -401,8 +401,8 @@ select{font:inherit;color:inherit}
 .scrub-zone input.top{z-index:1}
 .scrub-zone input::-webkit-slider-runnable-track{height:44px;background:none;border:0}
 .scrub-zone input::-moz-range-track{height:44px;background:none;border:0}
-.scrub-zone input::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:44px;height:44px;border:0;border-radius:50%;background:radial-gradient(circle,var(--surface) 0 7px,var(--ink) 7.5px 10.5px,transparent 11px);cursor:ew-resize}
-.scrub-zone input::-moz-range-thumb{pointer-events:auto;width:44px;height:44px;border:0;border-radius:50%;background:radial-gradient(circle,var(--surface) 0 7px,var(--ink) 7.5px 10.5px,transparent 11px);cursor:ew-resize}
+.scrub-zone input::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:44px;height:44px;border:0;border-radius:50%;background:radial-gradient(circle,var(--surface) 0 7px,var(--ink) 7.5px 10.5px,transparent 11px);cursor:pointer}
+.scrub-zone input::-moz-range-thumb{pointer-events:auto;width:44px;height:44px;border:0;border-radius:50%;background:radial-gradient(circle,var(--surface) 0 7px,var(--ink) 7.5px 10.5px,transparent 11px);cursor:pointer}
 .scrub-zone input:focus-visible{outline:3px solid var(--ink);outline-offset:-3px;border-radius:8px}
 .scrub-read{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:24px;font-size:14px;color:var(--ink2)}
 .scrub-read .link{align-self:center;margin-block:-10px;font-size:13.5px}
@@ -484,8 +484,10 @@ select{font:inherit;color:inherit}
 .tag{padding:2px 8px;border-radius:8px;background:var(--btn);color:var(--on-btn);font-size:12.5px;font-weight:650}
 .when{margin-left:auto;white-space:nowrap}
 .trow-text{max-width:64ch;font-size:17px;line-height:1.3;font-weight:600;letter-spacing:-.005em;text-wrap:pretty;overflow-wrap:anywhere}
-.thin{display:flex;align-items:center;gap:12px;min-height:30px}
-.thin-line{position:relative;flex:1;min-width:0;max-width:560px;height:30px}
+.thins{display:flex;flex-direction:column;gap:2px}
+.thin{display:flex;align-items:center;gap:10px;min-height:28px}
+.thin-lbl{flex:none;width:36px;font-size:11.5px;font-weight:650;color:var(--ink2)}
+.thin-line{position:relative;flex:1;min-width:0;max-width:560px;height:28px}
 .thin-line .pins{position:absolute;inset:0;z-index:1;height:auto;margin:0}
 .thin-line .pin{bottom:4px;width:22px;height:22px;margin-left:-11px;font-size:11px}
 .thin-line .rail{position:absolute;left:0;right:0;top:50%;height:4px;margin:-2px 0 0;border-radius:2px}
@@ -1312,7 +1314,7 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :root[data-look="professional"] .sw-dot[data-p="arcade"]{--s1:#F2FBE5;--s2:#FFFFFF;--s3:#A258FF}
 :where(:root[data-look="notebook"]) body{font-variation-settings:"CASL" 1,"MONO" 0}
 :where(:root[data-look="notebook"]) button,:where(:root[data-look="notebook"]) textarea,:where(:root[data-look="notebook"]) input{font-variation-settings:inherit}
-:where(:root[data-look="notebook"]) .num,:where(:root[data-look="notebook"]) .ends,:where(:root[data-look="notebook"]) .net,:where(:root[data-look="notebook"]) .demo,:where(:root[data-look="notebook"]) .chip,:where(:root[data-look="notebook"]) .by,:where(:root[data-look="notebook"]) .hint,:where(:root[data-look="notebook"]) .after,:where(:root[data-look="notebook"]) .fine,:where(:root[data-look="notebook"]) .tab,:where(:root[data-look="notebook"]) .words-link,:where(:root[data-look="notebook"]) .irisline,:where(:root[data-look="notebook"]) .count,:where(:root[data-look="notebook"]) .trow-head,:where(:root[data-look="notebook"]) .trow-foot,:where(:root[data-look="notebook"]) .bar-end,:where(:root[data-look="notebook"]) .strip,:where(:root[data-look="notebook"]) .pick,:where(:root[data-look="notebook"]) .search{font-variation-settings:"MONO" 1,"CASL" 1}
+:where(:root[data-look="notebook"]) .num,:where(:root[data-look="notebook"]) .ends,:where(:root[data-look="notebook"]) .net,:where(:root[data-look="notebook"]) .demo,:where(:root[data-look="notebook"]) .chip,:where(:root[data-look="notebook"]) .by,:where(:root[data-look="notebook"]) .hint,:where(:root[data-look="notebook"]) .after,:where(:root[data-look="notebook"]) .fine,:where(:root[data-look="notebook"]) .tab,:where(:root[data-look="notebook"]) .words-link,:where(:root[data-look="notebook"]) .irisline,:where(:root[data-look="notebook"]) .count,:where(:root[data-look="notebook"]) .trow-head,:where(:root[data-look="notebook"]) .trow-foot,:where(:root[data-look="notebook"]) .thin-lbl,:where(:root[data-look="notebook"]) .bar-end,:where(:root[data-look="notebook"]) .strip,:where(:root[data-look="notebook"]) .pick,:where(:root[data-look="notebook"]) .search{font-variation-settings:"MONO" 1,"CASL" 1}
 :where(:root[data-look="notebook"]) .by{font-size:14px;letter-spacing:-.01em}
 :where(:root[data-look="notebook"]) .hint,:where(:root[data-look="notebook"]) .after,:where(:root[data-look="notebook"]) .fine,:where(:root[data-look="notebook"]) .irisline{font-size:13.5px}
 :where(:root[data-look="notebook"]) .hello,:where(:root[data-look="notebook"]) .sec h2,:where(:root[data-look="notebook"]) .sheet-head h2,:where(:root[data-look="notebook"]) .mark,:where(:root[data-look="notebook"]) .panel-head h2,:where(:root[data-look="notebook"]) .iris-title h1,:where(:root[data-look="notebook"]) .pop-box h2,:where(:root[data-look="notebook"]) .replies h3,:where(:root[data-look="notebook"]) .say-bar{font-family:"Caveat",cursive;font-weight:700;letter-spacing:normal}
@@ -1771,7 +1773,7 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="professional"]) .lrow.lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
 :where(:root[data-look="professional"]) .lrow-head{font-size:11px}
 :where(:root[data-look="professional"]) .lrow-text{font-size:13px;line-height:1.5;font-weight:400;color:var(--body)}
-:where(:root[data-look="professional"]) .lrow .thin{display:none}
+:where(:root[data-look="professional"]) .lrow .thin,:where(:root[data-look="professional"]) .lrow .thins{display:none}
 :where(:root[data-look="professional"]) .lrow-foot{font-family:var(--mono);font-size:11px}
 :where(:root[data-look="professional"]) .cite-chip{border:1px solid var(--line2);border-radius:999px;background:var(--inset);font-size:11.5px;font-weight:500}
 :where(:root[data-look="professional"]) .cite-chip.lit,:where(:root[data-look="professional"]) .cite-chip:hover{border-color:var(--accent);background:var(--tint);color:var(--accent-text)}
@@ -1923,7 +1925,7 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="professional"]) .tag{padding:2px 7px;border-radius:999px;background:var(--tint);font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-text)}
 :where(:root[data-look="professional"]) .when{font-family:var(--mono);font-size:11px;color:var(--ink2)}
 :where(:root[data-look="professional"]) .trow-text{max-width:none;font-size:13.5px;line-height:1.55;font-weight:400;letter-spacing:0;color:var(--body)}
-:where(:root[data-look="professional"]) .trow .thin{display:none}
+:where(:root[data-look="professional"]) .trow .thin,:where(:root[data-look="professional"]) .trow .thins{display:none}
 :where(:root[data-look="professional"]) .trow-foot{gap:0 14px;min-height:44px;margin-top:-6px;font-family:var(--mono);font-size:11px;font-variant-numeric:tabular-nums;color:var(--ink2)}
 :where(:root[data-look="professional"]) .trow-foot .who{display:none}
 :where(:root[data-look="professional"]) .nums{display:inline-flex;flex-wrap:wrap;gap:0 14px}
@@ -2198,22 +2200,22 @@ var T = {
   phones:{id:"phones", at:70, who:"W", kind:"noticed", when:"yesterday", text:"Nobody looked at their phone at dinner on Friday.", takes:{W:0.90,M:0.85,T:0.80}, goods:{W:0.70,M:0.60,T:0.30}},
   spring:{id:"spring", at:60, who:"T", kind:"wonder", when:"Thursday", refs:["hike","lk2"], text:"Should we move the trip to spring?", takes:{T:0.50,M:0.50,W:0.55}},
   coach:{id:"coach", at:85, who:"W", kind:"wonder", when:"today", text:"The coach is hopeless, so what do we do when the team loses the playoffs?", takes:{W:0.85,M:0.40,T:0.70}},
-  book:{id:"book", topic:"art", at:30, who:"W", kind:"predict", when:"2 Nov", due:"Sun 6 Dec", dueIn:"in 22 days", text:"I'll finish the book before any of you.", takes:{W:0.90,M:0.45,T:0.30,J:0.30}},
-  heating:{id:"heating", at:25, who:"W", kind:"predict", when:"2 Nov", came:true, text:"The landlord fixes the heating before the 13th.", takes:{W:0.90,M:0.70,T:0.50,J:0.30}, after:"Wen was the surest. You doubted it."},
-  tent:{id:"tent", topic:"money", at:55, who:"J", kind:"believe", when:"Thursday", text:"The cheap tent will be fine.", takes:{J:0.85,M:0.80,T:0.75}, none:"Wen hasn't said yet."},
+  book:{id:"book", topic:"art", at:30, who:"W", kind:"predict", when:"2 Nov", due:"Sun 6 Dec", dueIn:"in 22 days", text:"I'll finish the book before any of you.", takes:{W:0.90,M:0.45,T:0.30,J:0.30}, goods:{W:0.50,M:0.10,T:0,J:0.20}},
+  heating:{id:"heating", at:25, who:"W", kind:"predict", when:"2 Nov", came:true, text:"The landlord fixes the heating before the 13th.", takes:{W:0.90,M:0.70,T:0.50,J:0.30}, goods:{W:0.80,M:0.75,T:0.70,J:0.85}, after:"Wen was the surest. You doubted it."},
+  tent:{id:"tent", topic:"money", at:55, who:"J", kind:"believe", when:"Thursday", text:"The cheap tent will be fine.", takes:{J:0.85,M:0.80,T:0.75}, goods:{J:0.60,M:0.45,T:0.30}, none:"Wen hasn't said yet."},
   /* your own dated prediction, due yesterday in the demo's calendar. Only in the "a date arrives" state. */
-  run:{id:"run", topic:"health", at:200, demo:"due", who:"J", kind:"predict", when:"2 Nov", date:{label:"Fri 13 Nov"}, arrived:true, text:"I'll run 5 km without stopping.", takes:{J:0.80,M:0.60,T:0.45,W:0.70}},
+  run:{id:"run", topic:"health", at:200, demo:"due", who:"J", kind:"predict", when:"2 Nov", date:{label:"Fri 13 Nov"}, arrived:true, text:"I'll run 5 km without stopping.", takes:{J:0.80,M:0.60,T:0.45,W:0.70}, goods:{J:0.75,M:0.50,T:0.40,W:0.60}},
   /* replies: thoughts that hang under another thought (re = the thought they answer) */
-  r1:{id:"r1", at:81, re:"hike", who:"T", kind:"believe", when:"today", text:"The forecast changes every day this far out.", takes:{T:0.75,M:0.60}},
-  r6:{id:"r6", at:83, re:"r1", who:"M", kind:"believe", when:"today", text:"Then we should decide on Thursday, not now.", takes:{M:0.70,T:0.65}},
-  r7:{id:"r7", at:84, re:"r6", who:"W", kind:"predict", when:"today", text:"By Thursday the forecast will have changed twice more.", takes:{W:0.75,M:0.55}},
+  r1:{id:"r1", at:81, re:"hike", who:"T", kind:"believe", when:"today", text:"The forecast changes every day this far out.", takes:{T:0.75,M:0.60}, goods:{T:0,M:-0.20}},
+  r6:{id:"r6", at:83, re:"r1", who:"M", kind:"believe", when:"today", text:"Then we should decide on Thursday, not now.", takes:{M:0.70,T:0.65}, goods:{M:0.50,T:0.45}},
+  r7:{id:"r7", at:84, re:"r6", who:"W", kind:"predict", when:"today", text:"By Thursday the forecast will have changed twice more.", takes:{W:0.75,M:0.55}, goods:{W:-0.30,M:-0.25}},
   r2:{id:"r2", at:82, re:"hike", who:"W", kind:"wonder", when:"today", text:"Do we have a plan if it pours?", takes:{W:0.50,T:0.50}},
-  r3:{id:"r3", at:91, re:"morning", who:"M", kind:"noticed", when:"today", text:"Our one morning meeting last month finished in half the time.", takes:{M:0.90,T:0.85}},
-  r4:{id:"r4", at:61, re:"spring", who:"M", kind:"believe", when:"Thursday", text:"Spring is cheaper, and the long trail is open by then.", takes:{M:0.70,W:0.60}},
-  r5:{id:"r5", at:26, re:"heating", who:"W", kind:"noticed", when:"yesterday", text:"The heating came back on the 11th.", takes:{W:0.95,M:0.90,T:0.90}},
+  r3:{id:"r3", at:91, re:"morning", who:"M", kind:"noticed", when:"today", text:"Our one morning meeting last month finished in half the time.", takes:{M:0.90,T:0.85}, goods:{M:0.75,T:0.65}},
+  r4:{id:"r4", at:61, re:"spring", who:"M", kind:"believe", when:"Thursday", text:"Spring is cheaper, and the long trail is open by then.", takes:{M:0.70,W:0.60}, goods:{M:0.65,W:0.50}},
+  r5:{id:"r5", at:26, re:"heating", who:"W", kind:"noticed", when:"yesterday", text:"The heating came back on the 11th.", takes:{W:0.95,M:0.90,T:0.90}, goods:{W:0.85,M:0.80,T:0.75}},
   /* three thoughts from the other node: seen only when Browse looks beyond your own node */
-  lk1:{id:"lk1", at:20, src:"lake", topic:"money", who:"K", kind:"believe", when:"yesterday", text:"A shared tool shed saves every house money.", takes:{K:0.80,I:0.70}},
-  lk2:{id:"lk2", at:18, src:"lake", who:"I", kind:"predict", when:"Thursday", text:"The lake path will flood again before spring.", takes:{I:0.70,K:0.40}},
+  lk1:{id:"lk1", at:20, src:"lake", topic:"money", who:"K", kind:"believe", when:"yesterday", text:"A shared tool shed saves every house money.", takes:{K:0.80,I:0.70}, goods:{K:0.70,I:0.60}},
+  lk2:{id:"lk2", at:18, src:"lake", who:"I", kind:"predict", when:"Thursday", text:"The lake path will flood again before spring.", takes:{I:0.70,K:0.40}, goods:{I:-0.70,K:-0.60}},
   lk3:{id:"lk3", at:16, src:"lake", who:"K", kind:"wonder", when:"Thursday", text:"Who looks after the boats over winter?", takes:{K:0.50,I:0.50}}
 };
 
@@ -2221,13 +2223,14 @@ var T = {
 var PROMPTS = {look:"Find what the node has staked that bears on the question. What people noticed counts for more than what they believe.",
   answer:"Answer in a few plain sentences. Say who said what. Do not take a side."};
 /* ---------- state ---------- */
+function defaultIrisDraft(){ return typeof window !== "undefined" ? window.innerWidth >= 1000 : true; }
 var S = {notes:[], sent:[], chat:[], outside:false, view:"first", big:false, due:false, results:{}, closed:{}, arrived:{}, reflect:null, step:"look", tab:"thoughts", takes:{}, goods:{}, goodDone:{}, guessed:{}, mine:[], just:null,
   open:null,      // the thought opened inside Browse
   reply:null,     // the thought the Say-it box is replying to
   sayOpen:false,  // phones: is the Say-it form unfolded
   note:null,      // the small line under the Say-it form after staking
   irisScope:"me", // Iris workbench scope: "me" (private + node) or "group" (node shared only)
-  irisDraft:false,// desktop Iris: left Say-it drawer starts folded to a slim rail until opened
+  irisDraft:defaultIrisDraft(), // desktop Iris: auto-loads with Say-it draft template open; folds to rail on close
   irisLedger:true,// desktop Iris: right live ledger pane
   irisFilter:"cited", // cited | all | due
   irisLit:null,   // bidirectional hover/click highlight id
@@ -2239,6 +2242,7 @@ function freshC(){ return {topic:"general", mode:"single", method:"iris", free:"
 var C = freshC(); // the thought being written: there is always one, in the one writing place
 
 function myTake(id){ var t = T[id]; return S.takes[id] != null ? S.takes[id] : (t && t.takes && t.takes.J != null ? t.takes.J : null); }
+function myGood(id){ var t = T[id]; return S.goodDone[id] ? S.goods[id] : (t && t.goods && t.goods.J != null ? t.goods.J : null); }
 function arrived(t){ return !!t.date && (!!t.arrived || !!S.arrived[t.id]); }
 function dueNow(t){ return t.who === "J" && arrived(t) && !S.results[t.id]; }   // your date came, and you have not said how it went
 function reflecting(){ var id = S.reflect; return id && S.reply === id && T[id] && S.results[id] && !S.closed[id] ? T[id] : null; }
@@ -2333,6 +2337,12 @@ function allTakes(t){
   if (mine != null) list.push({k:"J", v:mine});
   return list;
 }
+function allGoods(t){
+  var list = [], mine = myGood(t.id), gd = goodsOf(t);
+  if (gd) Object.keys(gd).forEach(function(k){ if (k !== "J" && gd[k] != null) list.push({k:k, v:(gd[k] + 1) / 2}); });
+  if (mine != null) list.push({k:"J", v:(mine + 1) / 2});
+  return list;
+}
 /* only a word typed by hand can be wide enough to need this: capitals and m, w count for more */
 function tight(w, i){
   if (WORDS[i].indexOf(w) >= 0 || w === "Open question") return false;
@@ -2370,8 +2380,9 @@ function groupOn(t, good){
   else {
     var gd = goodsOf(t);
     if (!gd) return null;
-    list = Object.keys(gd).map(function(k){ return {k:k, v:(gd[k]+1)/2}; });
-    if (S.goodDone[t.id]) list.push({k:"J", v:(S.goods[t.id]+1)/2});
+    list = Object.keys(gd).filter(function(k){ return k !== "J" && gd[k] != null; }).map(function(k){ return {k:k, v:(gd[k]+1)/2}; });
+    var mg = myGood(t.id);
+    if (mg != null) list.push({k:"J", v:(mg+1)/2});
   }
   return list.some(function(o){ return o.k !== "J"; }) ? list : null;
 }
@@ -2470,7 +2481,7 @@ function openWho(id, good){
   var question = t.kind === 'wonder', list = good ? groupOn(t, true) : allTakes(t);
   if (!list) return;
   var words = good ? GOOD : question ? questionWords() : SURE, groups = words.map(function(){ return []; });
-  var mine = good ? (S.goodDone[id] ? S.goods[id] : null) : myTake(id);
+  var mine = good ? myGood(id) : myTake(id);
   others(list).forEach(function(p){ var v = good ? p.v*2-1 : p.v; groups[good ? gIndex(v) : bucket(v)].push({k:p.k, v:v}); });
   var box = $('#who-sheet');
   if (!box){ box = document.createElement('div'); box.id = 'who-sheet'; box.className = 'sheet who-sheet'; $('#app').appendChild(box); }
@@ -2525,13 +2536,17 @@ function filtered(){ return F.kind !== "all" || F.who !== "all" || F.topic !== "
 function owner(t){ return t.who === "J" ? "You" : P[t.who]; }
 function nReplies(n){ return n + (n === 1 ? " reply" : " replies"); }
 
-/* ---------- a thought in the list: a quiet row with one thin true/false line ---------- */
-function thin(t){
-  var list = allTakes(t);
+/* ---------- a thought in the list: quiet rows with thin true/false and good/bad (valence) lines ---------- */
+function thinOne(t, list, good){
   if (!list.length) return "";
-  var big = isCrowd(list);
-  return '<div class="thin"><div class="thin-line'+(big?' crowded':'')+'" role="img" aria-label="'+esc(groupLabel(list,false,t.kind==="wonder"))+'">'+
-    band(list,false,t,false)+rail(myTake(t.id),false,false)+'</div>'+(big ? whoLink(t,false,list) : '')+'</div>';
+  var big = isCrowd(list), mine = good ? myGood(t.id) : myTake(t.id);
+  var lbl = pro() ? (good ? "Valence" : "Verity") : (good ? "Good" : "Sure");
+  return '<div class="thin'+(good ? ' thin-good' : '')+'"><span class="thin-lbl">'+lbl+'</span><div class="thin-line'+(big?' crowded':'')+'" role="img" aria-label="'+esc(groupLabel(list,good,t.kind==="wonder"))+'">'+
+    band(list,false,t,good)+rail(mine,good,false)+'</div>'+(big ? whoLink(t,good,list) : '')+'</div>';
+}
+function thin(t){
+  var h = thinOne(t, allTakes(t), false) + thinOne(t, allGoods(t), true);
+  return h ? '<div class="thins">'+h+'</div>' : '';
 }
 /* ---------- references: a thought can point at other thoughts as what it rests on. It is not a reply: it stands on
    its own in the list, and the thoughts it points at show with their own words. ---------- */
@@ -2731,7 +2746,7 @@ function chatSay(text, tid){
 }
 function tierChip(t){ return t.vis === "me" ? '<span class="tier">Private</span>' : t.vis === "all" ? '<span class="tier">Public</span>' : ''; }
 function proNums(t){
-  var own = t.who === "J", v = own ? myTake(t.id) : (takesOf(t) || {})[t.who], g = own ? (S.goodDone[t.id] ? S.goods[t.id] : null) : (goodsOf(t) || {})[t.who];
+  var own = t.who === "J", v = own ? myTake(t.id) : (takesOf(t) || {})[t.who], g = own ? myGood(t.id) : (goodsOf(t) || {})[t.who];
   return '<span class="nums">'+(v != null ? '<span>verity '+fmt(v)+'</span>' : '')+(g != null ? '<span>valence '+fmtGood(g)+'</span>' : '')+
     '<span>@'+(own ? 'you' : esc(nameOf(t.who) || owner(t)))+(t.src ? ' · '+ELSEWHERE[t.src] : '')+'</span></span>';
 }
@@ -2786,7 +2801,7 @@ function chips(t){
 function said(t, question){ var v = myTake(t.id); return v == null ? "" : answerRead(v, false, question); }
 function doneLine(t){ return '<p class="done">'+ic("check",20)+(t.due && !t.came ? "That's it. You'll all look back on "+t.due+"." : "That's it. Your take is in.")+'</p>'; }
 function goodBlock(t){
-  var gd = !!S.goodDone[t.id], g = gd ? S.goods[t.id] : null, q = t.kind === "wonder";
+  var g = myGood(t.id), gd = g != null, q = t.kind === "wonder";
   return '<div class="follow"><p class="q">'+goodQ(q ? '' : (t.kind === "predict" ? "If it happens" : "If it's true")+', is that good or bad?')+'</p>'+goodHint()+
     answerLine(g,true,'good',t.id,t,false,false,false,null)+(gd && myTake(t.id) != null ? doneLine(t) : '')+'</div>';
 }
@@ -3192,7 +3207,7 @@ function irisLedgerRow(t){
   return '<article class="lrow'+(S.irisLit === t.id ? ' lit' : '')+(S.just === t.id ? ' fresh' : '')+'" data-kind="'+t.kind+'" data-lrow="'+t.id+'">'+
     '<div class="lrow-head"><span class="kind">'+kmark(t.kind)+KINDS[t.kind].type+(t.vis === "me" ? ' '+ic("lock",13) : '')+'</span>'+(tag ? '<span class="tag">'+tag+'</span>' : '<span class="when">'+t.when+'</span>')+'</div>'+
     '<p class="lrow-text">'+t.text+'</p>'+thin(t)+
-    '<div class="lrow-foot"><span class="who">'+owner(t)+'</span><span class="lrow-acts">'+
+    '<div class="lrow-foot">'+(pro() ? proNums(t) : '<span class="who">'+owner(t)+'</span>')+'<span class="lrow-acts">'+
       '<button class="mini'+(refOn ? ' go' : '')+'" data-act="iris-refer" data-id="'+t.id+'" aria-pressed="'+refOn+'"><span>'+(refOn ? 'Referenced' : 'Reference')+'</span></button>'+
       (t.kind === "predict" ? '<button class="mini" data-act="iris-lookback" data-id="'+t.id+'"><span>Look back</span></button>' : '')+
       '<button class="mini" data-act="chat-open" data-id="'+t.id+'"><span>Open</span></button>'+
@@ -3416,7 +3431,7 @@ function toast(msg){
 function setView(v, quiet, big, due){
   S.view = v; S.tab = "thoughts"; S.groupHike = false; S.big = v === "day" && !!big; S.due = v === "day" && !big && !!due; S.reflect = null;
   if (S.due){ delete S.results.run; delete S.closed.run; }   // the demo's date arrives afresh each time
-  S.open = null; S.reply = null; S.weigh = null; S.sayOpen = false; S.note = null; S.irisDraft = false; S.irisLit = null; S.irisLedger = true; S.irisFilter = "cited";
+  S.open = null; S.reply = null; S.weigh = null; S.sayOpen = false; S.note = null; S.irisDraft = defaultIrisDraft(); S.irisLit = null; S.irisLedger = true; S.irisFilter = "cited";
   F = freshF(); C = freshC();
   // two made-up notifications wait on an ordinary day
   S.notes = v === "day" ? [{id:"n1", who:"T", what:"weighed in on your thought", t:"tent"}, {id:"n2", who:"W", what:"asked for your take", t:"coach", weigh:true}] : [];
