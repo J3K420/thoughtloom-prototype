@@ -2069,9 +2069,9 @@ function dayLabel(iso){
 function todayISO(){ var d = new Date(), p = function(n){ return (n < 10 ? "0" : "") + n; }; return d.getFullYear()+"-"+p(d.getMonth() + 1)+"-"+p(d.getDate()); }
 function dateText(d){ return d.rough ? d.label : "By "+d.label; }
 var REFLECTIONS = [
-  {text:"Saturday's hike was great, even though it rained.", believe:"a bit of rain doesn't ruin a hike.", predict:"we'll enjoy the next hike even if it rains.", wonder:"should we stop cancelling when the forecast is bad?"},
-  {text:"I slept better on the days I walked.", believe:"walking helps me sleep.", predict:"I'll sleep well this week if I walk every day.", wonder:"does the time of day I walk matter?"},
-  {text:"We argued about the trip budget again.", believe:"we argue about money when we plan late.", predict:"the budget talk will go better if we set a number first.", wonder:"what is everyone actually comfortable spending?"}
+  {text:"I thought the rain would ruin Saturday's hike, and it turned out great.", believe:"a bit of rain doesn't ruin a hike.", predict:"we'll enjoy the next hike even if it rains.", wonder:"should we stop cancelling when the forecast is bad?"},
+  {text:"I put off a tough phone call all week, and it took five minutes and went fine.", believe:"putting off a hard call feels worse than making it.", predict:"the next hard call I make will go smoother than I expect.", wonder:"what else am I putting off that would only take five minutes?"},
+  {text:"I braced for an argument about the trip budget, and setting a number first kept it calm.", believe:"setting a number first keeps money talks calm.", predict:"the next trip plan will go smoothly if we set a budget up front.", wonder:"what is everyone actually comfortable spending?"}
 ];
 var FEEL = [[-0.60,"Not great"],[0,"Mixed"],[0.60,"Good"]];
 function freshReflection(){ return {text:"", v:null, feel:null, example:null, staked:false, used:{}, vis:"me"}; }
@@ -2972,7 +2972,7 @@ function viewFirst(){
   if (S.step === "colour") return viewColour();
   if (S.step === "marks") return viewMarks();
   var h = '<div><button class="link welcome-skip" data-act="group-home">Skip for now</button><p class="step">'+stepLine(4)+'</p><h1 class="hello">Welcome to FourThought.</h1><p class="lede">'+(pro() ? 'Every thought here is a Reflection, a Statement, a Prediction or a Question. ' : '')+'Let&#39;s start with a reflection.</p></div>';
-  h += '<article class="card reflection"><label class="say big" for="r-text">What&#39;s something that happened recently?</label><textarea id="r-text" rows="3" placeholder="A dinner, a trip, a meeting, a bad night&#39;s sleep…">'+esc(R.text)+'</textarea>';
+  h += '<article class="card reflection"><label class="say big" for="r-text">What&#39;s something recent that didn&#39;t go the way you expected?</label><textarea id="r-text" rows="3" placeholder="A trip, a tough call, a plan that turned out better than you thought…">'+esc(R.text)+'</textarea>';
   return h+'<div class="reflection" id="r-follow">'+reflectionFollowup()+'</div></article>';
 }
 function reflectionFollowup(){
