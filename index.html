@@ -631,7 +631,32 @@ select{font:inherit;color:inherit}
 .out-before span,.out-after span{font-weight:700;text-decoration:none;display:inline-block;margin-right:4px}
 .out-after{color:var(--ink);font-weight:600}
 .out-acts{display:flex;flex-wrap:wrap;align-items:center;gap:2px}
+.out-dir,.shaped-line{margin:0;font-size:11.5px;line-height:1.35;color:var(--ink2)}
+.shaped-line{padding-top:2px;border-top:1px dashed var(--line)}
 .lrow.pinned{border-color:var(--accent,var(--btn));box-shadow:inset 3px 0 0 var(--accent,var(--btn))}
+.ue-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+.ue-pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:11.5px;font-weight:600;color:var(--ink2);line-height:1.35}
+.ue-ev.tested{border-color:var(--accent,var(--btn));background:var(--tint,var(--tile));color:var(--accent-text,var(--ink))}
+.ue-ev.untested{border-style:dashed}
+.asof-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.asof-lbl{font-size:12.5px;font-weight:650;color:var(--ink2);white-space:nowrap}
+.asof-row .pick{flex:1;width:auto;min-width:0}
+.asof-banner{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;border-radius:10px;border:1px solid var(--violet);background:var(--violet-soft);font-size:12px;color:var(--ink)}
+.asof-banner .link{min-height:32px;margin-block:-4px;font-size:12px}
+.asof-tag{display:inline-flex;align-items:center;padding:1px 7px;border-radius:999px;background:var(--violet-soft);color:var(--ink);font-size:11.5px;font-weight:700}
+.prov{margin-top:8px;border:1px solid var(--line);border-radius:12px;background:var(--ground);padding:6px 10px}
+.prov summary{cursor:pointer;font-size:12.5px;font-weight:650;color:var(--ink2);list-style:none}
+.prov summary::-webkit-details-marker{display:none}
+.prov summary::before{content:"▸ ";display:inline-block;margin-right:2px}
+.prov[open] summary::before{content:"▾ "}
+.prov-list{list-style:none;margin:8px 0 6px;padding:0;display:flex;flex-direction:column;gap:4px}
+.prov-btn{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;width:100%;min-height:44px;padding:6px 8px;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-align:left;font-size:12.5px;color:var(--ink)}
+.prov-btn:hover{border-color:var(--ink);background:var(--tile)}
+.prov-who{color:var(--ink2)}
+.prov-who b{color:var(--ink)}
+.prov-role{margin-left:auto;padding:1px 7px;border-radius:999px;background:var(--tile);font-size:11px;font-weight:700;color:var(--ink)}
+.prov-txt{flex-basis:100%;font-size:12.5px;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.prov-note{margin:2px 0 0;font-size:11px}
 .iris-body{display:flex;flex-direction:column;gap:12px;min-height:0}
 .iris-notice{margin:0}
 .iris-foot{display:flex;flex-direction:column;gap:8px;padding-top:10px;border-top:1px solid var(--line)}
@@ -1467,7 +1492,9 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="notebook"]) .lrow,:where(:root[data-look="notebook"]) .out-card{border:1px solid var(--edge2);border-radius:2px;background:var(--surface);box-shadow:1px 2px 0 rgba(70,50,20,.12)}
 :where(:root[data-look="notebook"]) .lrow.pinned{border-color:var(--ink);box-shadow:inset 3px 0 0 var(--ink),1px 2px 0 rgba(70,50,20,.16)}
 :where(:root[data-look="notebook"]) .lrow.lit{border-color:var(--ink);box-shadow:0 0 0 2px var(--violet-soft),2px 3px 0 rgba(43,42,51,.22)}
-:where(:root[data-look="notebook"]) .desk-bar{border:1px solid var(--edge2);border-radius:3px;background:var(--white);box-shadow:1px 2px 0 rgba(70,50,20,.10)}
+:where(:root[data-look="notebook"]) .desk-bar,:where(:root[data-look="notebook"]) .prov{border:1px solid var(--edge2);border-radius:3px;background:var(--white);box-shadow:1px 2px 0 rgba(70,50,20,.10)}
+:where(:root[data-look="notebook"]) .ue-pill{border-color:var(--edge2);border-radius:3px;background:var(--white)}
+:where(:root[data-look="notebook"]) .prov-btn{border-color:var(--edge2);border-radius:2px;background:var(--surface)}
 :where(:root[data-look="notebook"]) .cite-chip{border-color:var(--edge2);border-radius:12px 14px 11px 15px / 14px 11px 15px 12px;background:var(--white);box-shadow:1px 2px 0 rgba(70,50,20,.10)}
 :where(:root[data-look="notebook"]) .cite-chip.lit,:where(:root[data-look="notebook"]) .cite-chip:hover{border-color:var(--ink);background:var(--chipbg)}
 :where(:root[data-look="notebook"]) .open-card > .say{font-size:17px;line-height:1.42}
@@ -1692,7 +1719,11 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="future"]) .lrow,:where(:root[data-look="future"]) .out-card{border:1px solid;border-color:var(--rim);border-radius:14px;background:rgba(3,7,18,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
 :where(:root[data-look="future"]) .lrow.pinned{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent),0 0 calc(var(--glow)*16px) -6px var(--accent)}
 :where(:root[data-look="future"]) .lrow.lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 calc(var(--glow)*22px) -6px var(--accent)}
-:where(:root[data-look="future"]) .desk-bar,:where(:root[data-look="future"]) .out-diff{border:1px solid var(--line2);background:var(--glass)}
+:where(:root[data-look="future"]) .desk-bar,:where(:root[data-look="future"]) .out-diff,:where(:root[data-look="future"]) .prov{border:1px solid var(--line2);background:var(--glass)}
+:where(:root[data-look="future"]) .ue-pill{border-color:var(--line2);background:rgba(3,7,18,.32)}
+:where(:root[data-look="future"]) .ue-ev.tested{border-color:var(--accent);background:var(--glass2);color:var(--accent-text)}
+:where(:root[data-look="future"]) .prov-btn{border-color:var(--line2);background:rgba(3,7,18,.34)}
+:where(:root[data-look="future"]) .prov-btn:hover{border-color:var(--accent);background:var(--glass2)}
 :where(:root[data-look="future"]) .iris-mode-sw{border:1px solid var(--line2);background:var(--glass)}
 :where(:root[data-look="future"]) .cite-chip{border:1px solid var(--line2);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));font-weight:500}
 :where(:root[data-look="future"]) .cite-chip.lit,:where(:root[data-look="future"]) .cite-chip:hover{border-color:var(--accent);background:var(--glass2);color:var(--accent-text);box-shadow:0 0 calc(var(--glow)*18px) -6px var(--accent)}
@@ -1825,6 +1856,10 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="professional"]) .lrow.pinned{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
 :where(:root[data-look="professional"]) .lrow.lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
 :where(:root[data-look="professional"]) .out-diff{border-radius:6px;background:var(--inset);font-size:12px}
+:where(:root[data-look="professional"]) .ue-pill{border-radius:4px;font-family:var(--mono);font-size:10.5px;font-weight:500;background:var(--inset)}
+:where(:root[data-look="professional"]) .prov{border-radius:8px;background:var(--inset)}
+:where(:root[data-look="professional"]) .prov-btn{border-radius:6px;background:var(--surface);font-size:12px}
+:where(:root[data-look="professional"]) .prov-role{font-family:var(--mono);font-size:10.5px}
 :where(:root[data-look="professional"]) .lrow-head{font-size:11px}
 :where(:root[data-look="professional"]) .lrow-text{font-size:13px;line-height:1.5;font-weight:400;color:var(--body)}
 :where(:root[data-look="professional"]) .lrow .thin,:where(:root[data-look="professional"]) .lrow .thins{display:none}
@@ -2290,13 +2325,15 @@ var S = {notes:[], sent:[], chat:[], outside:false, view:"first", big:false, due
   irisFilter:"cited", // cited | all | due
   deskFilter:"all", // all | pinned | cited | due
   deskPinned:["morning","hike"], // thought ids pinned onto Iris's Research Desk
+  deskAsOf:0, // 0 = Now (14 Nov), 1 = 13 Nov (before today), 2 = 10 Nov (before outcomes)
+  deskDir:{dismissed:0}, // human-director lineage counters
   deskOutputs:[], // session outputs collected on the Research Desk (protocol diffs & queued drafts)
   irisLit:null,   // bidirectional hover/click highlight id
   irisLook:null,  // hidden self-restyle overlay: null | "rhizome-roots" | "warm-paper"
   seq:0};
 freshOwner();
 var F = freshF();   // the Browse filters
-function freshC(){ return {topic:"general", mode:"single", method:"iris", free:"", rows:[], distilled:false, refs:[], kind:null, text:"", draft:false, draftText:"", fromIris:false, humanEdited:false, privWarn:false, v:null, questionMoved:false, good:null, vis:"me", ex:0, date:null, dateOpen:false, dayOpen:false}; }
+function freshC(){ return {topic:"general", mode:"single", method:"iris", free:"", rows:[], distilled:false, refs:[], kind:null, text:"", draft:false, draftText:"", fromIris:false, humanEdited:false, editedText:false, editedSliders:false, privWarn:false, v:null, questionMoved:false, good:null, vis:"me", ex:0, date:null, dateOpen:false, dayOpen:false}; }
 var C = freshC(); // the thought being written: there is always one, in the one writing place
 
 function myTake(id){ var t = T[id]; return S.takes[id] != null ? S.takes[id] : (t && t.takes && t.takes.J != null ? t.takes.J : null); }
@@ -2719,11 +2756,12 @@ var ASKS = ["What is the node split on?", "What is waiting for me?", "Sum up thi
 var RUNS = {own:"on the node&#39;s own computer", paid:"on a paid model, billed by use", sub:"on a subscription you already have"};
 function stepsFor(a, tid){
   if (a.text.indexOf("In this demo") === 0) return null;
-  var pins = S.irisMode === "desk" ? activeDeskPins() : [];
-  var n = Object.keys(T).filter(function(k){ return !T[k].re && !T[k].src && shown(T[k]); }).length;
+  var desk = S.irisMode === "desk", pins = desk ? activeDeskPins() : [];
+  var allVis = Object.keys(T).filter(function(k){ return !T[k].re && !T[k].src && shown(T[k]); });
+  var n = allVis.length;
   var st = tid ? [["Opened the thought", "1 thought"], ["Read what the node said about it", others(allTakes(T[tid])).length+" answers"]]
-    : pins.length ? [["Read pinned sources on desk", nThoughts(pins.length)], ["Looked at who weighed in", "done"]]
-    : [["Read what your node can see", nThoughts(n)], ["Looked at who weighed in", "done"]];
+    : pins.length ? [["Read pinned sources on desk", nThoughts(pins.length)], (desk && S.deskAsOf > 0 ? ["Time boundary", asOfShort(S.deskAsOf)+(hiddenByAsOfCount() ? " ("+hiddenByAsOfCount()+" newer hidden)" : "")] : ["Looked at who weighed in", "done"])]
+    : [["Read what your node can see", nThoughts(desk ? deskPool().filter(function(x){ return !x.re; }).length : n)], (desk && S.deskAsOf > 0 ? ["Time boundary", asOfShort(S.deskAsOf)+(hiddenByAsOfCount() ? " ("+hiddenByAsOfCount()+" newer hidden)" : "")] : ["Looked at who weighed in", "done"])];
   if (a.open && !tid) st.push(["Picked the thought that fits", "1 thought"]);
   st.push(["Wrote the answer", "done"]);
   return st;
@@ -2744,24 +2782,69 @@ function openPrompts(){
 }
 function spreadOf(t){ var vs = others(allTakes(t)).map(function(p){ return p.v; }); return vs.length > 1 ? Math.max.apply(null, vs) - Math.min.apply(null, vs) : 0; }
 function takesLine(t){ return others(allTakes(t)).slice(0, 4).map(function(p){ return nameOf(p.k)+' is at '+answerWord(p.v,false,t.kind === "wonder")+' ('+fmt(p.v)+')'; }).join(", ")+'.'; }
-var DESK_ASKS = ["Find tensions across my desk", "Compare predictions on my desk", "Draft a Protocol rule", "Summarize my desk"];
-function deskPool(){
+var ASOF_OPTS = [["0","Now (14 Nov)"],["1","13 Nov (before today)"],["2","10 Nov (before outcomes)"]];
+function asOfShort(v){ return v === 1 ? "13 Nov" : v === 2 ? "10 Nov" : "Now"; }
+function inAsOf(t){ return S.irisMode !== "desk" || S.deskAsOf === 0 || daysOf(t) >= S.deskAsOf; }
+function cameInWindow(t, useAsOf){
+  if (useAsOf && S.irisMode === "desk" && S.deskAsOf >= 2 && t.id === "heating") return false;
+  return !!t.came || S.results[t.id] === "hit";
+}
+function hiddenByAsOfCount(){
+  if (S.irisMode !== "desk" || S.deskAsOf === 0) return 0;
   return Object.keys(T).map(function(k){ return T[k]; }).filter(function(t){
-    return !t.src && shown(t) && (S.irisScope === "me" || t.vis !== "me");
+    return !t.src && shown(t) && (S.irisScope === "me" || t.vis !== "me") && daysOf(t) < S.deskAsOf;
+  }).length;
+}
+function provenanceRole(t, useAsOf){
+  if (t.kind === "noticed") return (t.re || (t.refs && t.refs.length)) ? "Tested · observed" : "Observed";
+  if (t.kind === "predict") return cameInWindow(t, useAsOf) ? "Predicted · came true" : S.results[t.id] === "miss" ? "Predicted · missed" : "Predicted";
+  if (t.kind === "wonder") return "Asked";
+  return t.re ? "Replied" : "Introduced";
+}
+function uptakeEvidence(t, useAsOf){
+  var nTakes = allTakes(t).length;
+  var reps = allReplies(t.id).filter(function(r){ return !useAsOf || inAsOf(r); });
+  var refReps = reps.filter(function(r){ return r.kind === "noticed"; }).length;
+  var up = nTakes + " weighed in" + (reps.length ? " · " + nReplies(reps.length) : "");
+  var ev = "Untested", tested = false;
+  if (t.kind === "noticed"){ ev = "Observed"; tested = true; }
+  else if (cameInWindow(t, useAsOf)){ ev = "Tested · came true"; tested = true; }
+  else if (S.results[t.id] === "miss"){ ev = "Tested · missed"; tested = true; }
+  else if (refReps > 0){ ev = refReps + (refReps === 1 ? " reflection" : " reflections"); tested = true; }
+  return {up:up, ev:ev, tested:tested};
+}
+function uptakeEvidenceHTML(t, useAsOf){
+  var ue = uptakeEvidence(t, useAsOf);
+  return '<div class="ue-row"><span class="ue-pill">Uptake: '+ue.up+'</span><span class="ue-pill ue-ev'+(ue.tested ? ' tested' : ' untested')+'">Evidence: '+ue.ev+'</span></div>';
+}
+var DESK_ASKS = ["Who was early?", "How did views shift?", "How would Mara read this?", "Find tensions", "Draft a Protocol rule"];
+function deskPool(ignoreAsOf){
+  return Object.keys(T).map(function(k){ return T[k]; }).filter(function(t){
+    return !t.src && shown(t) && (S.irisScope === "me" || t.vis !== "me") && (ignoreAsOf || inAsOf(t));
   }).sort(function(a, b){ return b.at - a.at; });
 }
 function activeDeskPins(){
   var seen = {};
   return S.deskPinned.map(function(id){ return T[id]; }).filter(function(t){
-    if (!t || seen[t.id] || t.src || !shown(t)) return false;
+    if (!t || seen[t.id] || t.src || !shown(t) || !inAsOf(t)) return false;
     if (S.irisScope !== "me" && t.vis === "me") return false;
     seen[t.id] = true; return true;
   });
 }
 function isDeskPinned(id){ return S.deskPinned.indexOf(id) >= 0; }
+function dirSummary(dir){
+  var parts = [];
+  if (dir.pins > 0) parts.push(dir.pins+" pinned source"+(dir.pins===1?"":"s"));
+  else parts.push("whole ledger");
+  if (dir.asOf > 0) parts.push("as of "+asOfShort(dir.asOf));
+  parts.push("Iris drafted");
+  if (dir.dismissed > 0) parts.push(dir.dismissed+" earlier draft"+(dir.dismissed===1?"":"s")+" dismissed");
+  return "Shaped by: " + parts.join(" · ");
+}
 function pushDeskOutput(item){
   S.seq++;
   item.id = "out" + S.seq;
+  item.dir = {pins:activeDeskPins().length, asOf:S.deskAsOf, dismissed:S.deskDir.dismissed};
   S.deskOutputs = [item].concat(S.deskOutputs.filter(function(x){ return !(x.kind === item.kind && x.title === item.title); })).slice(0, 6);
   S.irisDraft = true;
 }
@@ -2786,11 +2869,59 @@ function irisAnswer(text, tid){
     return {text:"Switched your screen to Warm Archival Paper with deep forest ink. Everyone else in your node keeps their own look.",
       lookProposal:{id:"warm-paper", title:"Rhizome · Warm Archival Paper", note:"Unbleached paper ground, ivory cards, deep forest ink, and muted Verity gold.", swatches:["#f7f2e7","#fffaf1","#21362f","#327e68","#9a7300"]}};
   }
-  /* Research Desk mode: ground answers on pinned sources and collect outputs in the right tray */
+  /* Research Desk mode: ground answers on pinned sources + As-of time boundary, with 3-direction queries */
   if (S.irisMode === "desk"){
-    var pins = activeDeskPins(), pool = pins.length ? pins : local;
-    var scopeLbl = pins.length ? (pins.length === 1 ? "your 1 pinned source" : "your "+pins.length+" pinned sources") : "your whole ledger (nothing pinned yet)";
+    var deskAll = deskPool(), topDesk = deskAll.filter(function(x){ return !x.re; });
+    var pins = activeDeskPins(), pool = pins.length ? pins : (topDesk.length ? topDesk : deskAll);
+    if (!pool.length) return {text:"Nothing is in view for "+asOfShort(S.deskAsOf)+". Move the Rewind Iris cutoff closer to Now or clear filters."};
+    var asOfTag = S.deskAsOf > 0 ? " (as of "+asOfShort(S.deskAsOf)+")" : "";
+    var scopeLbl = (pins.length ? (pins.length === 1 ? "your 1 pinned source" : "your "+pins.length+" pinned sources") : "your ledger") + asOfTag;
     var poolIds = pool.slice(0, 4).map(function(x){ return x.id; });
+    /* Query direction 1 (Time + Content -> Source): Who was early / originated the pattern? */
+    if (/early|first|origin|ahead|who started|who raised/.test(q)){
+      var chrono = pool.slice().sort(function(a, b){ return a.at - b.at; });
+      var first = chrono[0], latest = chrono[chrono.length - 1];
+      var ue0 = uptakeEvidence(first, true);
+      var cIds = chrono.slice(0, 4).map(function(x){ return x.id; });
+      var eText = owner(first)+" raised \""+plain(first.text).slice(0, 52)+"\" earliest ("+first.when+"), and it now stands at "+ue0.ev.toLowerCase()+".";
+      pushDeskOutput({kind:"draft", title:"Origin note", draft:{kind:"noticed", text:eText, v:0.80, g:0.20, refs:cIds.slice(0, 3)}});
+      return {text:"Earliest in "+scopeLbl+": "+owner(first)+" ("+first.when+", "+provenanceRole(first, true).toLowerCase()+") with \""+plain(first.text)+"\" — "+ue0.up+" ("+ue0.ev+")."+(latest && latest.id !== first.id ? " Most recent follow-up: "+owner(latest)+" ("+latest.when+")." : "")+" Expand \"Where this came from\" below to see the chronological roles.", open:first.id, cites:cIds,
+        draft:{kind:"noticed", text:eText, v:0.80, g:0.20, refs:cIds.slice(0, 3)}};
+    }
+    /* Query direction 2 (Source + Content -> Time): How did views shift over time? */
+    if (/shift|chang|evolv|timeline|over time|history|before/.test(q)){
+      var hasHeat = deskAll.some(function(x){ return x.id === "heating"; });
+      var hasR5 = deskAll.some(function(x){ return x.id === "r5"; });
+      var hasMorn = deskAll.some(function(x){ return x.id === "morning"; }) && deskAll.some(function(x){ return x.id === "r3"; });
+      if (hasMorn && (pins.some(function(x){ return x.id === "morning"; }) || S.deskAsOf === 0)){
+        var mCites = ["morning","r3"]; if (T.phones && inAsOf(T.phones)) mCites.push("phones");
+        var mText = "Morning meetings started as Tomas's belief and gained real evidence once Mara noticed our last morning meeting finished in half the time.";
+        pushDeskOutput({kind:"draft", title:"Timeline shift", draft:{kind:"noticed", text:mText, v:0.78, g:0.45, refs:["morning","r3"]}});
+        return {text:"Across "+scopeLbl+": Tomas introduced the morning-meeting statement (today, 0.70), and Mara followed with a Reflection (\"Our one morning meeting last month finished in half the time\", 0.90) — moving the thread from untested opinion to 1 reflection on record.", open:"morning", cites:mCites,
+          draft:{kind:"noticed", text:mText, v:0.78, g:0.45, refs:["morning","r3"]}};
+      }
+      if (hasHeat){
+        var hCites = hasR5 ? ["heating","r5"] : ["heating"];
+        var hMsg = hasR5
+          ? "Across "+scopeLbl+": on 2 Nov Wen predicted the heating would be fixed before the 13th (0.90) while you doubted it (0.30). Yesterday Wen recorded the Reflection (\"The heating came back on the 11th\"), moving it from Untested to Tested · came true."
+          : "As of "+asOfShort(S.deskAsOf)+", Wen's 2 Nov heating prediction (0.90 vs your 0.30) is still UNTESTED — the outcome reflection from 13 Nov hasn't arrived yet. Switch Rewind Iris back to Now to see how new evidence changes this.";
+        pushDeskOutput({kind:"draft", title:"Timeline shift", draft:{kind:"noticed", text:hasR5 ? "Wen's heating call on 2 Nov proved out on the 11th even though I doubted it." : "As of 10 Nov the heating prediction is still open and untested.", v:0.80, g:0.30, refs:hCites}});
+        return {text:hMsg, open:"heating", cites:hCites, draft:{kind:"noticed", text:hasR5 ? "Wen's heating call on 2 Nov proved out on the 11th even though I doubted it." : "As of 10 Nov the heating prediction is still open and untested.", v:0.80, g:0.30, refs:hCites}};
+      }
+      var ch2 = pool.slice().sort(function(a, b){ return a.at - b.at; });
+      return {text:"Across "+scopeLbl+", the record runs from "+ch2[0].when+" (\""+plain(ch2[0].text)+"\") to "+ch2[ch2.length - 1].when+" (\""+plain(ch2[ch2.length - 1].text)+"\").", open:ch2[0].id, cites:ch2.slice(0, 4).map(function(x){ return x.id; })};
+    }
+    /* Query direction 3 (Source + Time -> Content): How would Mara read this? */
+    if (/mara|would .* read|lens|perspective|how would/.test(q)){
+      var mList = deskAll.filter(function(x){ return x.who === "M" || (x.takes && x.takes.M != null); }).slice(0, 4);
+      var mCites2 = mList.map(function(x){ return x.id; });
+      var avgV = mList.length ? mList.reduce(function(sum, x){ return sum + ((x.takes && x.takes.M != null) ? x.takes.M : 0.65); }, 0) / mList.length : 0.70;
+      var targetT = pool[0];
+      var mDraft = "Question for Mara: given your past stakes on planning ahead, how sure are you on \""+plain(targetT.text).slice(0, 48)+"\"?";
+      pushDeskOutput({kind:"draft", title:"Ask Mara", draft:{kind:"wonder", text:mDraft, v:0.50, g:null, refs:mCites2.slice(0, 3)}});
+      return {text:"Inferred from Mara's "+mList.length+" stakes in "+scopeLbl+" (averaging "+fmt(avgV)+" Verity, leaning practical on weather & timing): she would likely lean "+word(avgV).toLowerCase()+" on \""+plain(targetT.text)+"\" and ask for a concrete check-in date. (Estimate from her past ledger stakes — not a vote on her behalf.)", open:targetT.id, cites:mCites2.length ? mCites2 : poolIds,
+        draft:{kind:"wonder", text:mDraft, v:0.50, g:null, refs:mCites2.slice(0, 3)}};
+    }
     if (/protocol|rule|guideline|policy/.test(q)){
       var sharedSrc = pool.filter(function(x){ return x.vis !== "me"; });
       if (!sharedSrc.length){
@@ -2798,7 +2929,9 @@ function irisAnswer(text, tid){
       }
       var hasMorning = sharedSrc.some(function(x){ return x.id === "morning"; });
       var hasHike = sharedSrc.some(function(x){ return x.id === "hike"; });
-      var proposed = hasMorning && hasHike
+      var proposed = S.deskAsOf >= 2
+        ? "As of 10 Nov (before outcomes arrived): track open predictions like heating and book goals until a Reflection closes them."
+        : hasMorning && hasHike
         ? "When we disagree on a plan, test it with one small prediction and check what people actually noticed before locking in a rule."
         : hasMorning
         ? "Before changing how "+S.gname+" meets, run a two-week trial and weigh what people noticed against what they expected."
@@ -2808,10 +2941,11 @@ function irisAnswer(text, tid){
       return {text:"Based on "+scopeLbl+", I drafted a Protocol revision and placed it in your Output Tray on the right."+(skippedPriv ? " ("+skippedPriv+" private pin"+(skippedPriv===1?" was":"s were")+" kept out because the Protocol is shared.)" : ""), open:sharedSrc[0].id, cites:sharedSrc.slice(0, 3).map(function(x){ return x.id; })};
     }
     if (/tension|split|disagree|conflict|unsure|divided/.test(q)){
-      var top = pool.slice().sort(function(a, b){ return spreadOf(b) - spreadOf(a); })[0] || local[0];
+      var top = pool.slice().sort(function(a, b){ return spreadOf(b) - spreadOf(a); })[0] || pool[0];
+      var ueTop = uptakeEvidence(top, true);
       var dText = top.id === "morning" ? "Let's test morning meetings twice this month before making it permanent." : "We're still split on \""+plain(top.text).slice(0, 52)+"\" — let's name what evidence would settle it.";
       pushDeskOutput({kind:"draft", title:"Tension check", draft:{kind:"believe", text:dText, v:0.68, g:0.35, refs:poolIds.slice(0, 3)}});
-      return {text:"Across "+scopeLbl+", the sharpest tension is on \""+plain(top.text)+"\". "+takesLine(top)+" I queued a synthesis draft in your Output Tray.", open:top.id, cites:poolIds,
+      return {text:"Across "+scopeLbl+", the sharpest tension is on \""+plain(top.text)+"\" ("+ueTop.up+" · "+ueTop.ev+"). "+takesLine(top)+" I queued a synthesis draft in your Output Tray.", open:top.id, cites:poolIds,
         draft:{kind:"believe", text:dText, v:0.68, g:0.35, refs:poolIds.slice(0, 3)}};
     }
     if (/predict|forecast|compare|due|look back/.test(q)){
@@ -2832,8 +2966,8 @@ function irisAnswer(text, tid){
       return {text:"Reading "+scopeLbl+" ("+Object.keys(dc).map(function(k){ return dc[k]+" "+KINDS[k].type.toLowerCase()+(dc[k]===1?"":"s"); }).join(", ")+(privN ? "; "+privN+" private" : "")+"). Lead thread: \""+plain(pool[0].text)+"\". A takeaway draft is ready in your Output Tray.", open:pool[0].id, cites:poolIds,
         draft:{kind:"believe", text:sText, v:0.70, g:0.30, refs:poolIds.slice(0, 3)}};
     }
-    if (pins.length){
-      return {text:"Reading "+scopeLbl+" (\""+plain(pins[0].text)+"\""+(pins.length > 1 ? " + "+(pins.length - 1)+" more" : "")+"). Try \"Find tensions\", \"Compare predictions\", or \"Draft a Protocol rule\" below to push cards into your Output Tray.", open:pins[0].id, cites:poolIds};
+    if (pins.length || S.deskAsOf > 0){
+      return {text:"Reading "+scopeLbl+" (\""+plain(pool[0].text)+"\""+(pool.length > 1 ? " + "+(pool.length - 1)+" more" : "")+"). Try \"Who was early?\", \"How did views shift?\", \"How would Mara read this?\", or \"Draft a Protocol rule\" below.", open:pool[0].id, cites:poolIds};
     }
   }
   if (/split|disagree|unsure|divided/.test(q)){ var s = local.slice().sort(function(a, b){ return spreadOf(b) - spreadOf(a); })[0];
@@ -2853,12 +2987,26 @@ function irisAnswer(text, tid){
   return {text:"In this demo I can only answer a few things. Try one of the questions below."};
 }
 function citeLabel(t){ var s = plain(t.text); return esc(s.length > 34 ? s.slice(0, 32).replace(/\s+\S*$/, "")+"…" : s); }
+function provenanceHTML(cs){
+  if (!cs || !cs.length) return '';
+  var ordered = cs.map(function(id){ return T[id]; }).filter(Boolean).sort(function(a, b){ return a.at - b.at; });
+  if (!ordered.length) return '';
+  var useAsOf = S.irisMode === "desk";
+  return '<details class="prov"><summary>Where this came from · '+ordered.length+(ordered.length===1?' source':' sources')+'</summary>'+
+    '<ol class="prov-list">'+ordered.map(function(ct){
+      return '<li><button class="prov-btn" data-act="iris-cite" data-cite="'+ct.id+'">'+
+        '<span class="prov-who"><b>'+esc(owner(ct))+'</b> · '+esc(ct.when)+'</span>'+
+        '<span class="prov-role">'+provenanceRole(ct, useAsOf)+'</span>'+
+        '<span class="prov-txt">'+citeLabel(ct)+'</span></button></li>';
+    }).join("")+'</ol>'+
+    '<p class="fine prov-note">Ordered earliest → latest from ledger authors, timestamps, and links (not internal model weights).</p></details>';
+}
 function chatMsg(m, i){ var now = !m.me && S.chatNew && i === S.chat.length - 1;
   var cs = (m.cites || (m.open ? [m.open] : [])).filter(function(cid){ return !!T[cid] && (S.irisScope === "me" || T[cid].vis !== "me"); });
   var citeHtml = !m.me && cs.length ? '<div class="cite-row">'+cs.map(function(cid){
     var ct = T[cid];
     return '<button class="cite-chip'+(S.irisLit === cid ? ' lit' : '')+'" data-act="iris-cite" data-cite="'+cid+'">'+kmark(ct.kind)+'<span>'+citeLabel(ct)+'</span></button>';
-  }).join("")+'</div>' : '';
+  }).join("")+'</div>' + provenanceHTML(cs) : '';
   var lookHtml = !m.me && m.lookProposal ? '<div class="iris-look-card"><div class="iris-look-top"><b>'+esc(m.lookProposal.title)+'</b><span class="iris-look-sw">'+
     m.lookProposal.swatches.map(function(c){ return '<i style="background:'+c+'"></i>'; }).join("")+'</span></div><p class="after">'+esc(m.lookProposal.note)+'</p>'+
     '<div class="btnrow"><button class="mini'+(S.irisLook === m.lookProposal.id ? ' go' : '')+'" data-act="iris-apply-look" data-id="'+m.lookProposal.id+'"><span>'+(S.irisLook === m.lookProposal.id ? 'Active on your screen' : 'Apply look')+'</span></button>'+
@@ -2905,6 +3053,8 @@ function tail(t){
   if (t.came) h += '<p class="after">'+(S.big ? "It happened. You doubted it." : t.after)+'</p>';
   if (t.none) h += '<p class="after">'+(S.big ? (XP.length + 3 - others(allTakes(t)).length)+" haven't said yet." : t.none)+'</p>';
   if (t.who === "J" && t.vis) h += '<p class="after">'+(t.vis === "me" ? ic("lock",16)+" Only you can see this." : t.vis === "all" ? "Anyone can see this. Nobody has weighed in yet." : "Your node can see this. Nobody has weighed in yet.")+'</p>';
+  h += uptakeEvidenceHTML(t, false);
+  if (t.shaped) h += '<p class="fine shaped-line">'+esc(t.shaped)+'</p>';
   h += nudge(t);
   if (t.who === "J" && t.date && !arrived(t)) h += comesBack(t);
   return h ? '<div class="card-tail">'+h+'</div>' : '';
@@ -3337,7 +3487,8 @@ function irisLedgerRow(t){
   var tag = t.came || res === "hit" ? DATE.rowHit : res === "miss" ? DATE.rowMiss : due ? DATE.rowDue : t.due ? t.due : "";
   return '<article class="lrow'+(S.irisLit === t.id ? ' lit' : '')+(S.just === t.id ? ' fresh' : '')+'" data-kind="'+t.kind+'" data-lrow="'+t.id+'">'+
     '<div class="lrow-head"><span class="kind">'+kmark(t.kind)+KINDS[t.kind].type+(t.vis === "me" ? ' '+ic("lock",13) : '')+'</span>'+(tag ? '<span class="tag">'+tag+'</span>' : '<span class="when">'+t.when+'</span>')+'</div>'+
-    '<p class="lrow-text">'+t.text+'</p>'+thin(t)+
+    '<p class="lrow-text">'+t.text+'</p>'+thin(t)+uptakeEvidenceHTML(t, false)+
+    (t.shaped ? '<p class="fine shaped-line">'+esc(t.shaped)+'</p>' : '')+
     '<div class="lrow-foot">'+(pro() ? proNums(t) : '<span class="who">'+owner(t)+'</span>')+'<span class="lrow-acts">'+
       '<button class="mini'+(refOn ? ' go' : '')+'" data-act="iris-refer" data-id="'+t.id+'" aria-pressed="'+refOn+'"><span>'+(refOn ? 'Referenced' : 'Reference')+'</span></button>'+
       (t.kind === "predict" ? '<button class="mini" data-act="iris-lookback" data-id="'+t.id+'"><span>Look back</span></button>' : '')+
@@ -3369,10 +3520,11 @@ function viewIrisLedger(){
 }
 function deskSourceRow(t){
   var pinned = isDeskPinned(t.id), due = dueNow(t), res = S.results[t.id];
-  var tag = t.came || res === "hit" ? DATE.rowHit : res === "miss" ? DATE.rowMiss : due ? DATE.rowDue : t.due ? t.due : "";
+  var tag = cameInWindow(t, true) ? DATE.rowHit : res === "miss" ? DATE.rowMiss : due ? DATE.rowDue : t.due ? t.due : "";
   return '<article class="lrow'+(pinned ? ' pinned' : '')+(S.irisLit === t.id ? ' lit' : '')+(S.just === t.id ? ' fresh' : '')+'" data-kind="'+t.kind+'" data-lrow="'+t.id+'">'+
     '<div class="lrow-head"><span class="kind">'+kmark(t.kind)+KINDS[t.kind].type+(t.vis === "me" ? ' '+ic("lock",13) : '')+'</span>'+(tag ? '<span class="tag">'+tag+'</span>' : '<span class="when">'+t.when+'</span>')+'</div>'+
-    '<p class="lrow-text">'+t.text+'</p>'+thin(t)+
+    '<p class="lrow-text">'+t.text+'</p>'+thin(t)+uptakeEvidenceHTML(t, true)+
+    (t.shaped ? '<p class="fine shaped-line">'+esc(t.shaped)+'</p>' : '')+
     '<div class="lrow-foot">'+(pro() ? proNums(t) : '<span class="who">'+owner(t)+'</span>')+'<span class="lrow-acts">'+
       '<button class="mini'+(pinned ? ' go' : '')+'" data-act="desk-pin" data-id="'+t.id+'" aria-pressed="'+pinned+'"><span>'+(pinned ? '✓ On desk' : '+ Pin')+'</span></button>'+
       (t.kind === "predict" ? '<button class="mini" data-act="iris-lookback" data-id="'+t.id+'"><span>Look back</span></button>' : '')+
@@ -3380,7 +3532,7 @@ function deskSourceRow(t){
     '</span></div></article>';
 }
 function viewDeskSources(){
-  var pins = activeDeskPins();
+  var pins = activeDeskPins(), hid = hiddenByAsOfCount();
   if (!S.irisLedger){
     return '<aside class="iris-rail iris-rail-l" data-act="iris-ledger-open" role="button" tabindex="0" aria-label="Show sources"><span class="iris-rail-ico">›</span><span class="iris-rail-lbl">Sources'+(pins.length ? ' ('+pins.length+')' : '')+'</span></aside>';
   }
@@ -3397,21 +3549,25 @@ function viewDeskSources(){
     '<div class="desk-see"><p class="after iris-see">Iris reads: <b>'+(pins.length ? pins.length+' pinned'+(privPins ? ' · '+privPins+' private' : '') : 'Whole ledger')+'</b></p>'+
       (pins.length ? '<button class="link" data-act="desk-clear-pins">Read all</button>' : '<button class="link" data-act="desk-pin-cited">Pin cited</button>')+
     '</div>'+
+    '<div class="asof-row"><label class="asof-lbl" for="desk-asof">Rewind Iris</label>'+sel("desk-asof","Rewind Iris to date",ASOF_OPTS,String(S.deskAsOf))+'</div>'+
+    (S.deskAsOf > 0 ? '<div class="asof-banner"><span>As of <b>'+asOfShort(S.deskAsOf)+'</b> · hiding '+hid+' newer thought'+(hid===1?'':'s')+'</span><button class="link" data-act="desk-asof-now">Back to Now</button></div>' : '')+
     '<div class="iris-seg" role="group" aria-label="Source filter">'+
       '<button class="pill" data-act="desk-filter" data-id="all" aria-pressed="'+(S.deskFilter === "all")+'">All</button>'+
       '<button class="pill" data-act="desk-filter" data-id="pinned" aria-pressed="'+(S.deskFilter === "pinned")+'">Pinned ('+pins.length+')</button>'+
       '<button class="pill" data-act="desk-filter" data-id="cited" aria-pressed="'+(S.deskFilter === "cited")+'">Cited</button>'+
       '<button class="pill" data-act="desk-filter" data-id="due" aria-pressed="'+(S.deskFilter === "due")+'">Due</button>'+
     '</div>'+
-    '<div class="iris-lscroll">'+(rows.length ? rows.map(deskSourceRow).join("") : '<p class="hint">'+(S.deskFilter === "pinned" ? 'No thoughts pinned yet. Switch to All and tap + Pin to focus Iris.' : 'Nothing in this view yet.')+'</p>')+'</div></aside>';
+    '<div class="iris-lscroll">'+(rows.length ? rows.map(deskSourceRow).join("") : '<p class="hint">'+(S.deskFilter === "pinned" ? 'No thoughts pinned yet. Switch to All and tap + Pin to focus Iris.' : 'Nothing in this view for '+asOfShort(S.deskAsOf)+'.')+'</p>')+'</div></aside>';
 }
 function deskOutputCard(o){
+  var dirHtml = o.dir ? '<p class="fine out-dir">'+esc(dirSummary(o.dir))+'</p>' : '';
   if (o.kind === "protocol"){
     return '<article class="out-card out-proto">'+
       '<div class="out-head"><span class="out-tag">Protocol edit</span><span class="when">v'+(o.applied ? o.appliedV : S.protoV + 1)+'</span></div>'+
       '<p class="out-title">'+esc(o.title)+'</p>'+
       '<div class="out-diff"><p class="out-before"><span>Before:</span> '+esc(o.before)+'</p><p class="out-after"><span>Proposed:</span> '+esc(o.after)+'</p></div>'+
       (o.skippedPriv ? '<p class="fine">Drafted from shared sources only ('+o.skippedPriv+' private pin'+(o.skippedPriv===1?'':'s')+' excluded).</p>' : '')+
+      dirHtml+
       '<div class="out-acts"><button class="mini'+(o.applied ? '' : ' go')+'" data-act="desk-apply-proto" data-id="'+o.id+'"'+(o.applied ? ' disabled' : '')+'><span>'+(o.applied ? '✓ Applied (v'+o.appliedV+')' : 'Apply to Protocol')+'</span></button>'+
       '<button class="mini" data-act="desk-dismiss-out" data-id="'+o.id+'"><span>Dismiss</span></button></div></article>';
   }
@@ -3419,6 +3575,7 @@ function deskOutputCard(o){
   return '<article class="out-card">'+
     '<div class="out-head"><span class="out-tag">'+esc(o.title || "Draft")+'</span>'+(dk ? '<span class="when">'+dk.type+'</span>' : '')+'</div>'+
     '<p class="out-body">“'+esc(o.draft ? o.draft.text : "")+'”</p>'+
+    dirHtml+
     '<div class="out-acts"><button class="mini go" data-act="desk-load-draft" data-id="'+o.id+'"><span>Edit in Say it</span></button>'+
     '<button class="mini" data-act="desk-dismiss-out" data-id="'+o.id+'"><span>Dismiss</span></button></div></article>';
 }
@@ -3434,11 +3591,12 @@ function viewDeskOutputs(){
 }
 function viewDeskBar(){
   var pins = activeDeskPins(), privN = pins.filter(function(t){ return t.vis === "me"; }).length;
+  var asOfChip = S.deskAsOf > 0 ? '<span class="asof-tag">As of '+asOfShort(S.deskAsOf)+'</span>' : '';
   if (!pins.length){
-    return '<div class="desk-bar empty"><span class="desk-bar-lbl">Whole ledger in view ('+(S.irisScope === "me" ? esc(S.gname)+' + private' : esc(S.gname)+' shared')+') · pin sources on the left to focus Iris</span></div>';
+    return '<div class="desk-bar empty"><div class="desk-bar-head"><span class="desk-bar-lbl">Whole ledger in view ('+(S.irisScope === "me" ? esc(S.gname)+' + private' : esc(S.gname)+' shared')+') '+asOfChip+'</span>'+(S.deskAsOf > 0 ? '<button class="link" data-act="desk-asof-now">Back to Now</button>' : '')+'</div></div>';
   }
   return '<div class="desk-bar" aria-label="Pinned sources on Iris desk">'+
-    '<div class="desk-bar-head"><span class="desk-bar-lbl">On Iris&#39;s desk · <b>'+pins.length+'</b>'+(privN ? ' · '+ic("lock",13)+' '+privN+' private' : '')+'</span><button class="link" data-act="desk-clear-pins">Clear</button></div>'+
+    '<div class="desk-bar-head"><span class="desk-bar-lbl">On Iris&#39;s desk · <b>'+pins.length+'</b>'+(privN ? ' · '+ic("lock",13)+' '+privN+' private' : '')+' '+asOfChip+'</span><button class="link" data-act="desk-clear-pins">Clear</button></div>'+
     '<div class="desk-chips">'+pins.map(function(t){
       return '<button class="cite-chip desk-chip'+(S.irisLit === t.id ? ' lit' : '')+'" data-act="desk-unpin" data-id="'+t.id+'" data-cite="'+t.id+'" title="Remove from desk">'+kmark(t.kind)+'<span>'+citeLabel(t)+'</span>'+(t.vis === "me" ? ic("lock",12) : '')+'<i aria-hidden="true">×</i></button>';
     }).join("")+'</div></div>';
@@ -3647,7 +3805,7 @@ function toast(msg){
 function setView(v, quiet, big, due){
   S.view = v; S.tab = "thoughts"; S.groupHike = false; S.big = v === "day" && !!big; S.due = v === "day" && !big && !!due; S.reflect = null;
   if (S.due){ delete S.results.run; delete S.closed.run; }   // the demo's date arrives afresh each time
-  S.open = null; S.reply = null; S.weigh = null; S.sayOpen = false; S.note = null; S.irisMode = "workbench"; S.irisDraft = defaultIrisDraft(); S.irisLit = null; S.irisLedger = true; S.irisFilter = "cited"; S.deskFilter = "all"; S.deskPinned = ["morning","hike"]; S.deskOutputs = [];
+  S.open = null; S.reply = null; S.weigh = null; S.sayOpen = false; S.note = null; S.irisMode = "workbench"; S.irisDraft = defaultIrisDraft(); S.irisLit = null; S.irisLedger = true; S.irisFilter = "cited"; S.deskFilter = "all"; S.deskPinned = ["morning","hike"]; S.deskAsOf = 0; S.deskDir = {dismissed:0}; S.deskOutputs = [];
   F = freshF(); C = freshC();
   // two made-up notifications wait on an ordinary day
   S.notes = v === "day" ? [{id:"n1", who:"T", what:"weighed in on your thought", t:"tent"}, {id:"n2", who:"W", what:"asked for your take", t:"coach", weigh:true}] : [];
@@ -3759,9 +3917,12 @@ function setAnswer(act,id,v,el){
       if(C.kind==='wonder' && v!==C.v){ C.questionMoved=true; var hint=$('#c-openhint'); if(hint) hint.remove(); }
       C.v=v;
     }
-    if (C.fromIris && !C.humanEdited){
-      C.humanEdited = true;
-      var fi = $("#c-fromiris span:last-child"); if (fi) fi.textContent = "Your edits are locked. Iris will not overwrite this draft.";
+    if (C.fromIris){
+      C.editedSliders = true;
+      if (!C.humanEdited){
+        C.humanEdited = true;
+        var fi = $("#c-fromiris span:last-child"); if (fi) fi.textContent = "Your edits are locked. Iris will not overwrite this draft.";
+      }
     }
     updateAnswer(el,v,good); if(first) syncSay();
   }
@@ -3809,6 +3970,17 @@ function stake(){
   if (C.kind === "predict" && C.date) m.date = C.date;
   if (C.topic !== "general") m.topic = C.topic;
   if (C.refs.length) m.refs = C.refs.filter(function(x){ return x !== m.re; });
+  if (S.tab === "iris" && (C.fromIris || S.irisMode === "desk")){
+    var dp = [];
+    var pinN = S.irisMode === "desk" ? activeDeskPins().length : 0;
+    if (pinN) dp.push(pinN+" pinned source"+(pinN===1?"":"s"));
+    if (C.fromIris) dp.push("Iris drafted");
+    if (C.editedText && C.editedSliders) dp.push("you edited wording & sliders");
+    else if (C.editedText) dp.push("you edited wording");
+    else if (C.editedSliders) dp.push("you adjusted sliders");
+    if (S.deskDir.dismissed > 0) dp.push(S.deskDir.dismissed+" dismissed");
+    if (dp.length) m.shaped = "Shaped by your direction: " + dp.join(" · ");
+  }
   keepNew(m);
   // a reflection on a prediction whose date came closes it
   var closes = !!m.re && S.reflect === m.re && !!S.results[m.re] && !S.closed[m.re] && C.kind === "noticed";
@@ -3998,7 +4170,8 @@ document.addEventListener("click", function(e){
     S.irisDraft = true; S.sayOpen = true; render();
     var dta2 = $("#c-text"); if (dta2){ dta2.scrollIntoView({block:"center"}); dta2.focus(); }
   }
-  else if (act === "desk-dismiss-out"){ S.deskOutputs = S.deskOutputs.filter(function(x){ return x.id !== id; }); render(); }
+  else if (act === "desk-dismiss-out"){ S.deskOutputs = S.deskOutputs.filter(function(x){ return x.id !== id; }); S.deskDir.dismissed++; render(); }
+  else if (act === "desk-asof-now"){ S.deskAsOf = 0; render(); toast("Back to Now (14 Nov)."); }
   else if (act === "iris-scope"){
     var nextScope = S.irisScope === "me" ? "group" : "me";
     if (nextScope !== "me" && C.refs.some(function(rid){ return T[rid] && T[rid].vis === "me"; })){
@@ -4176,9 +4349,12 @@ document.addEventListener("input", function(e){
     had = C.text.trim().length > 0; C.text = el.value;
     var has = C.text.trim().length > 0;
     if (!has){ C.draft = false; C.draftText = ""; }
-    if (C.fromIris && !C.humanEdited){
-      C.humanEdited = true;
-      var fi2 = $("#c-fromiris span:last-child"); if (fi2) fi2.textContent = "Your edits are locked. Iris will not overwrite this draft.";
+    if (C.fromIris){
+      C.editedText = true;
+      if (!C.humanEdited){
+        C.humanEdited = true;
+        var fi2 = $("#c-fromiris span:last-child"); if (fi2) fi2.textContent = "Your edits are locked. Iris will not overwrite this draft.";
+      }
     }
     if (had !== has && C.kind === "wonder"){ if (has && C.v == null) C.v = 0.50; $("#c-sure-in").innerHTML = sureLine(); }
     syncSay(); return;
@@ -4207,6 +4383,7 @@ document.addEventListener("change", function(e){
     F.who = e.target.value; drawList();
   }
   if (e.target.id === "i-steps"){ S.maxSteps = Number(e.target.value); toast("Saved."); }
+  if (e.target.id === "desk-asof"){ S.deskAsOf = Number(e.target.value) || 0; render(); toast(S.deskAsOf ? "Rewound Iris to "+asOfShort(S.deskAsOf)+"." : "Iris is reading up to Now."); }
   if (e.target.id === "f-topic"){ F.topic = e.target.value; drawList(); }
   if (e.target.id === "f-kind"){ F.kind = e.target.value; drawBrowse(); var fk = $("#f-kind"); if (fk) fk.focus(); }
   if (e.target.id === "f-src"){ F.src = e.target.value; pruneLists(); drawBrowse(); var fs = $("#f-src"); if (fs) fs.focus(); }
