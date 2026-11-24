@@ -587,6 +587,62 @@ select{font:inherit;color:inherit}
 .v-page .who-names{margin-top:2px}
 .v-page .card > .btn{align-self:flex-start}
 
+/* ---------- Iris workbench: Say it on the left, Iris in the middle, Live Ledger on the right ---------- */
+.v-iris{gap:14px}
+.iris-pane,.iris-ledger{display:flex;flex-direction:column;gap:12px;min-width:0;background:var(--surface);border-radius:20px;padding:12px 14px}
+.iris-rail{display:flex;align-items:center;gap:10px;min-height:48px;padding:0 16px;border-radius:20px;border:1.5px solid var(--line);background:var(--surface);font-size:15px;font-weight:650;color:var(--ink);cursor:pointer;user-select:none}
+.iris-rail-ico{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--tile);font-size:17px;line-height:1;font-weight:700;color:var(--ink)}
+.iris-rail-lbl{white-space:nowrap}
+.iris-head{gap:8px;flex-wrap:wrap}
+.iris-title{display:inline-flex;align-items:center;gap:8px}
+.iris-title h1{margin:0;font-size:20px;line-height:1.2;font-weight:700;letter-spacing:-.005em}
+.iris-head-acts{display:inline-flex;align-items:center;gap:2px;margin-left:auto}
+.iris-head-acts .mini span{gap:5px}
+.iris-body{display:flex;flex-direction:column;gap:12px;min-height:0}
+.iris-notice{margin:0}
+.iris-foot{display:flex;flex-direction:column;gap:8px;padding-top:10px;border-top:1px solid var(--line)}
+.iris-foot-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px}
+.iris-settings{margin-left:auto}
+.iris-settings-in{display:flex;flex-direction:column;gap:8px;padding:6px 0 2px}
+.cite-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.cite-chip{display:inline-flex;align-items:center;gap:6px;min-height:44px;max-width:100%;padding:4px 11px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;text-align:left}
+.cite-chip .kmark{--km:16px}
+.cite-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cite-chip.lit,.cite-chip:hover{border-color:var(--ink);background:var(--tile)}
+.msg-acts{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:4px}
+.iris-scope-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:5px 10px;border-radius:10px;background:var(--tile);font-size:12.5px;font-weight:650;color:var(--ink2)}
+.iris-scope-bar span{display:inline-flex;align-items:center;gap:5px}
+.iris-scope-bar .link{min-height:32px;margin-block:-4px;font-size:12.5px}
+.lookback-pin{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border-radius:12px;border-left:3px solid var(--violet);background:var(--violet-soft)}
+.echo-card{display:flex;flex-direction:column;gap:5px;margin-top:8px;padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--tile)}
+.echo-q{font-size:14.5px;line-height:1.32;font-weight:650;color:var(--ink)}
+.priv-warn{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border-radius:12px;border:1.5px solid var(--ink);background:var(--violet-soft)}
+.iris-look-card{display:flex;flex-direction:column;gap:8px;margin-top:8px;padding:11px 12px;border-radius:14px;border:1.5px solid var(--line);background:var(--tile)}
+.iris-look-top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px}
+.iris-look-sw{display:inline-flex;gap:4px}
+.iris-look-sw i{display:block;width:14px;height:14px;border-radius:50%;border:1px solid rgba(128,128,128,.35)}
+.iris-see{margin-top:-4px;font-size:13px}
+.iris-seg{display:flex;flex-wrap:wrap;gap:6px}
+.iris-lscroll{display:flex;flex-direction:column;gap:10px}
+.lrow{display:flex;flex-direction:column;gap:6px;padding:10px 12px 2px;border:1.5px solid var(--line);border-radius:14px;background:var(--ground);transition:border-color .15s,box-shadow .15s}
+.lrow.lit{border-color:var(--ink);box-shadow:0 0 0 2px var(--violet-soft)}
+.lrow-head{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink2)}
+.lrow-head .kind{--km:18px;font-size:12.5px}
+.lrow-text{font-size:15px;line-height:1.32;font-weight:600;color:var(--ink);overflow-wrap:anywhere}
+.lrow-foot{display:flex;align-items:center;flex-wrap:wrap;gap:2px 6px;min-height:44px;font-size:12.5px;color:var(--ink2)}
+.lrow-acts{display:flex;flex-wrap:wrap;margin-left:auto}
+.iris-say-x,.iris-fold-btn{flex:none}
+
+/* hidden self-restyle overlays (only applied when asked in Iris chat) */
+.iris-roots-bg{display:none;position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+html[data-look][data-palette][data-iris-look="rhizome-roots"]{color-scheme:dark;--ground:#0a1312;--surface:#111d1b;--tile:#172926;--ink:#eaf2ed;--ink2:#9fb6ae;--body:#dce8e1;--line:#27403a;--line2:#1e342f;--btn:#78bfa2;--on-btn:#071310;--accent:#78bfa2;--accent-text:#95e2c3;--accent-soft:rgba(120,191,162,.24);--violet:#a898e0;--violet-soft:rgba(157,140,214,.22);--inset:#0d1816;--dock:rgba(10,19,18,.88);--field:#0d1816;--white:#162623;--sticky:#282a1a;--kraft:#1d2824;--kraft-deep:#141e1b;--chipbg:#192c28;--edge:#2b463f;--edge2:#243a35;--rule:rgba(120,191,162,.10);--margin:rgba(157,140,214,.20);--stack1:#14221f;--stack2:#0d1715;--pane1:rgba(17,29,27,.86);--pane2:rgba(10,19,18,.84);--glass:rgba(22,38,35,.72);--glass2:rgba(28,48,44,.84);--track:#223833;--chat-me:#78bfa2;--on-chat-me:#071310;--tint:rgba(120,191,162,.16)}
+html[data-look][data-palette][data-iris-look="rhizome-roots"] .stage{background:#0a1312;background-image:none}
+html[data-look][data-palette][data-iris-look="rhizome-roots"] .app{position:relative;z-index:1;background:transparent}
+html[data-look][data-palette][data-iris-look="rhizome-roots"] .topbar,html[data-look][data-palette][data-iris-look="rhizome-roots"] .strip{background:rgba(10,19,18,.86);border-color:#243a35;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+html[data-look][data-palette][data-iris-look="rhizome-roots"] .iris-pane,html[data-look][data-palette][data-iris-look="rhizome-roots"] .iris-ledger,html[data-look][data-palette][data-iris-look="rhizome-roots"] .sayit,html[data-look][data-palette][data-iris-look="rhizome-roots"] .browse,html[data-look][data-palette][data-iris-look="rhizome-roots"] .iris-rail{background:rgba(17,29,27,.84);border-color:#27403a;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+html[data-look="modern"][data-palette][data-iris-look="rhizome-roots"] .kmark{filter:invert(1) brightness(1.15)}
+html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--ground:#f7f2e7;--surface:#fffaf1;--tile:#efe7d6;--ink:#1f322b;--ink2:#556860;--body:#263932;--line:#d8ccb5;--line2:#e3d9c5;--btn:#2c6e59;--on-btn:#fffaf1;--accent:#2c6e59;--accent-text:#235b49;--accent-soft:rgba(44,110,89,.16);--violet:#6b5ca5;--violet-soft:rgba(107,92,165,.13);--inset:#f3ecde;--field:#fffcf5;--white:#fffaf1;--chipbg:#efe7d6;--chat-me:#2c6e59;--on-chat-me:#fffaf1;--tint:rgba(44,110,89,.12)}
+
 @media (prefers-reduced-motion: reduce){ .fresh{animation:none} }
 
 /* ---------- wide screens: a real page ---------- */
@@ -612,6 +668,24 @@ select{font:inherit;color:inherit}
   .v-you > div:first-child{grid-column:1 / -1}
 
   .v-home{display:grid;grid-template-columns:400px minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:20px;padding:20px 24px;overflow:hidden}
+  .v-iris{position:relative;display:grid;grid-template-columns:54px minmax(0,1fr) 336px;grid-template-rows:minmax(0,1fr);gap:16px;padding:20px 24px;overflow:hidden}
+  .v-iris.draft-open{grid-template-columns:380px minmax(0,1fr) 336px}
+  .v-iris.ledger-closed{grid-template-columns:54px minmax(0,1fr) 54px}
+  .v-iris.draft-open.ledger-closed{grid-template-columns:380px minmax(0,1fr) 54px}
+  .v-iris .sayit{align-self:stretch;height:100%;max-height:100%;overflow-y:auto}
+  .v-iris .say-form{gap:10px;padding:14px 18px 0}
+  .v-iris .field textarea{min-height:72px}
+  .v-iris .say-go{padding-bottom:14px}
+  .iris-rail{flex-direction:column;align-items:center;justify-content:flex-start;gap:14px;height:100%;padding:16px 0;border-radius:20px}
+  .iris-rail-lbl{writing-mode:vertical-rl;transform:rotate(180deg);font-size:13px;letter-spacing:.03em;color:var(--ink2)}
+  .iris-pane{height:100%;overflow:hidden;border-radius:24px;padding:18px 22px 14px}
+  .iris-body{flex:1;min-height:0;overflow-y:auto;padding-right:4px}
+  .iris-foot{flex:none}
+  .iris-ledger{height:100%;overflow:hidden;border-radius:24px;padding:18px 18px 12px}
+  .iris-lscroll{flex:1;min-height:0;overflow-y:auto;padding-right:2px}
+  .lrow-acts .mini{min-width:0;padding-left:5px}
+  .lrow-acts .mini span{padding:0 9px;font-size:12.5px}
+  .cite-chip{min-height:30px;padding:3px 10px;font-size:12.5px}
   .sayit{align-self:start;max-height:100%;overflow-y:auto;border-radius:24px}
   .say-bar{display:none}
   .say-form{display:flex;padding:18px 20px 0}
@@ -633,6 +707,13 @@ select{font:inherit;color:inherit}
   .sheet{align-items:center;justify-content:center;background:rgba(12,16,30,.44)}
   .sheet-box{display:flex;flex-direction:column;width:min(480px,calc(100% - 48px));min-height:0;max-height:calc(100% - 48px);overflow:hidden;border-radius:24px;background:var(--ground);box-shadow:var(--shadow)}
   .sheet-head,.sheet-body{padding-inline:22px}
+}
+/* narrower desktop: keep conversation wide by floating the draft drawer over the left edge */
+@media (min-width:1000px) and (max-width:1179px){
+  .v-iris.draft-open{grid-template-columns:54px minmax(0,1fr) 300px}
+  .v-iris.draft-open.ledger-closed{grid-template-columns:54px minmax(0,1fr) 54px}
+  .v-iris.draft-open > .sayit{position:absolute;left:24px;top:20px;bottom:20px;width:372px;height:auto;z-index:6;box-shadow:0 20px 50px rgba(0,0,0,.32)}
+  .v-iris.draft-open > .iris-pane{grid-column:1 / 3}
 }
 @media (min-width:1200px){
   .s-look .opts{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
@@ -1234,7 +1315,7 @@ select{font:inherit;color:inherit}
 :where(:root[data-look="notebook"]) .num,:where(:root[data-look="notebook"]) .ends,:where(:root[data-look="notebook"]) .net,:where(:root[data-look="notebook"]) .demo,:where(:root[data-look="notebook"]) .chip,:where(:root[data-look="notebook"]) .by,:where(:root[data-look="notebook"]) .hint,:where(:root[data-look="notebook"]) .after,:where(:root[data-look="notebook"]) .fine,:where(:root[data-look="notebook"]) .tab,:where(:root[data-look="notebook"]) .words-link,:where(:root[data-look="notebook"]) .irisline,:where(:root[data-look="notebook"]) .count,:where(:root[data-look="notebook"]) .trow-head,:where(:root[data-look="notebook"]) .trow-foot,:where(:root[data-look="notebook"]) .bar-end,:where(:root[data-look="notebook"]) .strip,:where(:root[data-look="notebook"]) .pick,:where(:root[data-look="notebook"]) .search{font-variation-settings:"MONO" 1,"CASL" 1}
 :where(:root[data-look="notebook"]) .by{font-size:14px;letter-spacing:-.01em}
 :where(:root[data-look="notebook"]) .hint,:where(:root[data-look="notebook"]) .after,:where(:root[data-look="notebook"]) .fine,:where(:root[data-look="notebook"]) .irisline{font-size:13.5px}
-:where(:root[data-look="notebook"]) .hello,:where(:root[data-look="notebook"]) .sec h2,:where(:root[data-look="notebook"]) .sheet-head h2,:where(:root[data-look="notebook"]) .mark,:where(:root[data-look="notebook"]) .panel-head h2,:where(:root[data-look="notebook"]) .pop-box h2,:where(:root[data-look="notebook"]) .replies h3,:where(:root[data-look="notebook"]) .say-bar{font-family:"Caveat",cursive;font-weight:700;letter-spacing:normal}
+:where(:root[data-look="notebook"]) .hello,:where(:root[data-look="notebook"]) .sec h2,:where(:root[data-look="notebook"]) .sheet-head h2,:where(:root[data-look="notebook"]) .mark,:where(:root[data-look="notebook"]) .panel-head h2,:where(:root[data-look="notebook"]) .iris-title h1,:where(:root[data-look="notebook"]) .pop-box h2,:where(:root[data-look="notebook"]) .replies h3,:where(:root[data-look="notebook"]) .say-bar{font-family:"Caveat",cursive;font-weight:700;letter-spacing:normal}
 :where(:root[data-look="notebook"]) .hello{font-size:42px;line-height:.98;transform:rotate(-1.2deg);transform-origin:left bottom}
 :where(:root[data-look="notebook"]) .sec h2{font-size:29px;line-height:1.08;align-self:flex-start;padding:0 2px 9px;background:var(--svg-scribble) left bottom/150px 10px no-repeat;transform:rotate(-1deg);transform-origin:left bottom}
 :where(:root[data-look="notebook"]) .sheet-head h2{font-size:31px;line-height:1.1;min-width:0}
@@ -1332,8 +1413,15 @@ select{font:inherit;color:inherit}
 :where(:root[data-look="notebook"]) .pop-box h2{font-size:31px;line-height:1.05}
 :where(:root[data-look="notebook"]) .count{font-size:13.5px}
 :where(:root[data-look="notebook"]) .trow-head,:where(:root[data-look="notebook"]) .trow-foot{font-size:13px}
-:where(:root[data-look="notebook"]) .trow-text,:where(:root[data-look="notebook"]) .open-card > .say,:where(:root[data-look="notebook"]) textarea{font-variation-settings:"MONO" 1,"CASL" .35;font-weight:500;letter-spacing:.015em}
+:where(:root[data-look="notebook"]) .trow-text,:where(:root[data-look="notebook"]) .lrow-text,:where(:root[data-look="notebook"]) .open-card > .say,:where(:root[data-look="notebook"]) textarea{font-variation-settings:"MONO" 1,"CASL" .35;font-weight:500;letter-spacing:.015em}
 :where(:root[data-look="notebook"]) .trow-text{font-size:15.5px;line-height:1.42}
+:where(:root[data-look="notebook"]) .lrow-text{font-size:14.5px;line-height:1.4}
+:where(:root[data-look="notebook"]) .iris-title h1{font-size:30px;line-height:1}
+:where(:root[data-look="notebook"]) .iris-pane,:where(:root[data-look="notebook"]) .iris-ledger,:where(:root[data-look="notebook"]) .iris-rail{border:1px solid var(--edge);border-radius:4px 10px 10px 4px;background-color:var(--ground);background-image:var(--svg-grain),repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px);background-attachment:local;box-shadow:0 2px 0 var(--stack1),0 4px 0 var(--stack2),0 12px 22px rgba(40,25,5,.26)}
+:where(:root[data-look="notebook"]) .lrow{border:1px solid var(--edge2);border-radius:2px;background:var(--surface);box-shadow:1px 2px 0 rgba(70,50,20,.12)}
+:where(:root[data-look="notebook"]) .lrow.lit{border-color:var(--ink);box-shadow:0 0 0 2px var(--violet-soft),2px 3px 0 rgba(43,42,51,.22)}
+:where(:root[data-look="notebook"]) .cite-chip{border-color:var(--edge2);border-radius:12px 14px 11px 15px / 14px 11px 15px 12px;background:var(--white);box-shadow:1px 2px 0 rgba(70,50,20,.10)}
+:where(:root[data-look="notebook"]) .cite-chip.lit,:where(:root[data-look="notebook"]) .cite-chip:hover{border-color:var(--ink);background:var(--chipbg)}
 :where(:root[data-look="notebook"]) .open-card > .say{font-size:17px;line-height:1.42}
 :where(:root[data-look="notebook"]) .v-home{gap:18px}
 :where(:root[data-look="notebook"]) .app::before{content:"";flex:none;position:relative;z-index:3;height:25px;pointer-events:none;background:var(--svg-ring) left -7px/24px 34px round no-repeat,linear-gradient(to bottom,var(--kraft-deep) 0 10px,transparent 10px)}
@@ -1415,6 +1503,8 @@ select{font:inherit;color:inherit}
 :where(:root[data-look="notebook"]) .tab[aria-current="page"]{margin-top:0;font-weight:700;box-shadow:0 -3px 5px rgba(70,50,20,.14)}
 :where(:root[data-look="notebook"]) .bar-end{font-size:12.5px}
 :where(:root[data-look="notebook"]) .v-home{position:relative;gap:14px;padding:26px 30px 24px;background:none;--hole:rgba(44,26,8,.86)}
+:where(:root[data-look="notebook"]) .v-iris{gap:14px;padding:22px 26px 20px;background:none}
+:where(:root[data-look="notebook"]) .v-iris .iris-pane,:where(:root[data-look="notebook"]) .v-iris .iris-ledger,:where(:root[data-look="notebook"]) .v-iris .iris-rail{border-radius:4px 12px 12px 4px}
 :where(:root[data-look="notebook"]) .v-home::after{content:"";position:absolute;z-index:5;pointer-events:none;left:415px;top:38px;bottom:36px;width:44px;background:linear-gradient(to bottom,transparent 0 9px,#55555c 9px,#f4f4f7 11px,#b9b9c1 13px,#4b4b52 16px,transparent 16px) 0 0/100% 26px repeat-y,radial-gradient(circle at 6px 12.5px,var(--hole) 0 4.3px,transparent 4.9px) 0 0/100% 26px repeat-y,radial-gradient(circle at 38px 12.5px,var(--hole) 0 4.3px,transparent 4.9px) 0 0/100% 26px repeat-y;filter:drop-shadow(0 2px 1px rgba(40,25,5,.3))}
 :where(:root[data-look="notebook"]) .sayit{align-self:stretch;max-height:none;margin-top:0;border-radius:12px 2px 2px 12px;background:var(--ground) var(--svg-grain);background-image:var(--svg-grain),linear-gradient(to right,transparent 11px,var(--margin) 11px,var(--margin) 12.2px,transparent 12.2px),repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px);background-attachment:local;box-shadow:inset -24px 0 22px -18px rgba(60,40,10,.2),-2px 2px 0 var(--stack1),-4px 4px 0 var(--stack2),0 16px 30px rgba(40,25,5,.36)}
 :where(:root[data-look="notebook"]) .hint.vals{margin-top:-6px;line-height:18px}
@@ -1549,7 +1639,15 @@ select{font:inherit;color:inherit}
 :where(:root[data-look="future"]) .replies h3{font-size:15px;font-weight:500}
 :where(:root[data-look="future"]) .trow-text{font-size:16.5px;line-height:1.32;font-weight:500;letter-spacing:0}
 :where(:root[data-look="future"]) .kind,:where(:root[data-look="future"]) .who,:where(:root[data-look="future"]) .kbtn,:where(:root[data-look="future"]) .kf,:where(:root[data-look="future"]) .pick,:where(:root[data-look="future"]) .mini span{font-weight:500}
-:where(:root[data-look="future"]) .sayit,:where(:root[data-look="future"]) .browse{border:1px solid;border-color:var(--rim);border-radius:16px;background:var(--lit),var(--shine) padding-box,var(--pane) padding-box;-webkit-backdrop-filter:blur(7px) saturate(135%);backdrop-filter:blur(7px) saturate(135%);box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 -20px 30px -26px var(--accent-soft),2px 3px 0 -1px rgba(255,255,255,.09),0 0 28px -14px var(--accent-soft),0 42px 60px -46px var(--accent-soft),0 0 calc(var(--glow)*34px) -14px var(--accent)}
+:where(:root[data-look="future"]) .sayit,:where(:root[data-look="future"]) .browse,:where(:root[data-look="future"]) .iris-pane,:where(:root[data-look="future"]) .iris-ledger,:where(:root[data-look="future"]) .iris-rail{border:1px solid;border-color:var(--rim);border-radius:16px;background:var(--lit),var(--shine) padding-box,var(--pane) padding-box;-webkit-backdrop-filter:blur(7px) saturate(135%);backdrop-filter:blur(7px) saturate(135%);box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 -20px 30px -26px var(--accent-soft),2px 3px 0 -1px rgba(255,255,255,.09),0 0 28px -14px var(--accent-soft),0 42px 60px -46px var(--accent-soft),0 0 calc(var(--glow)*34px) -14px var(--accent)}
+:where(:root[data-look="future"]) .iris-title h1{font-stretch:118%;font-size:19px;font-weight:400;text-shadow:0 0 9px color-mix(in oklab,currentColor 42%,transparent),0 0 24px var(--accent-soft)}
+:where(:root[data-look="future"]) .lrow{border:1px solid;border-color:var(--rim);border-radius:14px;background:rgba(3,7,18,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
+:where(:root[data-look="future"]) .lrow.lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 calc(var(--glow)*22px) -6px var(--accent)}
+:where(:root[data-look="future"]) .cite-chip{border:1px solid var(--line2);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));font-weight:500}
+:where(:root[data-look="future"]) .cite-chip.lit,:where(:root[data-look="future"]) .cite-chip:hover{border-color:var(--accent);background:var(--glass2);color:var(--accent-text);box-shadow:0 0 calc(var(--glow)*18px) -6px var(--accent)}
+:where(:root[data-look="future"]) .echo-card,:where(:root[data-look="future"]) .iris-look-card{border:1px solid var(--line2);background:var(--glass)}
+:where(:root[data-look="future"]) .iris-scope-bar{border:1px solid var(--line);background:var(--glass)}
+:where(:root[data-look="future"]) .iris-rail-ico{border:1px solid var(--line2);background:var(--glass2);color:var(--accent-text)}
 :where(:root[data-look="future"]) .say-bar{font-weight:400;color:var(--ink2)}
 :where(:root[data-look="future"]) .say-bar svg{color:var(--accent-text);filter:drop-shadow(0 0 calc(var(--glow)*8px) var(--accent))}
 :where(:root[data-look="future"]) .kmark{border-radius:0;background-color:transparent;background-size:88%;filter:drop-shadow(0 0 calc(var(--glow)*8px) var(--accent))}
@@ -1606,7 +1704,7 @@ select{font:inherit;color:inherit}
 :where(:root[data-look="future"]) .tab{min-height:0;font-weight:400}
 :where(:root[data-look="future"]) .tab[aria-current="page"]{box-shadow:none;font-weight:500}
 :where(:root[data-look="future"]) .tab[aria-current="page"]::before{top:auto;bottom:-1px;left:16px;right:16px;width:auto}
-:where(:root[data-look="future"]) .sayit,:where(:root[data-look="future"]) .browse{border-radius:18px}
+:where(:root[data-look="future"]) .sayit,:where(:root[data-look="future"]) .browse,:where(:root[data-look="future"]) .iris-pane,:where(:root[data-look="future"]) .iris-ledger,:where(:root[data-look="future"]) .iris-rail{border-radius:18px}
 :where(:root[data-look="future"]) .strip{position:relative;z-index:1;border-top:1px solid var(--line);background:var(--dock)}
 :where(:root[data-look="future"]) .sw-btn{border:1px solid var(--line2)}
 :where(:root[data-look="future"]) .sw-btn[aria-pressed="true"]{border-color:transparent;box-shadow:0 0 calc(var(--glow)*20px) -4px var(--accent)}
@@ -1664,7 +1762,23 @@ select{font:inherit;color:inherit}
 }
 :where(:root[data-look="professional"]) .scroll{padding-block:14px 24px;gap:16px}
 :where(:root[data-look="professional"]) .v-home{gap:14px}
-:where(:root[data-look="professional"]) .sayit,:where(:root[data-look="professional"]) .browse,:where(:root[data-look="professional"]) .card{border:1px solid var(--line2);border-radius:10px;background:var(--surface);box-shadow:none}
+:where(:root[data-look="professional"]) .sayit,:where(:root[data-look="professional"]) .browse,:where(:root[data-look="professional"]) .card,:where(:root[data-look="professional"]) .iris-pane,:where(:root[data-look="professional"]) .iris-ledger,:where(:root[data-look="professional"]) .iris-rail{border:1px solid var(--line2);border-radius:10px;background:var(--surface);box-shadow:none}
+:where(:root[data-look="professional"]) .iris-title h1{font-size:15px;font-weight:600;letter-spacing:0;color:var(--ink)}
+:where(:root[data-look="professional"]) .iris-rail{font-size:12px;font-weight:600}
+:where(:root[data-look="professional"]) .iris-rail-ico{width:24px;height:24px;background:var(--tile);font-size:14px}
+:where(:root[data-look="professional"]) .iris-scope-bar{border-radius:6px;background:var(--inset);font-family:var(--mono);font-size:11px;font-weight:500}
+:where(:root[data-look="professional"]) .lrow{padding:10px 12px 2px;border:1px solid var(--line2);border-radius:8px;background:var(--surface)}
+:where(:root[data-look="professional"]) .lrow.lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+:where(:root[data-look="professional"]) .lrow-head{font-size:11px}
+:where(:root[data-look="professional"]) .lrow-text{font-size:13px;line-height:1.5;font-weight:400;color:var(--body)}
+:where(:root[data-look="professional"]) .lrow .thin{display:none}
+:where(:root[data-look="professional"]) .lrow-foot{font-family:var(--mono);font-size:11px}
+:where(:root[data-look="professional"]) .cite-chip{border:1px solid var(--line2);border-radius:999px;background:var(--inset);font-size:11.5px;font-weight:500}
+:where(:root[data-look="professional"]) .cite-chip.lit,:where(:root[data-look="professional"]) .cite-chip:hover{border-color:var(--accent);background:var(--tint);color:var(--accent-text)}
+:where(:root[data-look="professional"]) .echo-card,:where(:root[data-look="professional"]) .iris-look-card{border:1px solid var(--line2);border-radius:8px;background:var(--inset)}
+:where(:root[data-look="professional"]) .echo-q{font-size:13px;font-weight:500}
+:where(:root[data-look="professional"]) .lookback-pin{border-radius:8px;border-left-color:var(--accent);background:var(--tint)}
+:where(:root[data-look="professional"]) .priv-warn{border:1px solid var(--accent);border-radius:8px;background:var(--tint)}
 :where(:root[data-look="professional"]) .card{padding:18px;gap:10px}
 :where(:root[data-look="professional"]) .card.hero{box-shadow:none}
 :where(:root[data-look="professional"]) .browse{padding:18px 18px 10px;gap:12px}
@@ -1800,10 +1914,10 @@ select{font:inherit;color:inherit}
 :where(:root[data-look="professional"]) .trow:hover{border-color:var(--line);box-shadow:0 1px 4px rgba(15,23,42,.06)}
 :where(:root[data-look="professional"]) .trow-head{gap:8px;font-size:11px}
 :where(:root[data-look="professional"]) .kind{padding:3px 8px;border-radius:999px;background:var(--kb,var(--tile));font-size:10.5px;line-height:1.3;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--kt,var(--ink2))}
-:where(:root[data-look="professional"]) [data-kind="believe"] > .trow-head .kind{--kb:var(--k-believe-bg);--kt:var(--k-believe-text)}
-:where(:root[data-look="professional"]) [data-kind="predict"] > .trow-head .kind{--kb:var(--k-predict-bg);--kt:var(--k-predict-text)}
-:where(:root[data-look="professional"]) [data-kind="noticed"] > .trow-head .kind{--kb:var(--k-noticed-bg);--kt:var(--k-noticed-text)}
-:where(:root[data-look="professional"]) [data-kind="wonder"] > .trow-head .kind{--kb:var(--k-wonder-bg);--kt:var(--k-wonder-text)}
+:where(:root[data-look="professional"]) [data-kind="believe"] > .trow-head .kind,:where(:root[data-look="professional"]) [data-kind="believe"] > .lrow-head .kind{--kb:var(--k-believe-bg);--kt:var(--k-believe-text)}
+:where(:root[data-look="professional"]) [data-kind="predict"] > .trow-head .kind,:where(:root[data-look="professional"]) [data-kind="predict"] > .lrow-head .kind{--kb:var(--k-predict-bg);--kt:var(--k-predict-text)}
+:where(:root[data-look="professional"]) [data-kind="noticed"] > .trow-head .kind,:where(:root[data-look="professional"]) [data-kind="noticed"] > .lrow-head .kind{--kb:var(--k-noticed-bg);--kt:var(--k-noticed-text)}
+:where(:root[data-look="professional"]) [data-kind="wonder"] > .trow-head .kind,:where(:root[data-look="professional"]) [data-kind="wonder"] > .lrow-head .kind{--kb:var(--k-wonder-bg);--kt:var(--k-wonder-text)}
 :where(:root[data-look="professional"]) .topic{margin-left:0;padding:2px 8px;border:1px solid var(--line2);border-radius:999px;background:var(--tile);font-size:10.5px;font-weight:500;letter-spacing:.02em;text-transform:lowercase;color:var(--ink2)}
 :where(:root[data-look="professional"]) .tier{padding:2px 7px;border-radius:999px;background:var(--tier-bg);font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--tier-text)}
 :where(:root[data-look="professional"]) .tag{padding:2px 7px;border-radius:999px;background:var(--tint);font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-text)}
@@ -1864,7 +1978,8 @@ select{font:inherit;color:inherit}
 :where(:root[data-look="professional"]) .tab[aria-current="page"]{box-shadow:none;font-weight:600}
 :where(:root[data-look="professional"]) .scroll{padding:18px 20px 24px}
 :where(:root[data-look="professional"]) .v-home{grid-template-columns:380px minmax(0,1fr);gap:16px;padding:18px 20px}
-:where(:root[data-look="professional"]) .sayit,:where(:root[data-look="professional"]) .browse{border-radius:10px}
+:where(:root[data-look="professional"]) .v-iris{gap:16px;padding:18px 20px}
+:where(:root[data-look="professional"]) .sayit,:where(:root[data-look="professional"]) .browse,:where(:root[data-look="professional"]) .iris-pane,:where(:root[data-look="professional"]) .iris-ledger,:where(:root[data-look="professional"]) .iris-rail{border-radius:10px}
 :where(:root[data-look="professional"]) .say-form{gap:12px;padding:18px 18px 0}
 :where(:root[data-look="professional"]) .say-go{padding-bottom:18px}
 :where(:root[data-look="professional"]) .browse{flex-direction:row;flex-wrap:wrap;align-content:flex-start;align-items:flex-start;gap:12px;padding:12px 18px 10px}
@@ -2111,10 +2226,16 @@ var S = {notes:[], sent:[], chat:[], outside:false, view:"first", big:false, due
   reply:null,     // the thought the Say-it box is replying to
   sayOpen:false,  // phones: is the Say-it form unfolded
   note:null,      // the small line under the Say-it form after staking
+  irisScope:"me", // Iris workbench scope: "me" (private + node) or "group" (node shared only)
+  irisDraft:false,// desktop Iris: left Say-it drawer starts folded to a slim rail until opened
+  irisLedger:true,// desktop Iris: right live ledger pane
+  irisFilter:"cited", // cited | all | due
+  irisLit:null,   // bidirectional hover/click highlight id
+  irisLook:null,  // hidden self-restyle overlay: null | "rhizome-roots" | "warm-paper"
   seq:0};
 freshOwner();
 var F = freshF();   // the Browse filters
-function freshC(){ return {topic:"general", mode:"single", method:"iris", free:"", rows:[], distilled:false, refs:[], kind:null, text:"", draft:false, draftText:"", v:null, questionMoved:false, good:null, vis:"me", ex:0, date:null, dateOpen:false, dayOpen:false}; }
+function freshC(){ return {topic:"general", mode:"single", method:"iris", free:"", rows:[], distilled:false, refs:[], kind:null, text:"", draft:false, draftText:"", fromIris:false, humanEdited:false, privWarn:false, v:null, questionMoved:false, good:null, vis:"me", ex:0, date:null, dateOpen:false, dayOpen:false}; }
 var C = freshC(); // the thought being written: there is always one, in the one writing place
 
 function myTake(id){ var t = T[id]; return S.takes[id] != null ? S.takes[id] : (t && t.takes && t.takes.J != null ? t.takes.J : null); }
@@ -2549,20 +2670,57 @@ function openPrompts(){
 function spreadOf(t){ var vs = others(allTakes(t)).map(function(p){ return p.v; }); return vs.length > 1 ? Math.max.apply(null, vs) - Math.min.apply(null, vs) : 0; }
 function takesLine(t){ return others(allTakes(t)).slice(0, 4).map(function(p){ return nameOf(p.k)+' is at '+answerWord(p.v,false,t.kind === "wonder")+' ('+fmt(p.v)+')'; }).join(", ")+'.'; }
 function irisAnswer(text, tid){
-  var local = Object.keys(T).map(function(k){ return T[k]; }).filter(function(t){ return !t.re && !t.src && shown(t); }).sort(function(a, b){ return b.at - a.at; });
+  var local = Object.keys(T).map(function(k){ return T[k]; }).filter(function(t){ return !t.re && !t.src && shown(t) && (S.irisScope === "me" || t.vis !== "me"); }).sort(function(a, b){ return b.at - a.at; });
   if (tid && T[tid]){ var t = T[tid], mine = myTake(tid);
-    return {text:'On "'+plain(t.text)+'": '+takesLine(t)+' '+(mine == null ? "You haven't weighed in yet." : 'You said '+word(mine)+'.')+' What would change your mind?', open:tid}; }
+    return {text:'On "'+plain(t.text)+'": '+takesLine(t)+' '+(mine == null ? "You haven't weighed in yet." : 'You said '+word(mine)+'.')+' What would change your mind?', open:tid, cites:[tid],
+      draft:{kind:t.kind === "predict" ? "noticed" : "believe", text:plain(t.text), v:mine == null ? 0.65 : mine, g:0, refs:[tid]}}; }
   var q = String(text).toLowerCase();
+  /* hidden self-restyle capability: only wakes up when asked in chat */
+  if (/\b(reset|undo|default|normal)\b.*\b(look|theme|style|background|roots)\b|\b(look|theme|background|roots)\b.*\b(reset|undo|off|remove)\b/.test(q)){
+    S.irisLook = null;
+    return {text:"Back to your usual look.", lookReset:true};
+  }
+  if (/\b(rhizome|roots?|neurons?|mycel|biolum|forest|makeover|restyle|custom\s+look)\b/.test(q)){
+    S.irisLook = "rhizome-roots";
+    return {text:"Done. I dressed your workspace in deep Conservatory Green with glowing rhizome roots and synaptic nodes behind the panes. Only your screen changed.",
+      lookProposal:{id:"rhizome-roots", title:"Rhizome · Conservatory Roots", note:"Procedural root-and-neuron backdrop, deep moss surfaces, and Verity gold highlights. Saved only for you.", swatches:["#0a1312","#78bfa2","#82e4d8","#e3c34a","#9d8cd6"]}};
+  }
+  if (/\b(warm\s*paper|archival\s*paper|parchment)\b/.test(q)){
+    S.irisLook = "warm-paper";
+    return {text:"Switched your screen to Warm Archival Paper with deep forest ink. Everyone else in your node keeps their own look.",
+      lookProposal:{id:"warm-paper", title:"Rhizome · Warm Archival Paper", note:"Unbleached paper ground, ivory cards, deep forest ink, and muted Verity gold.", swatches:["#f7f2e7","#fffaf1","#21362f","#327e68","#9a7300"]}};
+  }
   if (/split|disagree|unsure|divided/.test(q)){ var s = local.slice().sort(function(a, b){ return spreadOf(b) - spreadOf(a); })[0];
-    return {text:'The widest gap is on "'+plain(s.text)+'". '+takesLine(s), open:s.id}; }
+    var cites = [s.id]; if (T.morning && s.id !== "morning") cites.push("morning"); if (T.r3) cites.push("r3");
+    return {text:'The widest gap is on "'+plain(s.text)+'". '+takesLine(s), open:s.id, cites:cites,
+      draft:{kind:"predict", text:s.id === "hike" ? "Even if it drizzles on Saturday, we'll still be glad we went on the hike." : "We'll know more once everyone weighs in.", v:0.72, g:0.50, refs:[s.id]}}; }
   if (/wait|weigh|should i|for me/.test(q)){ var w = local.filter(waiting);
-    return w.length ? {text:nThoughts(w.length)+(w.length === 1 ? ' is' : ' are')+' waiting for your take. The newest is "'+plain(w[0].text)+'".', open:w[0].id} : {text:"Nothing is waiting for you. You're all caught up."}; }
+    return w.length ? {text:nThoughts(w.length)+(w.length === 1 ? ' is' : ' are')+' waiting for your take. The newest is "'+plain(w[0].text)+'".', open:w[0].id, cites:w.slice(0, 3).map(function(x){ return x.id; }),
+      draft:{kind:"believe", text:"We should try two morning meetings this month and see if they finish faster.", v:0.74, g:0.55, refs:[w[0].id]}}
+      : {text:"Nothing is waiting for you. You're all caught up."}; }
   if (/sum|week|new|happen/.test(q)){ var c = {}; local.forEach(function(t){ c[t.kind] = (c[t.kind] || 0) + 1; });
-    return {text:'Your node has '+nThoughts(local.length)+' in view: '+Object.keys(c).map(function(k){ return c[k]+' '+KINDS[k].type.toLowerCase()+(c[k] === 1 ? '' : 's'); }).join(', ')+'. The newest is "'+plain(local[0].text)+'".', open:local[0].id}; }
+    return {text:'Your node has '+nThoughts(local.length)+' in view: '+Object.keys(c).map(function(k){ return c[k]+' '+KINDS[k].type.toLowerCase()+(c[k] === 1 ? '' : 's'); }).join(', ')+'. The newest is "'+plain(local[0].text)+'".', open:local[0].id, cites:local.slice(0, 3).map(function(x){ return x.id; })}; }
+  if (/budget|call|dread|worry|nervous|afraid/.test(q)){
+    var myRef = S.mine.filter(function(m){ return m.kind === "noticed"; })[0] || T.phones;
+    return {text:'Before you assume it will go badly, you already have a reflection on the record: "'+plain(myRef.text)+'". Want to draft your expectation on the left and hold both side by side?', open:myRef.id, cites:[myRef.id],
+      draft:{kind:"predict", text:"We're going to argue about the trip budget again tonight.", v:0.78, g:-0.55, refs:[myRef.id]}}; }
   return {text:"In this demo I can only answer a few things. Try one of the questions below."};
 }
+function citeLabel(t){ var s = plain(t.text); return esc(s.length > 34 ? s.slice(0, 32).replace(/\s+\S*$/, "")+"…" : s); }
 function chatMsg(m, i){ var now = !m.me && S.chatNew && i === S.chat.length - 1;
-  return '<div class="msg'+(m.me ? ' me' : '')+(now ? ' now' : '')+'">'+(m.me ? '' : '<span class="iris"><i>O</i></span>')+'<div>'+stepsHTML(m, now)+'<p>'+esc(m.text)+'</p>'+(m.open ? '<button class="link" data-act="chat-open" data-id="'+m.open+'">Open thought</button>' : '')+'</div></div>'; }
+  var cs = (m.cites || (m.open ? [m.open] : [])).filter(function(cid){ return !!T[cid] && (S.irisScope === "me" || T[cid].vis !== "me"); });
+  var citeHtml = !m.me && cs.length ? '<div class="cite-row">'+cs.map(function(cid){
+    var ct = T[cid];
+    return '<button class="cite-chip'+(S.irisLit === cid ? ' lit' : '')+'" data-act="iris-cite" data-cite="'+cid+'">'+kmark(ct.kind)+'<span>'+citeLabel(ct)+'</span></button>';
+  }).join("")+'</div>' : '';
+  var lookHtml = !m.me && m.lookProposal ? '<div class="iris-look-card"><div class="iris-look-top"><b>'+esc(m.lookProposal.title)+'</b><span class="iris-look-sw">'+
+    m.lookProposal.swatches.map(function(c){ return '<i style="background:'+c+'"></i>'; }).join("")+'</span></div><p class="after">'+esc(m.lookProposal.note)+'</p>'+
+    '<div class="btnrow"><button class="mini'+(S.irisLook === m.lookProposal.id ? ' go' : '')+'" data-act="iris-apply-look" data-id="'+m.lookProposal.id+'"><span>'+(S.irisLook === m.lookProposal.id ? 'Active on your screen' : 'Apply look')+'</span></button>'+
+    '<button class="mini" data-act="iris-reset-look"><span>Reset look</span></button></div></div>' : '';
+  var actsHtml = !m.me && (m.open || m.draft) ? '<div class="msg-acts">'+
+    (m.draft ? '<button class="mini go" data-act="iris-draft-turn" data-id="'+i+'"><span>Draft this</span></button>' : '')+
+    (m.open ? '<button class="link" data-act="chat-open" data-id="'+m.open+'">Open thought</button>' : '')+'</div>' : '';
+  return '<div class="msg'+(m.me ? ' me' : '')+(now ? ' now' : '')+'">'+(m.me ? '' : '<span class="iris"><i>O</i></span>')+'<div>'+stepsHTML(m, now)+'<p>'+esc(m.text)+'</p>'+citeHtml+lookHtml+actsHtml+'</div></div>'; }
 function chatSay(text, tid){
   text = String(text || "").trim(); if (!text) return;
   var a = irisAnswer(text, tid); a.steps = stepsFor(a, tid);
@@ -2752,19 +2910,39 @@ function need(){
 }
 function whoTopic(){ return '<div class="vt" id="c-vis">'+sel("c-seen","Who sees it",SEEN,C.vis)+sel("c-topic","Topic",TOPICS,C.topic)+'</div>'; }
 function shortText(t){ var s = plain(t.text); return esc(s.length > 64 ? s.slice(0, 62).replace(/\s+\S*$/, "")+"…" : s); }
+function reflectionEcho(){
+  if ((C.kind !== "predict" && C.kind !== "believe") || !C.text.trim() || reflecting()) return null;
+  var q = C.text.toLowerCase(), keys = ["budget","money","call","phone","dinner","hike","rain","morning","meeting","walk","sleep","heating"];
+  var hit = keys.filter(function(w){ return q.indexOf(w) >= 0; });
+  if (!hit.length) return null;
+  var pool = Object.keys(T).map(function(k){ return T[k]; }).filter(function(t){
+    return t.kind === "noticed" && shown(t) && (C.vis === "me" || t.vis !== "me");
+  }).sort(function(a, b){ return b.at - a.at; });
+  for (var i = 0; i < pool.length; i++){
+    var txt = plain(pool[i].text).toLowerCase();
+    for (var j = 0; j < hit.length; j++){ if (txt.indexOf(hit[j]) >= 0) return pool[i]; }
+  }
+  return null;
+}
 function sayInner(){
-  var k = C.kind, K = k ? KINDS[k] : null, has = C.text.trim().length > 0, question = k === "wonder", rt = S.reply ? T[S.reply] : null, rf = reflecting();
+  var k = C.kind, K = k ? KINDS[k] : null, has = C.text.trim().length > 0, question = k === "wonder", rt = S.reply ? T[S.reply] : null, rf = reflecting(), inIris = S.tab === "iris";
+  var lbPin = rf || (inIris && S.reflect && S.reply === S.reflect && T[S.reflect] ? T[S.reflect] : null);
   if (has && question && C.v == null) C.v = 0.50;
+  var echo = reflectionEcho();
   // replying: one small line beside the title says to whom, with a way out. The thought itself is open in Browse.
-  var h = '<div class="panel-head"><h2>Say it</h2>'+(rt ? '<span class="rctx" id="c-ctx" title="'+shortText(rt)+'"><span>'+(rf ? 'Looking back' : 'Replying to '+(rt.who === "J" ? "yourself" : P[rt.who]))+'</span><button class="link" data-act="reply-cancel">Cancel</button></span>' : modes())+
-    '<button class="x say-x" data-act="say-close" aria-label="Close">'+ic("x",22)+'</button></div>' + sayNote();
+  var h = '<div class="panel-head"><h2>Say it</h2>'+(rt ? '<span class="rctx" id="c-ctx" title="'+shortText(rt)+'"><span>'+(lbPin ? 'Looking back' : 'Replying to '+(rt.who === "J" ? "yourself" : P[rt.who]))+'</span><button class="link" data-act="reply-cancel">Cancel</button></span>' : modes())+
+    (inIris ? '<button class="x iris-say-x" data-act="iris-draft-close" aria-label="Fold draft drawer">'+ic("x",20)+'</button>' : '<button class="x say-x" data-act="say-close" aria-label="Close">'+ic("x",22)+'</button>')+'</div>' + sayNote();
+  if (inIris) h += '<p class="iris-scope-bar"><span>'+(C.vis === "me" ? ic("lock",14)+' Private · just you' : C.vis === "all" ? 'Public' : 'Shared · '+esc(S.gname))+'</span>'+(C.fromIris || C.text.trim() ? '<button class="link" data-act="iris-draft-clear">Clear</button>' : '')+'</p>';
   if (C.mode === "multi" && !rt) return h + multiInner();
-  if (rf) h += '<p class="say sm lookback">'+(S.results[rf.id] === "miss" ? DATE.miss : DATE.hit)+'</p>';
-  h += '<div class="field"><label class="sr" for="c-text">Your thought</label><textarea id="c-text" rows="3" placeholder="'+(rf ? DATE.place : K ? K.start : "What&#39;s on your mind?")+'">'+esc(C.text)+'</textarea>';
+  if (lbPin) h += '<div class="lookback-pin"><p class="after">Looking back at '+(lbPin.who === "J" ? 'your' : P[lbPin.who]+"'s")+' prediction</p><p class="say sm">“'+lbPin.text+'”</p><p class="after">'+(rf ? (S.results[rf.id] === "miss" ? DATE.miss : DATE.hit) : lbPin.came ? 'It happened. What do you see now?' : lbPin.due ? 'Scheduled for '+lbPin.due+'.' : 'Write what you see now.')+'</p></div>';
+  if (C.fromIris) h += '<p class="irisline" id="c-fromiris"><span class="iris"><i>O</i></span><span>'+(C.humanEdited ? 'Your edits are locked. Iris will not overwrite this draft.' : 'Iris drafted this from your chat. Edit it or start over.')+'</span></p>';
+  h += '<div class="field"><label class="sr" for="c-text">Your thought</label><textarea id="c-text" rows="3" placeholder="'+(lbPin ? DATE.place : K ? K.start : "What&#39;s on your mind?")+'">'+esc(C.text)+'</textarea>';
   h += '<p class="irisline" id="c-draft"'+(C.draft?'':' hidden')+'><span class="iris"><i>O</i></span>A draft from your reflection. In this demo it is ready-made. Iris would write it from your own words. Edit it or start over.</p>';
-  h += '<p class="irisline" id="c-claim" hidden><span class="iris"><i>O</i></span><span>Iris noticed a claim inside your question: "the coach is hopeless." Slide to how true you think that is.</span></p></div>';
+  h += '<p class="irisline" id="c-claim" hidden><span class="iris"><i>O</i></span><span>Iris noticed a claim inside your question: "the coach is hopeless." Slide to how true you think that is.</span></p>';
+  h += '<div class="echo-card" id="c-echo"'+(echo ? '' : ' hidden')+'><p class="irisline"><span class="iris"><i>O</i></span><span>You noticed this before'+(echo ? ' ('+echo.when+')' : '')+'</span></p><p class="echo-q">'+(echo ? '“'+echo.text+'”' : '')+'</p><p class="hint">Hold both for a second. Still feel just as sure?</p></div></div>';
   // the thoughts this one refers to: one small line each, with the thought's own words and a way to take it off
   h += crefs();
+  if (C.privWarn) h += '<div class="priv-warn"><p class="after"><b>Private reference attached.</b> A thought shared with your node cannot keep a private thought in its references.</p><div class="btnrow"><button class="mini go" data-act="drop-priv-refs"><span>Drop private refs &amp; share</span></button><button class="mini" data-act="cancel-priv-warn"><span>Keep private</span></button></div></div>';
   h += '<div class="kinds" role="group" aria-label="What kind of thought is it?">'+Object.keys(KINDS).map(function(x){
     return '<button class="kbtn" data-act="kind" data-id="'+x+'" aria-pressed="'+(x===k)+'">'+kmark(x)+'<span>'+KINDS[x].type+'</span></button>'; }).join("")+'</div>';
   // nothing is said here until a kind is picked; then one line says what that kind is
@@ -2872,7 +3050,10 @@ function stakeAll(){
     if (r.g != null || r.kind !== "wonder"){ S.goods[id] = r.g == null ? 0 : r.g; S.goodDone[id] = true; }
     T[id] = m; S.takes[id] = r.v == null ? 0.50 : r.v; S.mine.unshift(m); if (!first) first = id;
   });
-  C = freshC(); S.sayOpen = false; S.just = first; S.note = null; S.open = null; S.reply = null; S.weigh = null; F = freshF();
+  var inIris = S.tab === "iris";
+  C = freshC(); if (inIris) C.vis = S.irisScope;
+  S.sayOpen = false; S.just = first; S.note = null; S.open = null; S.reply = null; S.weigh = null;
+  if (inIris){ S.irisLedger = true; } else { F = freshF(); }
   render(false);
   toast("Staked "+nThoughts(n)+". "+seenLine(vis, n > 1));
 }
@@ -2902,7 +3083,7 @@ function sayNote(out){
 }
 function viewSay(){
   var rt = S.reply ? T[S.reply] : null;
-  return '<section class="sayit'+(S.sayOpen?' open':'')+(doorsOn() ? ' invite'+(S.beckon ? ' pulse' : '') : '')+'" id="say" aria-label="Say it">'+
+  return '<section class="sayit'+(S.sayOpen || (S.tab === "iris" && S.irisDraft) ? ' open' : '')+(doorsOn() ? ' invite'+(S.beckon ? ' pulse' : '') : '')+'" id="say" aria-label="Say it">'+
     '<button class="say-bar" data-act="say-open">'+ic("plus",20)+'<span>'+(reflecting() ? 'Reflect on your prediction…' : rt ? 'Reply to '+(rt.who === "J" ? "your thought" : P[rt.who])+'…' : 'Say something…')+'</span>'+(C.refs.length ? '<span class="bar-refs">Refers to '+nThoughts(C.refs.length)+'</span>' : '')+'</button>'+
     '<div class="say-form" id="say-form">'+sayInner()+'</div><div class="note-out">'+sayNote(true)+'</div></section>';
 }
@@ -2993,19 +3174,79 @@ function irisCount(){
   o.forEach(function(p){ if (p.v > 0.6) yes++; else if (p.v < 0.4) no++; else mid++; });
   return yes+' in your node lean his way, '+mid+(mid === 1 ? ' is' : ' are')+' on the fence'+(no ? ' and '+no+(no === 1 ? ' doubts' : ' doubt')+' it' : '')+'. ';
 }
+function irisCitedIds(){
+  var ids = {};
+  if (T.morning) ids.morning = true;
+  if (T.r3) ids.r3 = true;
+  if (T.hike) ids.hike = true;
+  S.mine.forEach(function(m){ ids[m.id] = true; });
+  S.chat.forEach(function(m){
+    if (m.open) ids[m.open] = true;
+    (m.cites || []).forEach(function(c){ ids[c] = true; });
+  });
+  return ids;
+}
+function irisLedgerRow(t){
+  var refOn = C.refs.indexOf(t.id) >= 0, due = dueNow(t), res = S.results[t.id];
+  var tag = t.came || res === "hit" ? DATE.rowHit : res === "miss" ? DATE.rowMiss : due ? DATE.rowDue : t.due ? t.due : "";
+  return '<article class="lrow'+(S.irisLit === t.id ? ' lit' : '')+(S.just === t.id ? ' fresh' : '')+'" data-kind="'+t.kind+'" data-lrow="'+t.id+'">'+
+    '<div class="lrow-head"><span class="kind">'+kmark(t.kind)+KINDS[t.kind].type+(t.vis === "me" ? ' '+ic("lock",13) : '')+'</span>'+(tag ? '<span class="tag">'+tag+'</span>' : '<span class="when">'+t.when+'</span>')+'</div>'+
+    '<p class="lrow-text">'+t.text+'</p>'+thin(t)+
+    '<div class="lrow-foot"><span class="who">'+owner(t)+'</span><span class="lrow-acts">'+
+      '<button class="mini'+(refOn ? ' go' : '')+'" data-act="iris-refer" data-id="'+t.id+'" aria-pressed="'+refOn+'"><span>'+(refOn ? 'Referenced' : 'Reference')+'</span></button>'+
+      (t.kind === "predict" ? '<button class="mini" data-act="iris-lookback" data-id="'+t.id+'"><span>Look back</span></button>' : '')+
+      '<button class="mini" data-act="chat-open" data-id="'+t.id+'"><span>Open</span></button>'+
+    '</span></div></article>';
+}
+function viewIrisLedger(){
+  if (!S.irisLedger){
+    return '<aside class="iris-rail iris-rail-r" data-act="iris-ledger-open" role="button" tabindex="0" aria-label="Show ledger"><span class="iris-rail-ico">‹</span><span class="iris-rail-lbl">Ledger</span></aside>';
+  }
+  var cited = irisCitedIds();
+  var all = Object.keys(T).map(function(k){ return T[k]; }).filter(function(t){
+    return !t.src && shown(t) && (S.irisScope === "me" || t.vis !== "me");
+  }).sort(function(a, b){ return b.at - a.at; });
+  var rows = all.filter(function(t){
+    if (S.irisFilter === "cited") return !!cited[t.id];
+    if (S.irisFilter === "due") return dueNow(t) || !!t.due || !!t.date;
+    return !t.re;
+  });
+  return '<aside class="iris-ledger" id="iris-ledger" aria-label="Live ledger">'+
+    '<div class="panel-head"><h2>Ledger</h2><button class="x iris-fold-btn" data-act="iris-ledger-close" aria-label="Collapse ledger">›</button></div>'+
+    '<p class="after iris-see">Iris reads: <b>'+(S.irisScope === "me" ? esc(S.gname)+' + your private' : esc(S.gname)+' shared only')+'</b></p>'+
+    '<div class="iris-seg" role="group" aria-label="Ledger filter">'+
+      '<button class="pill" data-act="iris-filter" data-id="cited" aria-pressed="'+(S.irisFilter === "cited")+'">Cited here</button>'+
+      '<button class="pill" data-act="iris-filter" data-id="all" aria-pressed="'+(S.irisFilter === "all")+'">All</button>'+
+      '<button class="pill" data-act="iris-filter" data-id="due" aria-pressed="'+(S.irisFilter === "due")+'">Due</button>'+
+    '</div>'+
+    '<div class="iris-lscroll">'+(rows.length ? rows.map(irisLedgerRow).join("") : '<p class="hint">Nothing in this view yet.</p>')+'</div></aside>';
+}
 function viewIris(){
   var v = myTake("morning");
-  return '<div><h1 class="hello">Iris</h1><p class="lede">Your node&#39;s guide. Iris reads what the node has staked, points things out and answers questions about it.</p></div>' +
-    '<article class="card"><p class="irisline"><span class="iris"><i>O</i></span>Iris noticed</p><p class="say sm">Tomas thinks the node would get more done meeting in the morning. '+(S.big ? irisCount() : 'Mara agrees. Wen is on the fence. ')+(v==null?"You haven't weighed in.":"You said "+word(v).toLowerCase()+".")+'</p>' +
-    '<div class="btnrow"><button class="btn primary" data-act="goto">Weigh in</button><button class="btn" data-act="discuss" data-id="morning">Ask Iris why</button></div></article>' +
-    '<article class="card chat"><p class="say sm">Ask Iris</p><div class="chat-log" id="chat-log" aria-live="polite">'+(S.chat.length ? S.chat.map(chatMsg).join("") : '<p class="hint">Ask about what your node has staked.</p>')+'</div>'+
-    '<div class="starters">'+ASKS.map(function(a){ return '<button class="pill" data-act="chat-ask" data-id="'+esc(a)+'">'+a+'</button>'; }).join("")+'</div>'+
-    '<div class="chat-in"><input class="search" id="chat-q" type="text" placeholder="Ask Iris" aria-label="Ask Iris"><button class="btn primary" data-act="chat-send">Send</button></div>'+
-    (S.chat.length ? '<button class="link" data-act="chat-undo">Undo the last exchange</button>' : '')+'<p class="fine">Demo: these are sample answers.</p></article>' +
-    (S.owner ? '<article class="card"><p class="say sm">Chat settings</p><p class="after">Only the person who looks after the node sees this.</p>'+
-      '<p class="after">Iris runs '+RUNS[S.model]+'.</p><button class="link" data-act="to-model">Change where Iris runs</button>'+
-      '<p class="after">The most steps Iris may take for one answer</p>'+sel("i-steps","The most steps for one answer",[["1","1 step"],["2","2 steps"],["4","4 steps"],["8","8 steps"],["16","16 steps"],["30","30 steps"]],String(S.maxSteps))+
-      '<div class="btnrow"><button class="btn" data-act="prompts">Change what Iris is told</button><button class="btn" data-act="chat-clear"'+(S.chat.length ? '' : ' disabled')+'>Clear the conversation</button></div></article>' : '');
+  var leftPane = S.irisDraft ? viewSay()
+    : '<aside class="iris-rail iris-rail-l" data-act="iris-draft-open" role="button" tabindex="0" aria-label="Open draft drawer"><span class="iris-rail-ico">+</span><span class="iris-rail-lbl">Say it · Draft</span></aside>';
+  var center = '<section class="iris-pane" aria-label="Iris conversation">'+
+    '<div class="panel-head iris-head"><div class="iris-title"><span class="iris"><i>O</i></span><h1>Iris</h1></div>'+
+      '<div class="iris-head-acts">'+
+        '<button class="mini'+(S.irisScope === "me" ? ' go' : '')+'" data-act="iris-scope" aria-pressed="'+(S.irisScope === "me")+'"><span>'+(S.irisScope === "me" ? ic("lock",14)+' Private chat' : 'Node chat')+'</span></button>'+
+        '<button class="mini" data-act="iris-draft-toggle" aria-pressed="'+S.irisDraft+'"><span>'+(S.irisDraft ? 'Hide draft' : '+ Draft')+'</span></button>'+
+      '</div></div>'+
+    '<div class="iris-body">'+
+      '<article class="card iris-notice"><p class="irisline"><span class="iris"><i>O</i></span>Iris noticed</p><p class="say sm">Tomas thinks the node would get more done meeting in the morning. '+(S.big ? irisCount() : 'Mara agrees. Wen is on the fence. ')+(v==null?"You haven't weighed in.":"You said "+word(v).toLowerCase()+".")+'</p>' +
+      '<div class="btnrow"><button class="btn primary" data-act="goto">Weigh in</button><button class="btn" data-act="discuss" data-id="morning">Ask Iris why</button></div></article>' +
+      '<div class="chat-log" id="chat-log" aria-live="polite">'+(S.chat.length ? S.chat.map(chatMsg).join("") : '<p class="hint">Ask about what your node has staked, or ask Iris to help draft a thought on the left.</p>')+'</div>'+
+    '</div>'+
+    '<div class="iris-foot">'+
+      '<div class="starters">'+ASKS.map(function(a){ return '<button class="pill" data-act="chat-ask" data-id="'+esc(a)+'">'+a+'</button>'; }).join("")+'</div>'+
+      '<div class="chat-in"><input class="search" id="chat-q" type="text" placeholder="Ask Iris" aria-label="Ask Iris"><button class="btn primary" data-act="chat-send">Send</button></div>'+
+      '<div class="iris-foot-meta">'+(S.chat.length ? '<button class="link" data-act="chat-undo">Undo the last exchange</button>' : '<span class="fine">Demo: sample answers.</span>')+
+        (S.owner ? '<details class="fold iris-settings"><summary>Chat settings</summary><div class="iris-settings-in"><p class="after">Only the person who looks after the node sees this. Iris runs '+RUNS[S.model]+'.</p>'+
+          '<button class="link" data-act="to-model">Change where Iris runs</button>'+
+          '<p class="after">The most steps Iris may take for one answer</p>'+sel("i-steps","The most steps for one answer",[["1","1 step"],["2","2 steps"],["4","4 steps"],["8","8 steps"],["16","16 steps"],["30","30 steps"]],String(S.maxSteps))+
+          '<div class="btnrow"><button class="btn" data-act="prompts">Change what Iris is told</button><button class="btn" data-act="chat-clear"'+(S.chat.length ? '' : ' disabled')+'>Clear the conversation</button></div></div></details>' : '')+
+      '</div>'+
+    '</div></section>';
+  return leftPane + center + viewIrisLedger();
 }
 /* ---------- looking after the node. In this demo you are the person who does; a member sees the same page without
    the parts that change things. Everything here is made up and resets when the demo's day is switched. ---------- */
@@ -3094,10 +3335,53 @@ function viewYou(){
 /* ---------- drawing the screen ---------- */
 var main = $("#main");
 var TABS = [["thoughts","Thoughts"],["iris","Iris"],["group","Node"],["you","You"]];
+/* hidden procedural rhizome root-and-neuron overlay (rendered only when asked in Iris chat) */
+function syncIrisLook(){
+  var r = document.documentElement;
+  if (S.irisLook) r.setAttribute("data-iris-look", S.irisLook);
+  else r.removeAttribute("data-iris-look");
+  var bg = $("#iris-roots-bg");
+  if (S.irisLook === "rhizome-roots"){
+    if (!bg){
+      bg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      bg.id = "iris-roots-bg"; bg.setAttribute("class", "iris-roots-bg");
+      bg.setAttribute("viewBox", "0 0 1600 960"); bg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+      bg.setAttribute("aria-hidden", "true");
+      var seed = 4207, rnd = function(){ seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+      var ps = [], ns = [], cols = ["#78bfa2","#82e4d8","#e3c34a","#9d8cd6"];
+      var grow = function(x, y, ang, ln, w, d, md, col){
+        var steps = Math.max(4, Math.floor(ln / 28)), cx = x, cy = y, a = ang, sl = ln / steps, pts = [[x, y]], dr = (rnd() - .5) * .14;
+        for (var i = 0; i < steps; i++){
+          a += dr + (rnd() - .5) * .28; cx += Math.cos(a) * sl; cy += Math.sin(a) * sl; pts.push([cx, cy]);
+          if (d < md && i > 0 && i < steps - 1 && rnd() < (d === 0 ? .34 : .22)){
+            var cc = (d >= 1 && rnd() < .3) ? cols[Math.floor(rnd() * cols.length)] : col;
+            grow(cx, cy, a + (rnd() < .5 ? -1 : 1) * (.35 + rnd() * .45), ln * (.5 + rnd() * .24), w * .62, d + 1, md, cc);
+            if (rnd() < .65) ns.push([cx, cy, Math.max(1.5, w), cc, d === 0]);
+          }
+        }
+        var seg = ["M"+pts[0][0].toFixed(0)+" "+pts[0][1].toFixed(0)];
+        for (var k = 1; k < pts.length - 1; k++){ seg.push("Q"+pts[k][0].toFixed(0)+" "+pts[k][1].toFixed(0)+" "+((pts[k][0]+pts[k+1][0])/2).toFixed(0)+" "+((pts[k][1]+pts[k+1][1])/2).toFixed(0)); }
+        seg.push("L"+pts[pts.length-1][0].toFixed(0)+" "+pts[pts.length-1][1].toFixed(0));
+        ps.push('<path d="'+seg.join(" ")+'" stroke="'+col+'" stroke-width="'+w.toFixed(1)+'" stroke-opacity="'+(d===0?.42:d===1?.28:.17)+'" fill="none" stroke-linecap="round"/>');
+      };
+      [[-20,140,.16,460,3.4,2,"#78bfa2"],[-20,740,-.22,500,3.6,2,"#78bfa2"],[140,980,-1.30,420,3.0,2,"#82e4d8"],
+       [1620,160,2.95,480,3.5,2,"#78bfa2"],[1620,760,3.35,500,3.6,2,"#82e4d8"],[1420,980,-1.85,440,3.0,2,"#e3c34a"],
+       [60,460,.05,320,1.8,2,"#e3c34a"],[1540,460,3.10,320,1.8,2,"#9d8cd6"]].forEach(function(s){ grow(s[0],s[1],s[2],s[3],s[4],0,s[5],s[6]); });
+      bg.innerHTML = '<defs><radialGradient id="irg1" cx="14%" cy="14%" r="48%"><stop offset="0%" stop-color="#78bfa2" stop-opacity=".14"/><stop offset="100%" stop-color="#0a1312" stop-opacity="0"/></radialGradient>'+
+        '<radialGradient id="irg2" cx="88%" cy="84%" r="50%"><stop offset="0%" stop-color="#82e4d8" stop-opacity=".12"/><stop offset="100%" stop-color="#0a1312" stop-opacity="0"/></radialGradient></defs>'+
+        '<rect width="1600" height="960" fill="url(#irg1)"/><rect width="1600" height="960" fill="url(#irg2)"/>'+ps.join("")+
+        ns.map(function(n){ return (n[4]?'<circle cx="'+n[0].toFixed(0)+'" cy="'+n[1].toFixed(0)+'" r="'+(n[2]*3.2).toFixed(1)+'" fill="'+n[3]+'" fill-opacity=".16"/>':'')+
+          '<circle cx="'+n[0].toFixed(0)+'" cy="'+n[1].toFixed(0)+'" r="'+Math.max(1.4,n[2]*.7).toFixed(1)+'" fill="'+n[3]+'" fill-opacity=".68"/>'; }).join("");
+      var st = $(".stage"); if (st) st.insertBefore(bg, st.firstChild);
+    }
+    bg.style.display = "block";
+  } else if (bg){ bg.style.display = "none"; }
+}
 function render(keep){
+  syncIrisLook();
   var top = main.scrollTop, br = $("#browse"), btop = br ? br.scrollTop : 0, sy = $("#say"), stop = sy ? sy.scrollTop : 0, h, cls;
   if (S.view === "first"){ h = viewFirst(); cls = "v-first s-" + S.step; }
-  else if (S.tab === "iris"){ h = viewIris(); cls = "v-page"; }
+  else if (S.tab === "iris"){ h = viewIris(); cls = "v-iris" + (S.irisDraft ? " draft-open" : "") + (!S.irisLedger ? " ledger-closed" : ""); }
   else if (S.tab === "group"){ h = viewGroup(); cls = "v-page"; }
   else if (S.tab === "you"){ h = viewYou(); cls = "v-page v-you"; }
   else { h = viewHome(); cls = "v-home"; }
@@ -3132,7 +3416,8 @@ function toast(msg){
 function setView(v, quiet, big, due){
   S.view = v; S.tab = "thoughts"; S.groupHike = false; S.big = v === "day" && !!big; S.due = v === "day" && !big && !!due; S.reflect = null;
   if (S.due){ delete S.results.run; delete S.closed.run; }   // the demo's date arrives afresh each time
-  S.open = null; S.reply = null; S.weigh = null; S.sayOpen = false; S.note = null; F = freshF(); C = freshC();
+  S.open = null; S.reply = null; S.weigh = null; S.sayOpen = false; S.note = null; S.irisDraft = false; S.irisLit = null; S.irisLedger = true; S.irisFilter = "cited";
+  F = freshF(); C = freshC();
   // two made-up notifications wait on an ordinary day
   S.notes = v === "day" ? [{id:"n1", who:"T", what:"weighed in on your thought", t:"tent"}, {id:"n2", who:"W", what:"asked for your take", t:"coach", weigh:true}] : [];
   S.sent = []; S.chat = []; closeSheet(); freshOwner();
@@ -3140,6 +3425,7 @@ function setView(v, quiet, big, due){
   if (v === "first"){
     S.mine.forEach(function(m){ delete T[m.id]; });
     S.step = "look"; R = freshReflection(); S.takes = {}; S.goods = {}; S.goodDone = {}; S.guessed = {}; S.mine = []; S.results = {}; S.closed = {}; S.arrived = {};
+    S.irisScope = "me"; S.irisLook = null;
   }
   closePop(); closeWho(); closeWords(); render(false);
   if (!quiet) try { location.hash = v === "day" ? (S.due ? "date-arrived" : S.big ? "big-group" : "ordinary-day") : "first-visit"; } catch (e) {}
@@ -3203,6 +3489,11 @@ function syncSay(){
   var ask = $("#c-ask"); if (ask) ask.hidden = !C.text.trim() || !!reflecting();
   $("#c-draft").hidden = !C.draft;
   var dl = $("#c-date"); if (dl) dl.hidden = !dateLinkOn();
+  var ec = $("#c-echo"), echo = reflectionEcho();
+  if (ec){
+    ec.hidden = !echo;
+    if (echo){ var eq = $(".echo-q", ec); if (eq) eq.textContent = "“"+plain(echo.text)+"”"; }
+  }
   syncClaim();
 }
 function setAnswer(act,id,v,el){
@@ -3236,6 +3527,10 @@ function setAnswer(act,id,v,el){
     if(good) C.good=v; else {
       if(C.kind==='wonder' && v!==C.v){ C.questionMoved=true; var hint=$('#c-openhint'); if(hint) hint.remove(); }
       C.v=v;
+    }
+    if (C.fromIris && !C.humanEdited){
+      C.humanEdited = true;
+      var fi = $("#c-fromiris span:last-child"); if (fi) fi.textContent = "Your edits are locked. Iris will not overwrite this draft.";
     }
     updateAnswer(el,v,good); if(first) syncSay();
   }
@@ -3291,9 +3586,17 @@ function stake(){
   T[id] = m; S.takes[id] = C.v == null ? 0.50 : C.v;
   if (C.good != null || C.kind !== "wonder"){ S.goods[id] = C.good == null ? 0 : C.good; S.goodDone[id] = true; }
   S.mine.unshift(m);
-  var vis = C.vis, kind = C.kind;
-  clearSingle(false); S.sayOpen = false; S.just = id;
+  var vis = C.vis, kind = C.kind, inIris = S.tab === "iris";
+  clearSingle(false); if (inIris) C.vis = S.irisScope;
+  S.sayOpen = false; S.just = id;
   S.note = kind === "predict" ? (m.date ? {dated:id} : {nudge:id}) : null;
+  if (inIris){
+    S.open = null; S.reply = null; S.reflect = null; S.irisLedger = true;
+    render();
+    toast(closes ? "Staked. That closes your prediction." : "Staked"+(kind === "wonder" ? " as a question" : "")+". "+seenLine(vis));
+    var lrow = $('[data-lrow="'+id+'"]'); if (lrow && lrow.scrollIntoView) lrow.scrollIntoView({block:"nearest"});
+    return;
+  }
   // a new thought of your own goes to the top of the whole list, so the filters step aside for it
   if (m.re) S.open = m.re; else { S.open = null; S.reply = null; F = freshF(); }
   render(m.re ? undefined : false);
@@ -3415,6 +3718,66 @@ document.addEventListener("click", function(e){
     S.linkBase = gl; toast(gl ? "Saved. Shared links now start with it." : "Back to automatic.");
   }
   else if (act === "chat-open"){ S.tab = "thoughts"; render(false); openThought(id); }
+  else if (act === "iris-draft-open"){ S.irisDraft = true; S.sayOpen = true; if (!writing()) C.vis = S.irisScope; render(); var cta = $("#c-text"); if (cta) cta.focus(); }
+  else if (act === "iris-draft-close"){ S.irisDraft = false; S.sayOpen = false; render(); }
+  else if (act === "iris-draft-toggle"){ S.irisDraft = !S.irisDraft; S.sayOpen = S.irisDraft; if (S.irisDraft && !writing()) C.vis = S.irisScope; render(); if (S.irisDraft){ var cta2 = $("#c-text"); if (cta2) cta2.focus(); } }
+  else if (act === "iris-draft-clear"){ clearSingle(false); S.reply = null; S.reflect = null; C.vis = S.irisScope; render(); }
+  else if (act === "iris-ledger-open"){ S.irisLedger = true; render(); }
+  else if (act === "iris-ledger-close"){ S.irisLedger = false; render(); }
+  else if (act === "iris-filter"){ S.irisFilter = id; render(); }
+  else if (act === "iris-scope"){
+    var nextScope = S.irisScope === "me" ? "group" : "me";
+    if (nextScope !== "me" && C.refs.some(function(rid){ return T[rid] && T[rid].vis === "me"; })){
+      S.irisDraft = true; S.sayOpen = true; C.privWarn = true; render();
+      toast("Drop private references before switching to Node chat.");
+      return;
+    }
+    S.irisScope = nextScope;
+    if (!writing() || !C.humanEdited) C.vis = nextScope;
+    C.privWarn = false;
+    render();
+    toast(nextScope === "me" ? "Private chat. Iris can read your private thoughts." : "Node chat. Private thoughts stay hidden from Iris.");
+  }
+  else if (act === "iris-cite"){
+    var cid = b.getAttribute("data-cite");
+    if (cid && T[cid]){ S.irisLedger = true; S.irisLit = cid; render(); var lr = $('[data-lrow="'+cid+'"]'); if (lr && lr.scrollIntoView) lr.scrollIntoView({block:"nearest"}); }
+  }
+  else if (act === "iris-refer"){
+    if (!T[id]) return;
+    var iat = C.refs.indexOf(id);
+    if (iat >= 0) C.refs.splice(iat, 1);
+    else {
+      C.refs.push(id); if (S.reply === id) S.reply = null;
+      if (T[id].vis === "me" && C.vis !== "me"){ C.vis = "me"; toast("Private thought referenced. Draft switched to Just me."); }
+    }
+    S.irisDraft = true; S.sayOpen = true; render();
+  }
+  else if (act === "iris-lookback"){
+    var lt = T[id]; if (!lt) return;
+    clearSingle(false); S.reflect = id; S.reply = id; C.kind = "noticed"; C.vis = lt.vis === "me" ? "me" : S.irisScope;
+    S.irisDraft = true; S.sayOpen = true; render();
+    var lta = $("#c-text"); if (lta) lta.focus();
+  }
+  else if (act === "iris-draft-turn"){
+    var cm = S.chat[Number(id)]; if (!cm || !cm.draft) return;
+    if (C.fromIris && C.humanEdited){ S.irisDraft = true; S.sayOpen = true; render(); toast("Your edits are locked. Clear the draft to load another."); return; }
+    clearSingle(false); S.reply = null; S.reflect = null;
+    C.kind = cm.draft.kind || "believe"; C.text = cm.draft.text || ""; C.v = cm.draft.v != null ? cm.draft.v : 0.65;
+    C.good = cm.draft.g != null ? cm.draft.g : null;
+    C.refs = (cm.draft.refs || []).filter(function(rid){ return !!T[rid] && (S.irisScope === "me" || T[rid].vis !== "me"); });
+    C.vis = S.irisScope; C.fromIris = true; C.humanEdited = false; C.privWarn = false;
+    S.irisDraft = true; S.sayOpen = true; render();
+    var dta = $("#c-text"); if (dta) dta.focus();
+  }
+  else if (act === "iris-apply-look"){ S.irisLook = id; render(); toast("Applied to your screen only."); }
+  else if (act === "iris-reset-look"){ S.irisLook = null; render(); toast("Back to your usual look."); }
+  else if (act === "drop-priv-refs"){
+    C.refs = C.refs.filter(function(rid){ return !T[rid] || T[rid].vis !== "me"; });
+    C.vis = "group"; C.privWarn = false;
+    if (S.tab === "iris"){ S.irisScope = "group"; render(); } else { drawSay(); }
+    toast("Dropped private references. Draft is now shared with your node.");
+  }
+  else if (act === "cancel-priv-warn"){ C.vis = "me"; C.privWarn = false; drawSay(); }
   else if (act === "outside"){ S.outside = !S.outside; render(); }
   else if (act === "export"){ toast("A real export saves a file of your thoughts. This demo has nothing to save."); }
   else if (act === "logout"){ toast("You would be logged out here. This demo has no accounts."); }
@@ -3450,7 +3813,7 @@ document.addEventListener("click", function(e){
     drawSay(); drawBrowse();
     if (at < 0) toast("Added. It is in your writing box.");
   }
-  else if (act === "unrefer"){ C.refs = C.refs.filter(function(x){ return x !== id; }); drawSay(); if (S.open) drawBrowse(); }
+  else if (act === "unrefer"){ C.refs = C.refs.filter(function(x){ return x !== id; }); C.privWarn = false; if (S.tab === "iris") render(); else { drawSay(); if (S.open) drawBrowse(); } }
   else if (act === "who"){ openWho(id, b.getAttribute("data-line") === "good"); }
   else if (act === "who-close"){ closeWho(); }
   else if (act === "nope"){ toast("That part isn't in this demo."); }
@@ -3539,6 +3902,10 @@ document.addEventListener("input", function(e){
     had = C.text.trim().length > 0; C.text = el.value;
     var has = C.text.trim().length > 0;
     if (!has){ C.draft = false; C.draftText = ""; }
+    if (C.fromIris && !C.humanEdited){
+      C.humanEdited = true;
+      var fi2 = $("#c-fromiris span:last-child"); if (fi2) fi2.textContent = "Your edits are locked. Iris will not overwrite this draft.";
+    }
     if (had !== has && C.kind === "wonder"){ if (has && C.v == null) C.v = 0.50; $("#c-sure-in").innerHTML = sureLine(); }
     syncSay(); return;
   }
@@ -3569,7 +3936,14 @@ document.addEventListener("change", function(e){
   if (e.target.id === "f-topic"){ F.topic = e.target.value; drawList(); }
   if (e.target.id === "f-kind"){ F.kind = e.target.value; drawBrowse(); var fk = $("#f-kind"); if (fk) fk.focus(); }
   if (e.target.id === "f-src"){ F.src = e.target.value; pruneLists(); drawBrowse(); var fs = $("#f-src"); if (fs) fs.focus(); }
-  if (e.target.id === "c-seen"){ C.vis = e.target.value; }
+  if (e.target.id === "c-seen"){
+    var nv = e.target.value;
+    if (nv !== "me" && C.refs.some(function(rid){ return T[rid] && T[rid].vis === "me"; })){
+      C.vis = "me"; C.privWarn = true; e.target.value = "me"; drawSay(); return;
+    }
+    C.vis = nv; C.privWarn = false;
+    if (S.tab === "iris") drawSay();
+  }
   if (e.target.hasAttribute("data-row-on")){ var ri = e.target.getAttribute("data-row-on"); if (C.rows[ri]){ C.rows[ri].on = e.target.checked; drawSay(); var rb = $('[data-row-on="'+ri+'"]'); if (rb) rb.focus(); } }
   if (e.target.id === "y-model"){ S.model = e.target.value; toast("Saved."); }
   if (e.target.id === "c-topic"){ C.topic = e.target.value; }
@@ -3577,8 +3951,22 @@ document.addEventListener("change", function(e){
 });
 document.addEventListener("keydown", function(e){
   if (e.key === "Enter" && e.target.id === "chat-q"){ chatSay(e.target.value); return; }
+  if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("iris-rail")){ e.preventDefault(); e.target.click(); return; }
   if (e.key !== "Escape") return;
   if ($("#pop")) closePop(); else if ($("#more-sheet")) closeSheet(); else if ($("#who-sheet")) closeWho(); else if ($("#words-sheet")) closeWords();
+});
+function setIrisLit(id){
+  if (S.irisLit === id) return;
+  S.irisLit = id;
+  document.querySelectorAll("[data-cite],[data-lrow]").forEach(function(n){
+    var k = n.getAttribute("data-cite") || n.getAttribute("data-lrow");
+    n.classList.toggle("lit", !!id && k === id);
+  });
+}
+document.addEventListener("mouseover", function(e){
+  if (S.tab !== "iris") return;
+  var hit = e.target && e.target.closest ? e.target.closest("[data-cite],[data-lrow]") : null;
+  setIrisLit(hit ? (hit.getAttribute("data-cite") || hit.getAttribute("data-lrow")) : null);
 });
 function fromHash(){
   var h = (location.hash || "").replace("#", "");
