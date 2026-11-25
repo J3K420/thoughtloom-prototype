@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Thoughtloom Prototype</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;family=Caveat:wght@500..700&amp;family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&amp;family=Saira:wdth,wght@50..125,100..900&amp;family=DM+Sans:opsz,wght@9..40,400..700&amp;family=JetBrains+Mono:wght@400..700&amp;display=swap">
 <style>
@@ -637,7 +636,22 @@ select{font:inherit;color:inherit}
 .ue-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
 .ue-pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:11.5px;font-weight:600;color:var(--ink2);line-height:1.35}
 .ue-ev.tested{border-color:var(--accent,var(--btn));background:var(--tint,var(--tile));color:var(--accent-text,var(--ink))}
+.ue-ev.aged-wine{border-color:var(--accent,var(--btn));background:var(--accent-soft,var(--tile));color:var(--ink)}
+.ue-ev.aged-milk{border-color:var(--violet);background:var(--violet-soft);color:var(--ink)}
+.ue-ev.aged-split{border-color:var(--ink2);background:var(--tile);color:var(--ink)}
 .ue-ev.untested{border-style:dashed}
+.aged-chip{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.01em;border:1.5px solid var(--line);background:var(--tile);color:var(--ink)}
+.aged-chip.wine{border-color:var(--accent,var(--btn));background:var(--accent-soft,var(--tile))}
+.aged-chip.milk{border-color:var(--violet);background:var(--violet-soft)}
+.bridge-line{margin:2px 0 0;font-size:12.5px;color:var(--ink2);font-style:italic}
+.vouch-line{display:block;font-size:12.5px;font-weight:400;color:var(--ink2);margin-top:2px}
+.vouch-inline{color:var(--ink2);font-style:italic}
+.who-names .who-bio{display:flex;flex-direction:column;min-width:0}
+.heard-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 8px;margin-top:6px;padding:2px 4px 2px 10px;border-radius:12px;border:1.5px dashed var(--line);background:var(--tile);font-size:13px;color:var(--ink2)}
+.heard-bar[hidden]{display:none}
+.heard-lbl{display:inline-flex;flex-wrap:wrap;align-items:center;gap:5px;line-height:1.3}
+.heard-lbl b{color:var(--ink)}
+.heard-lbl .iris{width:18px;height:18px;font-size:10px}
 .asof-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .asof-lbl{font-size:12.5px;font-weight:650;color:var(--ink2);white-space:nowrap}
 .asof-row .pick{flex:1;width:auto;min-width:0}
@@ -2290,7 +2304,8 @@ var T = {
   spring:{id:"spring", at:60, who:"T", kind:"wonder", when:"Thursday", refs:["hike","lk2"], text:"Should we move the trip to spring?", takes:{T:0.50,M:0.50,W:0.55}},
   coach:{id:"coach", at:85, who:"W", kind:"wonder", when:"today", text:"The coach is hopeless, so what do we do when the team loses the playoffs?", takes:{W:0.85,M:0.40,T:0.70}},
   book:{id:"book", topic:"art", at:30, who:"W", kind:"predict", when:"2 Nov", due:"Sun 6 Dec", dueIn:"in 22 days", text:"I'll finish the book before any of you.", takes:{W:0.90,M:0.45,T:0.30,J:0.30}, goods:{W:0.50,M:0.10,T:0,J:0.20}},
-  heating:{id:"heating", at:25, who:"W", kind:"predict", when:"2 Nov", came:true, text:"The landlord fixes the heating before the 13th.", takes:{W:0.90,M:0.70,T:0.50,J:0.30}, goods:{W:0.80,M:0.75,T:0.70,J:0.85}, after:"Wen was the surest. You doubted it."},
+  heating:{id:"heating", at:25, who:"W", kind:"predict", when:"2 Nov", days:12, came:true, text:"The landlord fixes the heating before the 13th.", takes:{W:0.90,M:0.70,T:0.50,J:0.30}, goods:{W:0.80,M:0.75,T:0.70,J:0.85}, after:"Wen was the surest. You doubted it."},
+  remind:{id:"remind", at:40, who:"T", kind:"believe", when:"3 Nov", days:11, text:"Weekly reminder texts got regulars to show up.", takes:{T:0.85,M:0.85,W:0.80,J:0.85}, goods:{T:-0.25,M:-0.55,W:-0.50,J:-0.45}},
   tent:{id:"tent", topic:"money", at:55, who:"J", kind:"believe", when:"Thursday", text:"The cheap tent will be fine.", takes:{J:0.85,M:0.80,T:0.75}, goods:{J:0.60,M:0.45,T:0.30}, none:"Wen hasn't said yet."},
   /* your own dated prediction, due yesterday in the demo's calendar. Only in the "a date arrives" state. */
   run:{id:"run", topic:"health", at:200, demo:"due", who:"J", kind:"predict", when:"2 Nov", date:{label:"Fri 13 Nov"}, arrived:true, text:"I'll run 5 km without stopping.", takes:{J:0.80,M:0.60,T:0.45,W:0.70}, goods:{J:0.75,M:0.50,T:0.40,W:0.60}},
@@ -2302,10 +2317,11 @@ var T = {
   r3:{id:"r3", at:91, re:"morning", who:"M", kind:"noticed", when:"today", text:"Our one morning meeting last month finished in half the time.", takes:{M:0.90,T:0.85}, goods:{M:0.75,T:0.65}},
   r4:{id:"r4", at:61, re:"spring", who:"M", kind:"believe", when:"Thursday", text:"Spring is cheaper, and the long trail is open by then.", takes:{M:0.70,W:0.60}, goods:{M:0.65,W:0.50}},
   r5:{id:"r5", at:26, re:"heating", who:"W", kind:"noticed", when:"yesterday", text:"The heating came back on the 11th.", takes:{W:0.95,M:0.90,T:0.90}, goods:{W:0.85,M:0.80,T:0.75}},
+  r8:{id:"r8", at:41, re:"remind", who:"M", kind:"noticed", when:"6 Nov", days:8, text:"Two newcomers muted the chat after the second reminder.", takes:{M:0.92,W:0.85,T:0.80}, goods:{M:-0.65,W:-0.60,T:-0.35}},
   /* three thoughts from the other node: seen only when Browse looks beyond your own node */
-  lk1:{id:"lk1", at:20, src:"lake", topic:"money", who:"K", kind:"believe", when:"yesterday", text:"A shared tool shed saves every house money.", takes:{K:0.80,I:0.70}, goods:{K:0.70,I:0.60}},
-  lk2:{id:"lk2", at:18, src:"lake", who:"I", kind:"predict", when:"Thursday", text:"The lake path will flood again before spring.", takes:{I:0.70,K:0.40}, goods:{I:-0.70,K:-0.60}},
-  lk3:{id:"lk3", at:16, src:"lake", who:"K", kind:"wonder", when:"Thursday", text:"Who looks after the boats over winter?", takes:{K:0.50,I:0.50}}
+  lk1:{id:"lk1", at:20, src:"lake", bridge:"Mara", topic:"money", who:"K", kind:"believe", when:"yesterday", text:"A shared tool shed saves every house money.", takes:{K:0.80,I:0.70}, goods:{K:0.70,I:0.60}},
+  lk2:{id:"lk2", at:18, src:"lake", bridge:"Mara", who:"I", kind:"predict", when:"Thursday", text:"The lake path will flood again before spring.", takes:{I:0.70,K:0.40}, goods:{I:-0.70,K:-0.60}},
+  lk3:{id:"lk3", at:16, src:"lake", bridge:"Mara", who:"K", kind:"wonder", when:"Thursday", text:"Who looks after the boats over winter?", takes:{K:0.50,I:0.50}}
 };
 
 /* the standard words Iris is given before a chat answer (the node's keeper can change them) */
@@ -2752,7 +2768,7 @@ function presets(t){
     '<button class="mini" data-act="preset" data-id="'+t.id+'" data-opt="iris"><span>Iris</span></button></div>';
 }
 /* ---------- talking with Iris: a few canned answers built from the made-up thoughts ---------- */
-var ASKS = ["What is the node split on?", "What is waiting for me?", "Sum up this week"];
+var ASKS = ["What is the node split on?", "Should we send reminders again?", "What is waiting for me?"];
 var RUNS = {own:"on the node&#39;s own computer", paid:"on a paid model, billed by use", sub:"on a subscription you already have"};
 function stepsFor(a, tid){
   if (a.text.indexOf("In this demo") === 0) return null;
@@ -2806,18 +2822,19 @@ function uptakeEvidence(t, useAsOf){
   var reps = allReplies(t.id).filter(function(r){ return !useAsOf || inAsOf(r); });
   var refReps = reps.filter(function(r){ return r.kind === "noticed"; }).length;
   var up = nTakes + " weighed in" + (reps.length ? " · " + nReplies(reps.length) : "");
-  var ev = "Untested", tested = false;
+  var ev = "Untested", tested = false, aged = "";
   if (t.kind === "noticed"){ ev = "Observed"; tested = true; }
-  else if (cameInWindow(t, useAsOf)){ ev = "Tested · came true"; tested = true; }
-  else if (S.results[t.id] === "miss"){ ev = "Tested · missed"; tested = true; }
+  else if (cameInWindow(t, useAsOf)){ ev = "Tested · aged like wine"; tested = true; aged = "wine"; }
+  else if (S.results[t.id] === "miss"){ ev = "Tested · aged like milk (private to you)"; tested = true; aged = "milk"; }
+  else if (t.id === "remind" && refReps > 0){ ev = "1 reflection · worked, low good"; tested = true; aged = "split"; }
   else if (refReps > 0){ ev = refReps + (refReps === 1 ? " reflection" : " reflections"); tested = true; }
-  return {up:up, ev:ev, tested:tested};
+  return {up:up, ev:ev, tested:tested, aged:aged};
 }
 function uptakeEvidenceHTML(t, useAsOf){
   var ue = uptakeEvidence(t, useAsOf);
-  return '<div class="ue-row"><span class="ue-pill">Uptake: '+ue.up+'</span><span class="ue-pill ue-ev'+(ue.tested ? ' tested' : ' untested')+'">Evidence: '+ue.ev+'</span></div>';
+  return '<div class="ue-row"><span class="ue-pill">Uptake: '+ue.up+'</span><span class="ue-pill ue-ev'+(ue.tested ? ' tested' : ' untested')+(ue.aged ? ' aged-'+ue.aged : '')+'">Evidence: '+ue.ev+'</span></div>';
 }
-var DESK_ASKS = ["Who was early?", "How did views shift?", "How would Mara read this?", "Find tensions", "Draft a Protocol rule"];
+var DESK_ASKS = ["Should we send reminders again?", "What aged well?", "Who was early?", "How did views shift?", "Draft a Protocol rule"];
 function deskPool(ignoreAsOf){
   return Object.keys(T).map(function(k){ return T[k]; }).filter(function(t){
     return !t.src && shown(t) && (S.irisScope === "me" || t.vis !== "me") && (ignoreAsOf || inAsOf(t));
@@ -2868,6 +2885,25 @@ function irisAnswer(text, tid){
     S.irisLook = "warm-paper";
     return {text:"Switched your screen to Warm Archival Paper with deep forest ink. Everyone else in your node keeps their own look.",
       lookProposal:{id:"warm-paper", title:"Rhizome · Warm Archival Paper", note:"Unbleached paper ground, ivory cards, deep forest ink, and muted Verity gold.", swatches:["#f7f2e7","#fffaf1","#21362f","#327e68","#9a7300"]}};
+  }
+  /* Second decision & Aged-like-wine/milk look-back (works in both Workbench and Desk) */
+  if (/remind|second decision|again|opt-in/.test(q)){
+    var rCites = ["remind","r8"].filter(function(id){ return !!T[id] && inAsOf(T[id]); });
+    var rDraft = {kind:"believe", text:"Make weekly reminders opt-in so newcomers don't feel pushed.", v:0.78, g:0.65, refs:rCites};
+    if (S.irisMode === "desk") pushDeskOutput({kind:"draft", title:"Second decision", draft:rDraft});
+    return {text:"Not as a group blast. On 3 Nov everyone agreed weekly reminders got regulars to show up (True · 0.85), but on 6 Nov Mara noticed two newcomers muted the chat (Good/Bad · −0.45). Plain notes only remind you that it worked — splitting true from good changes the next call: make reminders opt-in for newcomers.", open:"remind", cites:rCites, draft:rDraft};
+  }
+  if (/aged|wine|milk|held up|what worked/.test(q)){
+    var hasHeatNow = S.irisMode !== "desk" || S.deskAsOf < 2;
+    var aCites = (hasHeatNow ? ["heating","r5","remind","r8"] : ["heating","remind","r8"]).filter(function(id){ return !!T[id] && inAsOf(T[id]); });
+    var missRun = S.due && S.results.run === "miss";
+    if (missRun && T.run) aCites.push("run");
+    var aDraft = {kind:"noticed", text:hasHeatNow ? "Wen's heating call aged like wine; weekly reminders worked for regulars but felt pushy to newcomers." : "Before outcomes arrived on 10 Nov, weekly reminders already showed a split between working and feeling good.", v:0.82, g:0.30, refs:aCites.slice(0, 3)};
+    if (S.irisMode === "desk") pushDeskOutput({kind:"draft", title:"Look-back brief", draft:aDraft});
+    var aMsg = hasHeatNow
+      ? "Two clear look-backs on record: Wen's 2 Nov heating prediction aged like wine (0.90 before the 11th, confirmed yesterday), while weekly reminders worked for regulars (0.85) but landed poorly with newcomers (−0.45)."+(missRun ? " Privately, your 5 km run call aged like milk — kept on the thought to learn from, never marked against you." : "")
+      : "As of "+asOfShort(S.deskAsOf)+", Wen's heating prediction is still open and untested. Weekly reminders already show the split: high truth (0.85) for regulars, low good (−0.45) once newcomers muted the chat.";
+    return {text:aMsg, open:hasHeatNow ? "heating" : "remind", cites:aCites, draft:aDraft};
   }
   /* Research Desk mode: ground answers on pinned sources + As-of time boundary, with 3-direction queries */
   if (S.irisMode === "desk"){
@@ -2994,8 +3030,9 @@ function provenanceHTML(cs){
   var useAsOf = S.irisMode === "desk";
   return '<details class="prov"><summary>Where this came from · '+ordered.length+(ordered.length===1?' source':' sources')+'</summary>'+
     '<ol class="prov-list">'+ordered.map(function(ct){
+      var fromBridge = ct.src ? ' · '+ELSEWHERE[ct.src]+(ct.bridge ? ' via '+esc(ct.bridge) : '') : '';
       return '<li><button class="prov-btn" data-act="iris-cite" data-cite="'+ct.id+'">'+
-        '<span class="prov-who"><b>'+esc(owner(ct))+'</b> · '+esc(ct.when)+'</span>'+
+        '<span class="prov-who"><b>'+esc(owner(ct))+'</b>'+fromBridge+' · '+esc(ct.when)+'</span>'+
         '<span class="prov-role">'+provenanceRole(ct, useAsOf)+'</span>'+
         '<span class="prov-txt">'+citeLabel(ct)+'</span></button></li>';
     }).join("")+'</ol>'+
@@ -3037,7 +3074,7 @@ function trow(t, reply){
   var tag = t.came || res === "hit" ? DATE.rowHit : res === "miss" ? DATE.rowMiss : due ? DATE.rowDue : "";
   var h = '<article class="trow'+(reply?' reply':'')+(S.just===t.id?' fresh':'')+'" data-kind="'+t.kind+'"'+(t.who === "J" ? ' data-mine' : '')+' data-act="open" data-id="'+t.id+'" id="row-'+t.id+'">';
   h += '<div class="trow-head"><span class="kind">'+kmark(t.kind)+KINDS[t.kind].type+'</span>'+(t.topic && t.topic !== "general" ? '<span class="topic">'+topicName(t.topic)+'</span>' : '')+(pro() ? tierChip(t) : '')+(tag?'<span class="tag">'+tag+'</span>':'')+'<span class="when">'+t.when+'</span></div>';
-  h += '<p class="trow-text">'+t.text+'</p>' + thin(t);
+  h += '<p class="trow-text">'+t.text+'</p>' + (t.src && t.bridge ? '<p class="bridge-line">Introduced by '+esc(t.bridge)+' · came via '+esc(S.gname)+' ↔ '+ELSEWHERE[t.src]+'</p>' : '') + thin(t);
   h += '<div class="trow-foot">'+(pro() ? proNums(t) : '')+'<span class="who">'+(t.vis === "me" ? ic("lock",15)+'Only you can see this' : owner(t)+(t.src ? ' · '+ELSEWHERE[t.src] : '')+(t.vis === "all" ? ' · Public' : ''))+'</span>'+(n ? '<span class="nrep">'+nReplies(n)+'</span>' : '')+(refsOf(t).length ? '<span class="nref">Refers to '+nThoughts(refsOf(t).length)+'</span>' : '');
   h += acts(t, false)+'</div>';
   // a prediction you have just staked offers its nudge once, right on its row; after that it lives in the opened thought
@@ -3052,6 +3089,7 @@ function tail(t){
   var h = "";
   if (t.came) h += '<p class="after">'+(S.big ? "It happened. You doubted it." : t.after)+'</p>';
   if (t.none) h += '<p class="after">'+(S.big ? (XP.length + 3 - others(allTakes(t)).length)+" haven't said yet." : t.none)+'</p>';
+  if (t.src && t.bridge) h += '<p class="after bridge-line">Introduced by <b>'+esc(t.bridge)+'</b> · came via '+esc(S.gname)+' ↔ '+ELSEWHERE[t.src]+'.</p>';
   if (t.who === "J" && t.vis) h += '<p class="after">'+(t.vis === "me" ? ic("lock",16)+" Only you can see this." : t.vis === "all" ? "Anyone can see this. Nobody has weighed in yet." : "Your node can see this. Nobody has weighed in yet.")+'</p>';
   h += uptakeEvidenceHTML(t, false);
   if (t.shaped) h += '<p class="fine shaped-line">'+esc(t.shaped)+'</p>';
@@ -3065,9 +3103,11 @@ function dueBlock(t){
   if (t.who !== "J" || !arrived(t)) return "";
   var res = S.results[t.id];
   if (!res) return '<div class="sec nudge due"><p class="q">'+DATE.ask+'</p><div class="btnrow"><button class="btn" data-act="result" data-id="'+t.id+'" data-v="1">'+DATE.yes+'</button><button class="btn" data-act="result" data-id="'+t.id+'" data-v="0">'+DATE.no+'</button></div></div>';
-  if (S.closed[t.id]) return '<p class="done">'+ic("check",20)+DATE.closed+'</p>';
-  return '<div class="sec nudge due"><p class="say sm">'+(res === "miss" ? DATE.miss : DATE.hit)+'</p>'+(res === "miss" ? '<p class="hint">'+DATE.kind+'</p>' : '')+
-    '<button class="btn primary" data-act="reflect" data-id="'+t.id+'">'+DATE.reflect+'</button></div>';
+  var agedChip = res === "hit" ? '<span class="aged-chip wine">Aged like wine</span>' : '<span class="aged-chip milk">Aged like milk · private to you</span>';
+  var nextCallBtn = '<button class="btn" data-act="second-decision">See how Iris uses this next</button>';
+  if (S.closed[t.id]) return '<div class="sec nudge due">'+agedChip+'<p class="done">'+ic("check",20)+DATE.closed+'</p>'+nextCallBtn+'</div>';
+  return '<div class="sec nudge due">'+agedChip+'<p class="say sm">'+(res === "miss" ? DATE.miss : DATE.hit)+'</p>'+(res === "miss" ? '<p class="hint">'+DATE.kind+'</p>' : '')+
+    '<div class="btnrow"><button class="btn primary" data-act="reflect" data-id="'+t.id+'">'+DATE.reflect+'</button>'+nextCallBtn+'</div></div>';
 }
 function chips(t){
   if (t.date){
@@ -3235,6 +3275,8 @@ function sayInner(){
   h += '<div class="field"><label class="sr" for="c-text">Your thought</label><textarea id="c-text" rows="3" placeholder="'+(lbPin ? DATE.place : K ? K.start : "What&#39;s on your mind?")+'">'+esc(C.text)+'</textarea>';
   h += '<p class="irisline" id="c-draft"'+(C.draft?'':' hidden')+'><span class="iris"><i>O</i></span>A draft from your reflection. In this demo it is ready-made. Iris would write it from your own words. Edit it or start over.</p>';
   h += '<p class="irisline" id="c-claim" hidden><span class="iris"><i>O</i></span><span>Iris noticed a claim inside your question: "the coach is hopeless." Slide to how true you think that is.</span></p>';
+  var heard = heardRead();
+  h += '<div class="heard-bar" id="c-heard"'+(heard ? '' : ' hidden')+'>'+(heard ? heardInner(heard) : '')+'</div>';
   h += '<div class="echo-card" id="c-echo"'+(echo ? '' : ' hidden')+'><p class="irisline"><span class="iris"><i>O</i></span><span>You noticed this before'+(echo ? ' ('+echo.when+')' : '')+'</span></p><p class="echo-q">'+(echo ? '“'+echo.text+'”' : '')+'</p><p class="hint">Hold both for a second. Still feel just as sure?</p></div></div>';
   // the thoughts this one refers to: one small line each, with the thought's own words and a way to take it off
   h += crefs();
@@ -3641,12 +3683,39 @@ function viewIris(){
    the parts that change things. Everything here is made up and resets when the demo's day is switched. ---------- */
 var PERMS = [["stake","Stake thoughts"],["iris","Talk with Iris"],["paid","Use the paid model"],["web","Let Iris search the web"]];
 var REACH = [["pc","This computer"],["home","Home network"],["net","Internet"]], ADDR = {pc:"localhost:4000", home:"hilltop.local:4000", net:"hilltop.example:4000"};
+function inferRead(text){
+  var s = String(text || "").trim();
+  var r = distill(s)[0] || freshRow(s, "believe", 0.70);
+  var q = s.toLowerCase(), g = null;
+  if (r.kind !== "wonder"){
+    if (/\b(bad|pushy|annoy|muted|worse|hurt|fail|miss|flood|rain|dread|hopeless|problem|hard|stuck|lose|lost|broke|broken)\b/.test(q)) g = -0.55;
+    else if (/\b(good|great|better|help|helped|save|saves|calm|faster|glad|enjoy|cheaper|opt-in|worked|fixed|fine|steady|fair)\b/.test(q)) g = 0.55;
+    else g = 0;
+  }
+  return {kind:r.kind, v:r.v, g:g};
+}
+function heardRead(){
+  if (pro() || !autoKind() || C.fromIris || C.text.trim().length < 4) return null;
+  return inferRead(C.text);
+}
+function heardInner(hr){
+  var kLbl = KINDS[hr.kind].type.toLowerCase();
+  var sLbl = answerWord(hr.v, false, hr.kind === "wonder");
+  var gLbl = hr.g == null ? "" : " · <b>"+esc(GOOD[gIndex(hr.g)][1])+"</b>";
+  return '<span class="heard-lbl"><span class="iris"><i>O</i></span>Heard: <b>'+esc(kLbl)+'</b> · <b>'+esc(sLbl)+'</b>'+gLbl+'</span>'+
+    '<button class="mini" data-act="heard-apply"><span>Change?</span></button>';
+}
 function freshOwner(){
   S.owner = true; S.gname = "Hilltop"; S.share = true; S.edit = null; S.sure = null;
   S.goal = "Learn how to use Thoughtloom to make life a bit better.";
   S.proto = "When two of us disagree, what someone noticed counts for more than what someone believes."; S.protoV = 3; S.protoBy = "Iris updated this last Saturday.";
-  S.people = [{id:"M", name:"Mara", can:{stake:true, iris:true}}, {id:"T", name:"Tomas", can:{stake:true, iris:true, paid:true, web:true}}, {id:"W", name:"Wen", can:{stake:true}}];
-  S.links = [{id:"lake", name:"Lakeside"}]; S.asksIn = [{id:"orch", name:"Orchard Row"}]; S.asksOut = [];
+  S.people = [
+    {id:"M", name:"Mara", vouched:"Introduced by Jules", context:"Settled check-ins with Hilltop on hikes and mornings", can:{stake:true, iris:true}},
+    {id:"T", name:"Tomas", vouched:"Introduced by Mara", context:"Active on scheduling and trip logistics", can:{stake:true, iris:true, paid:true, web:true}},
+    {id:"W", name:"Wen", vouched:"Introduced by Mara", context:"Called the heating fix early; tracks weather and housing", can:{stake:true}}
+  ];
+  S.links = [{id:"lake", name:"Lakeside", bridge:"Mara", bridgeNote:"Bridged by Mara · in both Hilltop & Lakeside"}];
+  S.asksIn = [{id:"orch", name:"Orchard Row", vouchedBy:"Mara", why:"Mara vouched · two trail check-ins together"}]; S.asksOut = [];
   S.holds = [{id:"h1", name:"Bram", from:"Lakeside", what:"replied to a thought in your node"}];
   S.model = "paid"; S.irisName = "Iris";
   // your own saved lists of people, for the "who" filter in Browse
@@ -3663,7 +3732,9 @@ function canLine(p){ var on = PERMS.filter(function(x){ return p.can[x[0]]; }).m
 function twoTap(key, label, sure){ return S.sure === key ? sure : label; }
 function openPerson(id){
   var p = S.people.filter(function(x){ return x.id === id; })[0]; if (!p) return;
-  openSheet(esc(p.name), '<article class="card"><p class="say sm">What '+esc(p.name)+' can do</p><div class="perms" role="group" aria-label="Permissions">'+PERMS.map(function(x){
+  openSheet(esc(p.name),
+    (p.vouched || p.context ? '<article class="card"><p class="say sm">In '+esc(S.gname)+'</p>'+(p.vouched ? '<p class="after">'+esc(p.vouched)+'.</p>' : '')+(p.context ? '<p class="after">'+esc(p.context)+'.</p>' : '')+'</article>' : '')+
+    '<article class="card"><p class="say sm">What '+esc(p.name)+' can do</p><div class="perms" role="group" aria-label="Permissions">'+PERMS.map(function(x){
       return '<button class="pill" data-act="p-perm" data-id="'+p.id+'" data-opt="'+x[0]+'" aria-pressed="'+(!!p.can[x[0]])+'">'+x[1]+'</button>'; }).join("")+'</div><p class="fine">Everyone in the node can read what the node can see.</p></article>'+
     '<article class="card"><p class="say sm">Their account</p><button class="btn" data-act="p-reset" data-id="'+p.id+'">Give a new password</button>'+
     '<button class="btn" data-act="p-remove" data-id="'+p.id+'">'+twoTap("rm:"+p.id, "Remove from the node", "Tap again to remove "+esc(p.name))+'</button><p class="fine">Removing someone ends their access. Their thoughts stay.</p></article>');
@@ -3672,16 +3743,24 @@ function editBox(key, text){
   return '<label class="sr" for="g-edit">'+(key === "goal" ? "What you are all here for" : "How you settle a disagreement")+'</label><textarea id="g-edit" rows="3">'+esc(text)+'</textarea>'+
     '<div class="btnrow"><button class="btn primary" data-act="g-save" data-id="'+key+'">Save</button><button class="btn" data-act="g-cancel">Cancel</button></div>';
 }
+function personBio(id){
+  if (id === "J") return "Started this node";
+  var p = S.people.filter(function(x){ return x.id === id; })[0];
+  if (!p) return "";
+  return [p.vouched, p.context].filter(Boolean).join(" · ");
+}
 function viewGroup(){
   var o = S.owner, base = [["J","Jules (you)"],["M","Mara"],["T","Tomas"],["W","Wen"]].filter(function(p){ return p[0] === "J" || S.people.some(function(x){ return x.id === p[0]; }); });
-  var extra = S.people.filter(function(x){ return !P[x.id]; }).map(function(x){ return [x.name.charAt(0).toUpperCase(), x.name]; });
+  var extra = S.people.filter(function(x){ return !P[x.id]; }).map(function(x){ return [x.id, x.name]; });
   var people = base.concat(extra).concat(S.big ? XP : []);
   var h = '<div><h1 class="hello">Your node</h1><p class="lede">'+(o ? 'You look after this node, so you can change what is here. A member sees the same page without the buttons.' : 'Who is in your node, and what you have agreed together.')+'</p></div>' +
     '<article class="card"><p class="say sm">'+esc(S.gname)+' · '+people.length+' people</p><ul class="who-names">'+people.map(function(p){
-      return '<li><span class="tok'+(p[0]==="J"?" you":"")+'" aria-hidden="true">'+ini(p[0])+'</span><span>'+esc(p[1])+'</span></li>'; }).join("")+'</ul></article>';
+      var bio = personBio(p[0]);
+      var badge = p[0].length === 1 ? p[0] : p[1].charAt(0).toUpperCase();
+      return '<li><span class="tok'+(p[0]==="J"?" you":"")+'" aria-hidden="true">'+badge+'</span><span class="who-bio"><span>'+esc(p[1])+'</span>'+(bio ? '<span class="vouch-line">'+esc(bio)+'</span>' : '')+'</span></li>'; }).join("")+'</ul></article>';
   h += '<article class="card"><p class="after">How you settle a disagreement</p>'+(S.edit === "proto" ? editBox("proto", S.proto) : '<p class="say sm">'+esc(S.proto)+'</p><p class="after">Version '+S.protoV+'. '+S.protoBy+'</p>'+(o ? '<button class="link" data-act="g-edit" data-id="proto">Change this</button>' : ''))+'</article>' +
     '<article class="card"><p class="after">What you&#39;re all here for</p>'+(S.edit === "goal" ? editBox("goal", S.goal) : '<p class="say sm">'+esc(S.goal)+'</p>'+(o ? '<button class="link" data-act="g-edit" data-id="goal">Change this</button>' : ''))+'</article>';
-  if (!o) return h + '<article class="card"><p class="after">Nodes yours is connected to</p><p class="say sm">'+(S.links.length ? S.links.map(function(l){ return esc(l.name); }).join(", ") : "None yet")+'</p></article>';
+  if (!o) return h + '<article class="card"><p class="after">Nodes yours is connected to</p><p class="say sm">'+(S.links.length ? S.links.map(function(l){ return esc(l.name)+(l.bridge ? ' (via '+esc(l.bridge)+')' : ''); }).join(", ") : "None yet")+'</p></article>';
   // people and what each may do
   h += '<article class="card"><p class="say sm">People and what they can do</p><div class="prows">'+S.people.map(function(p){
       return '<div class="prow"><div><b>'+esc(p.name)+'</b><p class="after">'+canLine(p)+'</p></div><button class="mini" data-act="p-open" data-id="'+p.id+'"><span>Change</span></button></div>'; }).join("")+'</div>'+
@@ -3697,8 +3776,8 @@ function viewGroup(){
     '<details class="fold"><summary>Address for shared links</summary><p class="after">Found automatically when you open Thoughtloom at your node&#39;s address. Change it only if shared links open the wrong place. It does not open your node to anyone.</p>'+
     '<div class="chat-in"><input class="search" id="g-link" type="text" placeholder="Found automatically" aria-label="Address for shared links" value="'+esc(S.linkBase)+'"><button class="btn" data-act="g-link-save">Save</button></div></details>'+
     '<button class="btn" data-act="g-share" aria-pressed="'+S.share+'">'+(S.share ? 'Sharing is on' : 'Sharing is off')+'</button><p class="after">'+(S.share ? 'Nodes you approve can read thoughts marked My node or Public. Thoughts marked Just me never leave.' : 'No other node can read your node&#39;s thoughts right now.')+'</p>'+
-    (S.asksIn.length ? S.asksIn.map(function(x){ return '<p class="after"><b>'+esc(x.name)+'</b> asks to connect.</p><div class="btnrow"><button class="btn primary" data-act="g-in" data-id="'+x.id+'" data-v="1">Approve</button><button class="btn" data-act="g-in" data-id="'+x.id+'" data-v="0">Decline</button></div>'; }).join("") : '')+
-    (S.links.length ? '<div class="prows">'+S.links.map(function(l){ return '<div class="prow"><div><b>'+esc(l.name)+'</b><p class="after">Connected</p></div><span class="trow-acts"><button class="mini" data-act="g-browse" data-id="'+l.id+'"><span>Browse</span></button><button class="mini" data-act="g-off" data-id="'+l.id+'"><span>'+twoTap("off:"+l.id, "Disconnect", "Tap again")+'</span></button></span></div>'; }).join("")+'</div>' : '<p class="after">No connected nodes yet.</p>')+
+    (S.asksIn.length ? S.asksIn.map(function(x){ return '<p class="after"><b>'+esc(x.name)+'</b> asks to connect.'+(x.why ? ' <span class="vouch-inline">'+esc(x.why)+'.</span>' : '')+'</p><div class="btnrow"><button class="btn primary" data-act="g-in" data-id="'+x.id+'" data-v="1">Approve</button><button class="btn" data-act="g-in" data-id="'+x.id+'" data-v="0">Decline</button></div>'; }).join("") : '')+
+    (S.links.length ? '<div class="prows">'+S.links.map(function(l){ return '<div class="prow"><div><b>'+esc(l.name)+'</b><p class="after">Connected'+(l.bridgeNote ? ' · '+esc(l.bridgeNote) : '')+'</p></div><span class="trow-acts"><button class="mini" data-act="g-browse" data-id="'+l.id+'"><span>Browse</span></button><button class="mini" data-act="g-off" data-id="'+l.id+'"><span>'+twoTap("off:"+l.id, "Disconnect", "Tap again")+'</span></button></span></div>'; }).join("")+'</div>' : '<p class="after">No connected nodes yet.</p>')+
     S.asksOut.map(function(x){ return '<p class="after"><b>'+esc(x)+'</b>: waiting for them to approve.</p>'; }).join("")+
     '<p class="after">Connect to another node</p><div class="chat-in"><input class="search" id="g-addr" type="text" placeholder="Their node&#39;s address" aria-label="Their node&#39;s address"><button class="btn" data-act="g-connect">Connect</button></div></article>';
   return h;
@@ -3883,6 +3962,11 @@ function syncSay(){
     ec.hidden = !echo;
     if (echo){ var eq = $(".echo-q", ec); if (eq) eq.textContent = "“"+plain(echo.text)+"”"; }
   }
+  var hb = $("#c-heard"), hr = heardRead();
+  if (hb){
+    hb.hidden = !hr;
+    if (hr) hb.innerHTML = heardInner(hr);
+  }
   syncClaim();
 }
 function setAnswer(act,id,v,el){
@@ -3945,16 +4029,17 @@ function openPop(s){
 }
 /* "Ask Iris first": Iris says what kind it reads and where on the line; you take that, keep yours, or go back */
 function openReview(){
-  var r = distill(C.text.trim())[0] || freshRow(C.text.trim(), "believe", 0.70);
+  var r = inferRead(C.text.trim());
   closePop();
   var box = document.createElement("div"); box.id = "pop"; box.className = "pop";
   box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-labelledby", "pop-h");
   var q = r.kind === "wonder", mine = !C.kind && C.v != null && !q;
   if (mine) r.v = C.v;
+  var gBit = !q && r.g != null ? ' · <b>'+esc(GOOD[gIndex(r.g)][1])+'</b> ('+fmtGood(r.g)+')' : '';
   box.innerHTML = '<div class="pop-box"><p class="irisline"><span class="iris"><i>O</i></span>Iris, before you stake it</p>'+
-    '<h2 id="pop-h">Iris reads this as a '+KINDS[r.kind].type.toLowerCase()+'.</h2><p class="pop-why">'+(q ? 'An open question, in the middle of the line.' : mine ? 'Your spot on the line stays: <b>'+esc(word(r.v))+'</b> ('+fmt(r.v)+').' : 'About <b>'+esc(word(r.v))+'</b> ('+fmt(r.v)+') on the true or false line.')+
+    '<h2 id="pop-h">Iris reads this as a '+KINDS[r.kind].type.toLowerCase()+'.</h2><p class="pop-why">'+(q ? 'An open question, in the middle of the line.' : mine ? 'Your spot on the line stays: <b>'+esc(word(r.v))+'</b> ('+fmt(r.v)+')'+gBit+'.' : 'About <b>'+esc(word(r.v))+'</b> ('+fmt(r.v)+') on the true or false line'+gBit+'.')+
     (C.kind ? ' You picked '+KINDS[C.kind].type+(C.v != null ? ', '+esc(answerWord(C.v,false,C.kind === "wonder"))+' ('+fmt(C.v)+')' : '')+'.' : '')+'</p><p class="pop-text">'+esc(C.text.trim())+'</p>'+
-    '<div class="pop-acts"><button class="btn primary" data-act="rev-use" data-id="'+r.kind+'" data-v="'+r.v+'">'+(C.kind ? 'Stake it Iris&#39;s way' : 'Stake it as a '+KINDS[r.kind].type.toLowerCase())+'</button>'+
+    '<div class="pop-acts"><button class="btn primary" data-act="rev-use" data-id="'+r.kind+'" data-v="'+r.v+'"'+(r.g != null ? ' data-g="'+r.g+'"' : '')+'>'+(C.kind ? 'Stake it Iris&#39;s way' : 'Stake it as a '+KINDS[r.kind].type.toLowerCase())+'</button>'+
     (ready() ? '<button class="btn" data-act="pop-keep">Keep mine</button>' : '')+'<button class="link" data-act="pop-cancel">Cancel</button></div><p class="fine">Demo: a simple rule stands in for Iris here.</p></div>';
   $("#app").appendChild(box);
   $(".btn.primary", box).focus();
@@ -4069,7 +4154,7 @@ document.addEventListener("click", function(e){
   }
   else if (act === "p-add"){
     var pn = $("#g-new").value.trim(); if (!pn){ toast("Type their name first."); return; }
-    S.ids = (S.ids || 0) + 1; S.people.push({id:"x" + S.ids, name:pn, can:{stake:true}}); render(); toast("Added "+pn+". Give them their first password yourself.");
+    S.ids = (S.ids || 0) + 1; S.people.push({id:"x" + S.ids, name:pn, vouched:"Introduced by you", context:"New to "+S.gname, can:{stake:true}}); render(); toast("Added "+pn+". Give them their first password yourself.");
   }
   else if (act === "y-iris-save"){ var yn = $("#y-iris").value.trim(); if (!yn){ toast("It needs a name."); return; } S.irisName = yn; toast("Saved. In this demo the screens keep saying Iris."); }
   else if (act === "y-check"){ toast("You have the newest version."); }
@@ -4308,8 +4393,23 @@ document.addEventListener("click", function(e){
     closePop(); stake();
   }
   else if (act === "pop-keep"){ closePop(); stake(); }
+  else if (act === "heard-apply"){
+    var hr2 = heardRead(); if (!hr2) return;
+    C.kind = hr2.kind; C.v = hr2.v; if (hr2.g != null) C.good = hr2.g;
+    drawSay();
+    var cs = $("#c-sure"); if (cs && cs.scrollIntoView) cs.scrollIntoView({block:"nearest"});
+    toast("Filled in from what Iris heard. Adjust anything you want.");
+  }
+  else if (act === "second-decision"){
+    chatSay("Should we send weekly reminders again?");
+  }
   else if (act === "review"){ if (C.text.trim()) openReview(); }
-  else if (act === "rev-use"){ C.kind = id; C.v = v; if (id === "wonder") C.good = null; closePop(); stake(); }
+  else if (act === "rev-use"){
+    C.kind = id; C.v = v;
+    var rg = b.getAttribute("data-g");
+    if (id === "wonder") C.good = null; else if (rg != null && C.good == null) C.good = parseFloat(rg);
+    closePop(); stake();
+  }
   else if (act === "f-more"){ F.more = !F.more; drawBrowse(); }
   else if (act === "f-old"){ F.old = !F.old; drawBrowse(); }
   else if (act === "f-any"){ F.from = SPAN; F.to = 0; drawBrowse(); var fa2 = $("#f-from"); if (fa2) fa2.focus(); }
@@ -4430,5 +4530,6 @@ window.addEventListener("hashchange", fromHash);
 render(false); fromHash();
 })();
 </script>
+
 </body>
 </html>
