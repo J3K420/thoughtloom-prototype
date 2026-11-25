@@ -636,13 +636,13 @@ select{font:inherit;color:inherit}
 .ue-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
 .ue-pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:11.5px;font-weight:600;color:var(--ink2);line-height:1.35}
 .ue-ev.tested{border-color:var(--accent,var(--btn));background:var(--tint,var(--tile));color:var(--accent-text,var(--ink))}
-.ue-ev.aged-wine{border-color:var(--accent,var(--btn));background:var(--accent-soft,var(--tile));color:var(--ink)}
-.ue-ev.aged-milk{border-color:var(--violet);background:var(--violet-soft);color:var(--ink)}
-.ue-ev.aged-split{border-color:var(--ink2);background:var(--tile);color:var(--ink)}
+.ue-ev.outcome-held{border-color:var(--accent,var(--btn));background:var(--accent-soft,var(--tile));color:var(--ink)}
+.ue-ev.outcome-missed{border-color:var(--violet);background:var(--violet-soft);color:var(--ink)}
+.ue-ev.outcome-split{border-color:var(--ink2);background:var(--tile);color:var(--ink)}
 .ue-ev.untested{border-style:dashed}
-.aged-chip{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.01em;border:1.5px solid var(--line);background:var(--tile);color:var(--ink)}
-.aged-chip.wine{border-color:var(--accent,var(--btn));background:var(--accent-soft,var(--tile))}
-.aged-chip.milk{border-color:var(--violet);background:var(--violet-soft)}
+.outcome-chip{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.01em;border:1.5px solid var(--line);background:var(--tile);color:var(--ink)}
+.outcome-chip.held{border-color:var(--accent,var(--btn));background:var(--accent-soft,var(--tile))}
+.outcome-chip.missed{border-color:var(--violet);background:var(--violet-soft)}
 .bridge-line{margin:2px 0 0;font-size:12.5px;color:var(--ink2);font-style:italic}
 .vouch-line{display:block;font-size:12.5px;font-weight:400;color:var(--ink2);margin-top:2px}
 .vouch-inline{color:var(--ink2);font-style:italic}
@@ -2822,19 +2822,19 @@ function uptakeEvidence(t, useAsOf){
   var reps = allReplies(t.id).filter(function(r){ return !useAsOf || inAsOf(r); });
   var refReps = reps.filter(function(r){ return r.kind === "noticed"; }).length;
   var up = nTakes + " weighed in" + (reps.length ? " · " + nReplies(reps.length) : "");
-  var ev = "Untested", tested = false, aged = "";
+  var ev = "Untested", tested = false, outcome = "";
   if (t.kind === "noticed"){ ev = "Observed"; tested = true; }
-  else if (cameInWindow(t, useAsOf)){ ev = "Tested · aged like wine"; tested = true; aged = "wine"; }
-  else if (S.results[t.id] === "miss"){ ev = "Tested · aged like milk (private to you)"; tested = true; aged = "milk"; }
-  else if (t.id === "remind" && refReps > 0){ ev = "1 reflection · worked, low good"; tested = true; aged = "split"; }
+  else if (cameInWindow(t, useAsOf)){ ev = "Tested · held up"; tested = true; outcome = "held"; }
+  else if (S.results[t.id] === "miss"){ ev = "Tested · didn&#39;t hold up (private to you)"; tested = true; outcome = "missed"; }
+  else if (t.id === "remind" && refReps > 0){ ev = "1 reflection · worked, low good"; tested = true; outcome = "split"; }
   else if (refReps > 0){ ev = refReps + (refReps === 1 ? " reflection" : " reflections"); tested = true; }
-  return {up:up, ev:ev, tested:tested, aged:aged};
+  return {up:up, ev:ev, tested:tested, outcome:outcome};
 }
 function uptakeEvidenceHTML(t, useAsOf){
   var ue = uptakeEvidence(t, useAsOf);
-  return '<div class="ue-row"><span class="ue-pill">Uptake: '+ue.up+'</span><span class="ue-pill ue-ev'+(ue.tested ? ' tested' : ' untested')+(ue.aged ? ' aged-'+ue.aged : '')+'">Evidence: '+ue.ev+'</span></div>';
+  return '<div class="ue-row"><span class="ue-pill">Uptake: '+ue.up+'</span><span class="ue-pill ue-ev'+(ue.tested ? ' tested' : ' untested')+(ue.outcome ? ' outcome-'+ue.outcome : '')+'">Evidence: '+ue.ev+'</span></div>';
 }
-var DESK_ASKS = ["Should we send reminders again?", "What aged well?", "Who was early?", "How did views shift?", "Draft a Protocol rule"];
+var DESK_ASKS = ["Should we send reminders again?", "What held up?", "Who was early?", "How did views shift?", "Draft a Protocol rule"];
 function deskPool(ignoreAsOf){
   return Object.keys(T).map(function(k){ return T[k]; }).filter(function(t){
     return !t.src && shown(t) && (S.irisScope === "me" || t.vis !== "me") && (ignoreAsOf || inAsOf(t));
@@ -2886,22 +2886,22 @@ function irisAnswer(text, tid){
     return {text:"Switched your screen to Warm Archival Paper with deep forest ink. Everyone else in your node keeps their own look.",
       lookProposal:{id:"warm-paper", title:"Rhizome · Warm Archival Paper", note:"Unbleached paper ground, ivory cards, deep forest ink, and muted Verity gold.", swatches:["#f7f2e7","#fffaf1","#21362f","#327e68","#9a7300"]}};
   }
-  /* Second decision & Aged-like-wine/milk look-back (works in both Workbench and Desk) */
+  /* Second decision & look-back (works in both Workbench and Desk) */
   if (/remind|second decision|again|opt-in/.test(q)){
     var rCites = ["remind","r8"].filter(function(id){ return !!T[id] && inAsOf(T[id]); });
     var rDraft = {kind:"believe", text:"Make weekly reminders opt-in so newcomers don't feel pushed.", v:0.78, g:0.65, refs:rCites};
     if (S.irisMode === "desk") pushDeskOutput({kind:"draft", title:"Second decision", draft:rDraft});
     return {text:"Not as a group blast. On 3 Nov everyone agreed weekly reminders got regulars to show up (True · 0.85), but on 6 Nov Mara noticed two newcomers muted the chat (Good/Bad · −0.45). Plain notes only remind you that it worked — splitting true from good changes the next call: make reminders opt-in for newcomers.", open:"remind", cites:rCites, draft:rDraft};
   }
-  if (/aged|wine|milk|held up|what worked/.test(q)){
+  if (/held up|what worked|came true|look.?back/.test(q)){
     var hasHeatNow = S.irisMode !== "desk" || S.deskAsOf < 2;
     var aCites = (hasHeatNow ? ["heating","r5","remind","r8"] : ["heating","remind","r8"]).filter(function(id){ return !!T[id] && inAsOf(T[id]); });
     var missRun = S.due && S.results.run === "miss";
     if (missRun && T.run) aCites.push("run");
-    var aDraft = {kind:"noticed", text:hasHeatNow ? "Wen's heating call aged like wine; weekly reminders worked for regulars but felt pushy to newcomers." : "Before outcomes arrived on 10 Nov, weekly reminders already showed a split between working and feeling good.", v:0.82, g:0.30, refs:aCites.slice(0, 3)};
+    var aDraft = {kind:"noticed", text:hasHeatNow ? "Wen's heating call held up; weekly reminders worked for regulars but felt pushy to newcomers." : "Before outcomes arrived on 10 Nov, weekly reminders already showed a split between working and feeling good.", v:0.82, g:0.30, refs:aCites.slice(0, 3)};
     if (S.irisMode === "desk") pushDeskOutput({kind:"draft", title:"Look-back brief", draft:aDraft});
     var aMsg = hasHeatNow
-      ? "Two clear look-backs on record: Wen's 2 Nov heating prediction aged like wine (0.90 before the 11th, confirmed yesterday), while weekly reminders worked for regulars (0.85) but landed poorly with newcomers (−0.45)."+(missRun ? " Privately, your 5 km run call aged like milk — kept on the thought to learn from, never marked against you." : "")
+      ? "Two clear look-backs on record: Wen's 2 Nov heating prediction held up (0.90 before the 11th, confirmed yesterday), while weekly reminders worked for regulars (0.85) but landed poorly with newcomers (−0.45)."+(missRun ? " Privately, your 5 km run call didn't hold up — kept on the thought to learn from, never marked against you." : "")
       : "As of "+asOfShort(S.deskAsOf)+", Wen's heating prediction is still open and untested. Weekly reminders already show the split: high truth (0.85) for regulars, low good (−0.45) once newcomers muted the chat.";
     return {text:aMsg, open:hasHeatNow ? "heating" : "remind", cites:aCites, draft:aDraft};
   }
@@ -3103,10 +3103,10 @@ function dueBlock(t){
   if (t.who !== "J" || !arrived(t)) return "";
   var res = S.results[t.id];
   if (!res) return '<div class="sec nudge due"><p class="q">'+DATE.ask+'</p><div class="btnrow"><button class="btn" data-act="result" data-id="'+t.id+'" data-v="1">'+DATE.yes+'</button><button class="btn" data-act="result" data-id="'+t.id+'" data-v="0">'+DATE.no+'</button></div></div>';
-  var agedChip = res === "hit" ? '<span class="aged-chip wine">Aged like wine</span>' : '<span class="aged-chip milk">Aged like milk · private to you</span>';
+  var outcomeChip = res === "hit" ? '<span class="outcome-chip held">Held up</span>' : '<span class="outcome-chip missed">Didn&#39;t hold up · private to you</span>';
   var nextCallBtn = '<button class="btn" data-act="second-decision">See how Iris uses this next</button>';
-  if (S.closed[t.id]) return '<div class="sec nudge due">'+agedChip+'<p class="done">'+ic("check",20)+DATE.closed+'</p>'+nextCallBtn+'</div>';
-  return '<div class="sec nudge due">'+agedChip+'<p class="say sm">'+(res === "miss" ? DATE.miss : DATE.hit)+'</p>'+(res === "miss" ? '<p class="hint">'+DATE.kind+'</p>' : '')+
+  if (S.closed[t.id]) return '<div class="sec nudge due">'+outcomeChip+'<p class="done">'+ic("check",20)+DATE.closed+'</p>'+nextCallBtn+'</div>';
+  return '<div class="sec nudge due">'+outcomeChip+'<p class="say sm">'+(res === "miss" ? DATE.miss : DATE.hit)+'</p>'+(res === "miss" ? '<p class="hint">'+DATE.kind+'</p>' : '')+
     '<div class="btnrow"><button class="btn primary" data-act="reflect" data-id="'+t.id+'">'+DATE.reflect+'</button>'+nextCallBtn+'</div></div>';
 }
 function chips(t){
