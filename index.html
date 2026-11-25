@@ -473,23 +473,23 @@ select{font:inherit;color:inherit}
   .filters > .pick.more{display:none}
   .fmore,.fmore.open{display:contents}
   .scrub{order:9;flex:1 1 100%;margin-block:-8px -4px}
-  .list > .trow{display:grid;grid-template-columns:minmax(0,1fr) 268px;column-gap:16px;row-gap:2px;align-items:center}
-  .list > .trow:not(:has(.thins)){grid-template-columns:minmax(0,1fr)}
-  .list > .trow > .trow-head,.list > .trow > .trow-text,.list > .trow > .bridge-line,.list > .trow > .trow-foot,.list > .trow > .trow-note{grid-column:1}
-  .list > .trow > .thins{grid-column:2;grid-row:1 / span 3;align-self:center}
-  .list > .trow > .trow-foot{min-height:24px;margin-block:-3px -2px}
-  .list > .trow > .trow-foot .mini{margin-block:-10px}
-  .list > .trow > .trow-foot .mini span{height:24px;padding:0 9px;font-size:12px}
-  .list > .trow .thin{min-height:20px;gap:6px}
-  .list > .trow .thin-lbl{width:30px;font-size:10.5px}
-  .list > .trow .thin-line{height:20px}
-  .list > .trow .thin-line .pin{width:17px;height:17px;margin-left:-8.5px;bottom:1px;font-size:9.5px}
+  .list .trow{display:grid;grid-template-columns:minmax(0,1fr) 268px;column-gap:16px;row-gap:2px;align-items:center}
+  .list .trow:not(:has(.thins)){grid-template-columns:minmax(0,1fr)}
+  .list .trow > .trow-head,.list .trow > .trow-text,.list .trow > .bridge-line,.list .trow > .trow-foot,.list .trow > .trow-note{grid-column:1}
+  .list .trow > .thins{grid-column:2;grid-row:1 / span 3;align-self:center}
+  .list .trow > .trow-foot{min-height:24px;margin-block:-3px -2px}
+  .list .trow > .trow-foot .mini{margin-block:-10px}
+  .list .trow > .trow-foot .mini span{height:24px;padding:0 9px;font-size:12px}
+  .list .trow .thin{min-height:20px;gap:6px}
+  .list .trow .thin-lbl{width:30px;font-size:10.5px}
+  .list .trow .thin-line{height:20px}
+  .list .trow .thin-line .pin{width:17px;height:17px;margin-left:-8.5px;bottom:1px;font-size:9.5px}
 }
 @media (hover:hover) and (pointer:fine){
   @container (min-width:750px){
-    .list > .trow .act-pri{order:5}
-    .list > .trow .act-sec{opacity:0;transition:opacity .12s}
-    .list > .trow:hover .act-sec,.list > .trow:focus-within .act-sec,.list > .trow .act-sec[aria-pressed="true"]{opacity:1}
+    .list .trow .act-pri{order:5}
+    .list .trow .act-sec{opacity:0;transition:opacity .12s}
+    .list .trow:hover .act-sec,.list .trow:focus-within .act-sec,.list .trow .act-sec[aria-pressed="true"]{opacity:1}
   }
 }
 .list{display:flex;flex-direction:column}
@@ -512,7 +512,7 @@ select{font:inherit;color:inherit}
 .thin-line .thumb{display:none}
 .thin-line.crowded .rail{top:auto;bottom:1px;margin:0}
 .thin .who-link{min-height:44px;margin-block:-10px;font-size:12.5px}
-.trow-foot{display:flex;align-items:center;flex-wrap:wrap;gap:0 10px;min-height:36px;font-size:12.5px;color:var(--ink2)}
+.trow-foot{position:relative;z-index:3;display:flex;align-items:center;flex-wrap:wrap;gap:0 10px;min-height:36px;font-size:12.5px;color:var(--ink2)}
 .who{display:inline-flex;align-items:center;gap:5px;font-weight:600;color:var(--ink)}
 .trow-acts{display:flex;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}
 .mini{display:inline-flex;align-items:center;justify-content:flex-end;min-width:44px;min-height:44px;padding:0 0 0 8px;border:0;background:none}
@@ -724,6 +724,7 @@ select{font:inherit;color:inherit}
 .iris-settings{margin-left:auto}
 .iris-settings summary{min-height:44px;margin-block:-10px;font-size:12.5px}
 .iris-settings-in{display:flex;flex-direction:column;gap:6px;padding:8px 0 2px}
+.iris-hint-mob{display:none}
 .cite-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
 .cite-chip{display:inline-flex;align-items:center;gap:5px;min-height:44px;max-width:100%;padding:4px 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-size:12.5px;font-weight:600;color:var(--ink);cursor:pointer;text-align:left}
 .cite-chip .kmark{--km:15px}
@@ -842,6 +843,19 @@ select{font:inherit;color:inherit}
 .lrep-head .lrow-tog{margin:-12px -2px -12px auto}
 .lrep-text{font-size:12px;line-height:1.26;font-weight:500;color:var(--ink);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .lrep-more{margin-left:14px;font-size:11.5px;min-height:44px;margin-block:-8px}
+/* Browse ledger tucked References + hanging Replies (shared grammar with Iris sidebar) */
+.titem{display:flex;flex-direction:column;min-width:0}
+.titem > .trow{position:relative;z-index:2}
+.brow-rep{margin:-11px 0;padding:0;justify-content:flex-start}
+.brow-rep span{height:22px;padding:0 7px;gap:4px;font-size:11.5px}
+.brow-rep .nrep{font-style:normal;font-weight:inherit}
+.titem .lref-wrap{margin:0 12px}
+.titem .lref-bar{font-size:11.5px;padding:3px 10px 4px}
+.titem .lref-txt,.titem .lrep-text{font-size:13px;line-height:1.3}
+.titem .lref-meta,.titem .lrep-head{font-size:11.5px}
+.titem .lrep-card{padding:6px 10px}
+.lrep-jump{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;border:0;background:none;padding:0;min-height:44px;justify-content:center;text-align:left;cursor:pointer}
+.lrep-jump:hover .lrep-text{text-decoration:underline}
 .thins-mini{flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:6px;align-items:center}
 .thin-dots{min-height:14px;gap:4px}
 .thin-dots .thin-lbl{width:auto;font-size:10px;flex:none}
@@ -863,6 +877,33 @@ html[data-look="modern"][data-palette][data-iris-look="rhizome-roots"] .kmark{ba
 html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--ground:#f7f2e7;--surface:#fffaf1;--tile:#efe7d6;--ink:#1f322b;--ink2:#556860;--body:#263932;--line:#d8ccb5;--line2:#e3d9c5;--btn:#2c6e59;--on-btn:#fffaf1;--accent:#2c6e59;--accent-text:#235b49;--accent-soft:rgba(44,110,89,.16);--violet:#6b5ca5;--violet-soft:rgba(107,92,165,.13);--inset:#f3ecde;--field:#fffcf5;--white:#fffaf1;--chipbg:#efe7d6;--chat-me:#2c6e59;--on-chat-me:#fffaf1;--tint:rgba(44,110,89,.12)}
 
 @media (prefers-reduced-motion: reduce){ .fresh{animation:none} }
+
+/* ---------- phone polish: regular Iris chat, 1-col node members, single-row Browse card actions ---------- */
+@media (max-width:767px){
+  .v-iris{overflow:hidden;padding-bottom:10px}
+  .v-iris > .iris-rail,.v-iris > .iris-ledger,.v-iris > .iris-outputs,.v-iris > .sayit,.v-iris .iris-mode-sw,.v-iris [data-act="iris-draft-toggle"],.v-iris .desk-bar{display:none}
+  .v-iris > .iris-pane{flex:1;min-height:0;overflow:hidden}
+  .v-iris .iris-body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .v-iris .iris-foot{flex:none}
+  .v-iris .iris-settings-in{max-height:220px;overflow-y:auto}
+  .iris-hint-wide{display:none}
+  .iris-hint-mob{display:inline}
+  .iris-notice{flex-direction:column;align-items:stretch;gap:6px}
+  .iris-notice-acts{justify-content:flex-start;margin-left:-4px}
+}
+@media (max-width:639px){
+  .v-page .who-names{grid-template-columns:minmax(0,1fr);gap:10px}
+  .list .trow-acts{flex-wrap:nowrap;width:100%;justify-content:flex-end}
+  .list .trow-acts .mini{padding-left:4px}
+  .list .trow-acts .mini:first-child{padding-left:0}
+  .list .trow-acts .mini span{padding:0 9px;font-size:12.5px}
+  .list .trow-acts .mini.share{justify-content:center;padding-left:2px}
+  .list .trow-acts .mini.share span{padding:0 8px}
+}
+@media (min-width:768px) and (max-width:999px){
+  .v-iris > .iris-pane{order:-1}
+  .v-iris > .iris-ledger{max-height:420px;overflow-y:auto}
+}
 
 /* ---------- wide screens: a real page ---------- */
 @media (min-width:1000px){
@@ -1725,9 +1766,9 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="notebook"]) .list{gap:9px;padding-bottom:10px}
 :where(:root[data-look="notebook"]) .trow{position:relative;isolation:isolate;border:0;border-radius:2px;padding:7px 12px 5px;background:none;box-shadow:none;filter:drop-shadow(0 1px 0 rgba(60,40,10,.15)) drop-shadow(0 4px 5px rgba(70,50,20,.20))}
 :where(:root[data-look="notebook"]) .trow::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;background:var(--svg-fibre),var(--surface);transform:rotate(var(--tilt,0deg))}
-:where(:root[data-look="notebook"]) .trow:nth-child(3n+1){--tilt:-.18deg}
-:where(:root[data-look="notebook"]) .trow:nth-child(3n+2){--tilt:.16deg}
-:where(:root[data-look="notebook"]) .trow:nth-child(3n){--tilt:-.1deg}
+:where(:root[data-look="notebook"]) .titem:nth-child(3n+1) > .trow{--tilt:-.18deg}
+:where(:root[data-look="notebook"]) .titem:nth-child(3n+2) > .trow{--tilt:.16deg}
+:where(:root[data-look="notebook"]) .titem:nth-child(3n) > .trow{--tilt:-.1deg}
 :where(:root[data-look="notebook"]) .trow[data-kind="noticed"]::before{background:linear-gradient(115deg,rgba(255,255,255,.0) 40%,rgba(120,100,60,.05) 100%),var(--white);box-shadow:inset 0 0 0 1px rgba(60,40,10,.08)}
 :where(:root[data-look="notebook"]) .trow[data-kind="noticed"]::after,:where(:root[data-look="notebook"]) .trow[data-kind="predict"]::after{content:"";position:absolute;z-index:1;pointer-events:none;left:calc(50% - 34px);top:-8px;width:68px;height:15px;background:var(--svg-tape_crepe) center/100% 100% no-repeat;transform:rotate(-2deg);filter:drop-shadow(0 1px 1px rgba(60,40,10,.24))}
 :where(:root[data-look="notebook"]) .trow[data-kind="predict"]::after{left:56%;transform:rotate(1.8deg)}
@@ -2234,7 +2275,7 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="professional"]) .lrep-card .vchip,:where(:root[data-look="professional"]) .lref-row .vchip{background:var(--surface);font-size:9.5px;padding:0 5px}
 :where(:root[data-look="professional"]) .list{gap:5px}
 :where(:root[data-look="professional"]) .trow{gap:3px;padding:7px 11px 4px;border:1px solid var(--line2);border-radius:8px;background:var(--surface);transition:border-color .12s,box-shadow .12s}
-:where(:root[data-look="professional"]) .list > .trow{grid-template-columns:minmax(0,1fr)}
+:where(:root[data-look="professional"]) .list .trow{grid-template-columns:minmax(0,1fr)}
 :where(:root[data-look="professional"]) .trow:hover{border-color:var(--line);box-shadow:0 1px 4px rgba(15,23,42,.06)}
 :where(:root[data-look="professional"]) .trow-head{gap:8px;font-size:11px}
 :where(:root[data-look="professional"]) .kind{padding:2px 7px;border-radius:999px;background:var(--kb,var(--tile));font-size:10px;line-height:1.3;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--kt,var(--ink2))}
@@ -2566,6 +2607,7 @@ var S = {notes:[], sent:[], chat:[], outside:false, view:"first", big:false, due
   deskOutputs:[], // session outputs collected on the Research Desk (protocol diffs & queued drafts)
   irisLit:null,   // bidirectional hover/click highlight id
   irisOpen:null,  // expanded sidebar row: {id, refs:bool, rep:bool} | null
+  browseOpen:null,// expanded Browse row: {id, refs:bool, rep:bool} | null
   irisLook:null,  // hidden self-restyle overlay: null | "rhizome-roots" | "warm-paper"
   seq:0};
 freshOwner();
@@ -3294,16 +3336,93 @@ function openHead(t){
 function trow(t, reply){
   var n = allReplies(t.id).length, q = t.kind === "wonder", res = S.results[t.id], due = dueNow(t);
   var tag = t.came || res === "hit" ? DATE.rowHit : res === "miss" ? DATE.rowMiss : due ? DATE.rowDue : "";
-  var h = '<article class="trow'+(reply?' reply':'')+(S.just===t.id?' fresh':'')+'" data-kind="'+t.kind+'"'+(t.who === "J" ? ' data-mine' : '')+' data-act="open" data-id="'+t.id+'" id="row-'+t.id+'">';
+  var refs = !reply ? refsOf(t) : [];
+  var repOpen = !reply && !!(S.browseOpen && S.browseOpen.id === t.id && S.browseOpen.rep && n > 0);
+  var h = '<article class="trow'+(reply?' reply':'')+(refs.length?' has-refs':'')+(S.just===t.id?' fresh':'')+'" data-kind="'+t.kind+'"'+(t.who === "J" ? ' data-mine' : '')+' data-act="open" data-id="'+t.id+'" id="row-'+t.id+'">';
   h += '<div class="trow-head"><span class="kind">'+kmark(t.kind)+KINDS[t.kind].type+'</span>'+(t.topic && t.topic !== "general" ? '<span class="topic">'+topicName(t.topic)+'</span>' : '')+(pro() ? tierChip(t) : '')+(tag?'<span class="tag">'+tag+'</span>':'')+'<span class="when">'+t.when+'</span></div>';
   h += '<p class="trow-text">'+t.text+'</p>' + (t.src && t.bridge ? '<p class="bridge-line">Introduced by '+esc(t.bridge)+' · came via '+esc(S.gname)+' ↔ '+ELSEWHERE[t.src]+'</p>' : '') + thin(t);
-  h += '<div class="trow-foot">'+(pro() ? proNums(t) : '')+'<span class="who">'+(t.vis === "me" ? ic("lock",15)+'Only you can see this' : owner(t)+(t.src ? ' · '+ELSEWHERE[t.src] : '')+(t.vis === "all" ? ' · Public' : ''))+'</span>'+(n ? '<span class="nrep">'+nReplies(n)+'</span>' : '')+(refsOf(t).length ? '<span class="nref">Refers to '+nThoughts(refsOf(t).length)+'</span>' : '');
+  var repCtrl = !n ? '' : reply ? '<span class="nrep">'+nReplies(n)+'</span>'
+    : '<button class="mini lrow-rep brow-rep'+(repOpen ? ' open' : '')+'" data-act="browse-rep-tog" data-id="'+t.id+'" aria-expanded="'+repOpen+'" aria-label="'+(repOpen ? 'Hide' : 'Show')+' '+nReplies(n)+'"><span>'+ic("chat",12)+'<em class="nrep">'+nReplies(n)+'</em></span></button>';
+  var refMark = refs.length ? '<span class="sr nref">Refers to '+nThoughts(refs.length)+'</span>'
+    : (reply && refsOf(t).length ? '<span class="nref">Refers to '+nThoughts(refsOf(t).length)+'</span>' : '');
+  h += '<div class="trow-foot">'+(pro() ? proNums(t) : '')+'<span class="who">'+(t.vis === "me" ? ic("lock",15)+'Only you can see this' : owner(t)+(t.src ? ' · '+ELSEWHERE[t.src] : '')+(t.vis === "all" ? ' · Public' : ''))+'</span>'+repCtrl+refMark;
   h += acts(t, false)+'</div>';
   // a prediction you have just staked offers its nudge once, right on its row; after that it lives in the opened thought
   if (S.note && S.note.nudge === t.id){ var nd = nudge(t); if (nd) h += '<div class="trow-note">'+nd+'</div>'; }
   // a prediction you have just staked with a date says when it comes back, once
   if (S.note && S.note.dated === t.id && !arrived(t)) h += '<div class="trow-note">'+comesBack(t, true)+'</div>';
   return h + '</article>';
+}
+function browseReplies(rootId){
+  var out = [];
+  function walk(pid, depth){
+    repliesOf(pid).forEach(function(r){
+      out.push({t:r, depth:depth, parent:T[pid]});
+      walk(r.id, depth + 1);
+    });
+  }
+  walk(rootId, 1);
+  return out;
+}
+function browseItem(t){
+  var refs = refsOf(t), reps = browseReplies(t.id), rf = reflecting();
+  var isOpen = S.browseOpen && S.browseOpen.id === t.id;
+  var refsOpen = !!(isOpen && S.browseOpen.refs && refs.length > 0);
+  var repOpen = !!(isOpen && S.browseOpen.rep && reps.length > 0);
+  var refHtml = '';
+  if (refs.length > 0){
+    var extN = refs.filter(function(r){ return !!r.src; }).length;
+    var extLbl = extN ? ' · '+extN+' from '+ELSEWHERE.lake : '';
+    if (!refsOpen){
+      refHtml = '<div class="lref-wrap'+(refs.length > 1 ? ' multi' : '')+'">'+
+        '<button class="lref-peek" data-act="browse-ref-tog" data-id="'+t.id+'" aria-expanded="false">'+
+          '<span class="lref-bar"><span>Refers to '+refs.length+extLbl+'</span><i aria-hidden="true">▾</i></span></button></div>';
+    } else {
+      var refRows = refs.map(function(r){
+        if (gone(t, r)){
+          return '<div class="lref-row lref-gone"><p class="lref-meta">A thought from '+ELSEWHERE[r.src]+' that can no longer be read here.</p></div>';
+        }
+        var rAct = C.refs.indexOf(r.id) >= 0;
+        var rReps = r.src ? 0 : allReplies(r.id).length;
+        var rMeta = owner(r)+(r.src ? ' · from '+ELSEWHERE[r.src] : ' · '+(r.due || r.when)+(rReps ? ' · '+nReplies(rReps) : ''));
+        var kNote = (r.src && t.vis !== "me" && (t.who === "J" || S.owner) && keepOf(t, r) !== "kept")
+          ? '<p class="lref-keep">'+KEEP[keepOf(t, r)].replace("%g", ELSEWHERE[r.src])+'</p>' : '';
+        var rChips = pro() ? signalChipsHTML(r, true) : '';
+        var rBody = '<span class="lref-line">'+kmark(r.kind)+'<span class="lref-txt">'+r.text+'</span></span><span class="lref-meta">'+rMeta+'</span>'+rChips+kNote;
+        var rMain = '<button class="lref-jump" data-act="open" data-id="'+r.id+'">'+rBody+'</button>';
+        var canRef = !(rf && rf.id === r.id);
+        var rSide = '<div class="lref-side">'+(pro() ? '' : gaugeRailHTML(r))+
+          (canRef ? '<button class="mini lrow-tog'+(rAct ? ' go' : '')+'" data-act="refer" data-id="'+r.id+'" aria-pressed="'+rAct+'" aria-label="'+(rAct ? 'Remove reference' : 'Reference this thought')+'"><span>'+(rAct ? '✓ Ref' : '+ Ref')+'</span></button>' : '')+'</div>';
+        return '<div class="lref-row" data-kind="'+r.kind+'">'+rMain+rSide+'</div>';
+      }).join("");
+      refHtml = '<div class="lref-wrap open">'+
+        '<div class="lref-sheet">'+
+          '<button class="lref-head" data-act="browse-ref-tog" data-id="'+t.id+'" aria-expanded="true"><span class="lref-bar"><span>Refers to '+refs.length+'</span><i aria-hidden="true">▴</i></span></button>'+
+          '<div class="lref-list">'+refRows+'</div></div></div>';
+    }
+  }
+  var repHtml = '';
+  if (repOpen){
+    var shownReps = reps.slice(0, 6);
+    var repCards = shownReps.map(function(x){
+      var r = x.t, lvl = Math.min(x.depth, 2), rAct = C.refs.indexOf(r.id) >= 0;
+      var toLbl = x.depth >= 2 && x.parent ? ' <span class="lrow-to">to '+owner(x.parent)+'</span>' : '';
+      var canRef = !(rf && rf.id === r.id);
+      var repBody = pro()
+        ? '<button class="lrep-jump" data-act="open" data-id="'+r.id+'"><p class="lrep-text">'+r.text+'</p>'+signalChipsHTML(r, true)+'</button>'
+        : '<div class="lrep-body"><button class="lrep-jump" data-act="open" data-id="'+r.id+'"><p class="lrep-text">'+r.text+'</p></button>'+gaugeRailHTML(r)+'</div>';
+      return '<article class="lrep-card lvl-'+lvl+'" data-kind="'+r.kind+'">'+
+        '<div class="lrep-head"><span class="kind">'+kmark(r.kind)+'<span class="lrow-who">'+owner(r)+'</span>'+toLbl+'</span><span class="lrow-when">· '+r.when+'</span>'+
+        (canRef ? '<button class="mini lrow-tog'+(rAct ? ' go' : '')+'" data-act="refer" data-id="'+r.id+'" aria-pressed="'+rAct+'" aria-label="'+(rAct ? 'Remove reference' : 'Reference this reply')+'"><span>'+(rAct ? '✓ Ref' : '+ Ref')+'</span></button>' : '')+'</div>'+
+        repBody+'</article>';
+    }).join("");
+    if (reps.length > 6){
+      repCards += '<button class="link lrep-more" data-act="open" data-id="'+t.id+'">Open thread ('+reps.length+')</button>';
+    }
+    repHtml = '<div class="lrep-wrap">'+repCards+'</div>';
+  }
+  var sub = (refHtml || repHtml) ? '<div class="litem-sub'+(repOpen ? ' has-thread' : '')+'">'+refHtml+repHtml+'</div>' : '';
+  return '<div class="titem'+(repOpen ? ' rep-open' : '')+(refsOpen ? ' ref-open' : '')+'" data-titem="'+t.id+'">'+trow(t, false)+sub+'</div>';
 }
 
 /* ---------- a thought opened inside Browse: both full lines, as the cards always had them ---------- */
@@ -3448,7 +3567,7 @@ function listHTML(){
   if (on) c = rows.length ? rows.length+' of '+all.length+' thoughts.' : 'No thoughts match.';
   else c = all.length+' thoughts, '+(F.old ? 'oldest' : 'newest')+' first. '+(all.some(dueNow) ? 'One of your dates has arrived. ' : '')+(wait ? wait+(wait > 1 ? ' are' : ' is')+' waiting for your take.' : "You're all caught up.");
   return '<p class="count"><span aria-live="polite">'+c+'</span>'+(on ? '<button class="link" data-act="clear">Show all</button>' : '')+'<button class="link" data-act="f-old">'+(pro() ? (F.old ? 'jump to newest' : 'jump to oldest')+' &rarr;' : F.old ? 'Show newest first' : 'Show oldest first')+'</button></p>'+
-    '<div class="list">'+rows.map(function(t){ return trow(t, false); }).join("")+'</div>';
+    '<div class="list">'+rows.map(browseItem).join("")+'</div>';
 }
 function browseInner(){
   if (S.open && T[S.open]) return viewOpen(T[S.open]);
@@ -4052,7 +4171,7 @@ function viewIris(){
     '<div class="iris-body">'+
       '<article class="card iris-notice"><div class="iris-notice-main"><p class="irisline"><span class="iris"><i>O</i></span><b>Iris noticed</b></p><p class="iris-notice-txt">Tomas thinks the node would get more done meeting in the morning. '+(S.big ? irisCount() : 'Mara agrees. Wen is on the fence. ')+(v==null?"You haven't weighed in.":"You said "+word(v).toLowerCase()+".")+'</p></div>' +
       '<div class="iris-notice-acts"><button class="mini go" data-act="goto"><span>Weigh in</span></button><button class="mini" data-act="discuss" data-id="morning"><span>Ask why</span></button></div></article>' +
-      '<div class="chat-log" id="chat-log" aria-live="polite">'+(S.chat.length ? S.chat.map(chatMsg).join("") : '<p class="hint">'+(desk ? 'Pin thoughts from Sources on the left, then synthesize them with Iris. Protocol edits and drafts land in the Output Tray on the right.' : 'Ask about what your node has staked, or ask Iris to help draft a thought on the left.')+'</p>')+'</div>'+
+      '<div class="chat-log" id="chat-log" aria-live="polite">'+(S.chat.length ? S.chat.map(chatMsg).join("") : '<p class="hint"><span class="iris-hint-wide">'+(desk ? 'Pin thoughts from Sources on the left, then synthesize them with Iris. Protocol edits and drafts land in the Output Tray on the right.' : 'Ask about what your node has staked, or open Say it · Draft to compose with Iris.')+'</span><span class="iris-hint-mob">Ask Iris about what your node has staked, where people disagree, or what is waiting for your take.</span></p>')+'</div>'+
     '</div>'+
     '<div class="iris-foot">'+
       '<div class="starters iris-starters">'+starters.map(function(a){ return '<button class="mini" data-act="chat-ask" data-id="'+esc(a)+'"><span>'+a+'</span></button>'; }).join("")+'</div>'+
@@ -4279,7 +4398,17 @@ function drawBrowse(top){
   if (top){ b.scrollTop = 0; }
   S.just = null;
 }
-function drawList(){ var l = $("#list"); if (l) l.innerHTML = listHTML(); }
+function drawList(anchorId){
+  var l = $("#list"); if (!l) return;
+  var sc = window.innerWidth >= 1000 ? $("#browse") : $("#main");
+  var aEl = anchorId ? $('[data-titem="'+anchorId+'"]') : null;
+  var aTop = aEl ? aEl.getBoundingClientRect().top : null;
+  l.innerHTML = listHTML();
+  if (sc && anchorId && aTop != null){
+    var after = $('[data-titem="'+anchorId+'"]');
+    if (after) sc.scrollTop += after.getBoundingClientRect().top - aTop;
+  }
+}
 function toast(msg){
   var t = $("#toast"); $("span", t).textContent = msg; t.classList.add("show");
   clearTimeout(toast.t); toast.t = setTimeout(function(){ t.classList.remove("show"); }, 2600);
@@ -4287,7 +4416,7 @@ function toast(msg){
 function setView(v, quiet, big, due){
   S.view = v; S.tab = "thoughts"; S.groupHike = false; S.big = v === "day" && !!big; S.due = v === "day" && !big && !!due; S.reflect = null;
   if (S.due){ delete S.results.run; delete S.closed.run; }   // the demo's date arrives afresh each time
-  S.open = null; S.reply = null; S.weigh = null; S.sayOpen = false; S.note = null; S.irisMode = "workbench"; S.irisDraft = defaultIrisDraft(); S.irisLit = null; S.irisOpen = null; S.irisLedger = true; S.irisFilter = "cited"; S.deskFilter = "all"; S.deskPinned = ["morning","hike"]; S.deskAsOf = 0; S.deskDir = {dismissed:0}; S.deskOutputs = [];
+  S.open = null; S.reply = null; S.weigh = null; S.sayOpen = false; S.note = null; S.irisMode = "workbench"; S.irisDraft = defaultIrisDraft(); S.irisLit = null; S.irisOpen = null; S.browseOpen = null; S.irisLedger = true; S.irisFilter = "cited"; S.deskFilter = "all"; S.deskPinned = ["morning","hike"]; S.deskAsOf = 0; S.deskDir = {dismissed:0}; S.deskOutputs = [];
   F = freshF(); C = freshC();
   // two made-up notifications wait on an ordinary day
   S.notes = v === "day" ? [{id:"n1", who:"T", what:"weighed in on your thought", t:"tent"}, {id:"n2", who:"W", what:"asked for your take", t:"coach", weigh:true}] : [];
@@ -4621,6 +4750,26 @@ document.addEventListener("click", function(e){
     S.irisMode = id; render();
     toast(id === "desk" ? "Research Desk: Sources → Iris → Output tray." : "Workbench: Say it · Iris · Live ledger.");
   }
+  else if (act === "browse-ref-tog"){
+    if (!T[id]) return;
+    if (S.browseOpen && S.browseOpen.id === id){
+      S.browseOpen.refs = !S.browseOpen.refs;
+      if (!S.browseOpen.refs && !S.browseOpen.rep) S.browseOpen = null;
+    } else {
+      S.browseOpen = {id:id, refs:true, rep:false};
+    }
+    drawList(id);
+  }
+  else if (act === "browse-rep-tog"){
+    if (!T[id]) return;
+    if (S.browseOpen && S.browseOpen.id === id){
+      S.browseOpen.rep = !S.browseOpen.rep;
+      if (!S.browseOpen.refs && !S.browseOpen.rep) S.browseOpen = null;
+    } else {
+      S.browseOpen = {id:id, refs:false, rep:true};
+    }
+    drawList(id);
+  }
   else if (act === "iris-ref-tog"){
     if (!T[id]) return;
     if (S.irisOpen && S.irisOpen.id === id){
@@ -4696,7 +4845,15 @@ document.addEventListener("click", function(e){
   }
   else if (act === "iris-cite"){
     var cid = b.getAttribute("data-cite");
-    if (cid && T[cid]){ S.irisLedger = true; S.irisLit = cid; render(); var lr = $('[data-lrow="'+cid+'"]'); if (lr && lr.scrollIntoView) lr.scrollIntoView({block:"nearest"}); }
+    if (cid && T[cid]){
+      if (window.innerWidth < 768){
+        if (!T[cid].src){ S.tab = "thoughts"; render(false); openThought(cid); }
+        else { toast("From " + (ELSEWHERE[T[cid].src] || "another node") + "."); }
+      } else {
+        S.irisLedger = true; S.irisLit = cid; render();
+        var lr = $('[data-lrow="'+cid+'"]'); if (lr && lr.scrollIntoView) lr.scrollIntoView({block:"nearest"});
+      }
+    }
   }
   else if (act === "iris-refer"){
     if (!T[id]) return;
@@ -4718,13 +4875,18 @@ document.addEventListener("click", function(e){
   }
   else if (act === "iris-draft-turn"){
     var cm = S.chat[Number(id)]; if (!cm || !cm.draft) return;
-    if (C.fromIris && C.humanEdited){ S.irisDraft = true; S.sayOpen = true; render(); toast("Your edits are locked. Clear the draft to load another."); return; }
+    if (C.fromIris && C.humanEdited){
+      if (window.innerWidth < 768){ S.tab = "thoughts"; S.sayOpen = true; render(false); }
+      else { S.irisDraft = true; S.sayOpen = true; render(); }
+      toast("Your edits are locked. Clear the draft to load another."); return;
+    }
     clearSingle(false); S.reply = null; S.reflect = null;
     C.kind = cm.draft.kind || "believe"; C.text = cm.draft.text || ""; C.v = cm.draft.v != null ? cm.draft.v : 0.65;
     C.good = cm.draft.g != null ? cm.draft.g : null;
     C.refs = (cm.draft.refs || []).filter(function(rid){ return !!T[rid] && (S.irisScope === "me" || T[rid].vis !== "me"); });
     C.vis = S.irisScope; C.fromIris = true; C.humanEdited = false; C.privWarn = false;
-    S.irisDraft = true; S.sayOpen = true; render();
+    if (window.innerWidth < 768){ S.tab = "thoughts"; S.sayOpen = true; render(false); }
+    else { S.irisDraft = true; S.sayOpen = true; render(); }
     var dta = $("#c-text"); if (dta) dta.focus();
   }
   else if (act === "iris-apply-look"){ S.irisLook = id; render(); toast("Applied to your screen only."); }
@@ -4771,7 +4933,7 @@ document.addEventListener("click", function(e){
     drawSay(); drawBrowse();
     if (at < 0) toast("Added. It is in your writing box.");
   }
-  else if (act === "unrefer"){ C.refs = C.refs.filter(function(x){ return x !== id; }); C.privWarn = false; if (S.tab === "iris") render(); else { drawSay(); if (S.open) drawBrowse(); } }
+  else if (act === "unrefer"){ C.refs = C.refs.filter(function(x){ return x !== id; }); C.privWarn = false; if (S.tab === "iris") render(); else { drawSay(); drawBrowse(); } }
   else if (act === "who"){ openWho(id, b.getAttribute("data-line") === "good"); }
   else if (act === "who-close"){ closeWho(); }
   else if (act === "nope"){ toast("That part isn't in this demo."); }
