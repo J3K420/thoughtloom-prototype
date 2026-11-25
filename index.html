@@ -747,23 +747,101 @@ select{font:inherit;color:inherit}
 .iris-seg .mini span{height:24px;padding:0 8px;font-size:11.5px}
 .iris-seg .mini.go span{background:var(--btn);color:var(--on-btn);border-color:var(--btn)}
 .iris-lscroll{display:flex;flex-direction:column;gap:5px}
-.lrow{display:flex;flex-direction:column;gap:3px;padding:6px 9px 5px;border:1.5px solid var(--line);border-radius:10px;background:var(--ground);transition:border-color .15s,box-shadow .15s}
+.litem{display:flex;flex-direction:column;min-width:0}
+.lrow{position:relative;z-index:2;display:flex;flex-direction:column;gap:3px;padding:6px 9px 5px;border:1.5px solid var(--line);border-radius:10px;background:var(--ground);transition:border-color .15s,box-shadow .15s}
 .lrow.lit{border-color:var(--ink);box-shadow:0 0 0 2px var(--violet-soft)}
 .lrow-head{display:flex;align-items:center;gap:5px;min-height:22px;font-size:11px;color:var(--ink2)}
-.lrow-head .kind{--km:15px;gap:5px;font-size:11.5px;min-width:0}
+.lrow-head .kind{--km:15px;gap:5px;font-size:11.5px;min-width:0;flex-shrink:0}
 .lrow-who{font-weight:650;color:var(--ink);white-space:nowrap}
+.lrow-when,.lrow-to{font-size:11px;color:var(--ink2);white-space:nowrap}
+.lrow-to{font-style:italic}
 .lrow-stat{padding:1px 6px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:10.5px;font-weight:600;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:118px}
 .lrow-stat.untested{border-style:dashed}
 .lrow-stat.tested{border-color:var(--accent,var(--btn));background:var(--tint,var(--tile));color:var(--accent-text,var(--ink))}
 .lrow-head .tag{padding:1px 6px;font-size:10.5px;white-space:nowrap}
+.lrow-rep{min-width:44px;min-height:44px;padding:0;margin:-11px -7px;justify-content:center;flex:none}
+.lrow-rep span{height:20px;padding:0 6px;gap:3px;font-size:10.5px;border-color:var(--line);color:var(--ink2);background:var(--surface)}
+.lrow-rep.open span{border-color:var(--ink);background:var(--btn);color:var(--on-btn)}
+.lrow-rep.has-pin:not(.open) span{border-color:var(--accent,var(--btn));color:var(--ink);box-shadow:0 0 0 1px var(--accent,var(--btn))}
 .lrow-tog{margin:-11px -2px -11px auto;min-width:44px;min-height:44px;padding-left:0;justify-content:flex-end}
 .lrow-tog span{height:22px;padding:0 7px;font-size:11px}
 .lrow-text{font-size:13px;line-height:1.26;font-weight:600;color:var(--ink);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lrow-body{display:flex;align-items:center;gap:8px}
+.lrow-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.lrow-body .lrow-foot{margin-top:0;min-height:20px}
+.lrow-body .lrow-acts{margin-left:0}
+.lrow-body .lrow-acts .mini{padding-left:0;justify-content:flex-start}
 .lrow-foot{display:flex;align-items:center;flex-wrap:nowrap;gap:6px;min-height:22px;font-size:11.5px;color:var(--ink2)}
 .lrow-foot .nums{font-size:10.5px;gap:0 8px}
-.lrow-acts{display:flex;flex:none;margin-left:auto}
+.lrow-acts{position:relative;z-index:3;display:flex;flex:none;margin-left:auto}
 .lrow-acts .mini{margin-block:-11px;min-width:44px;min-height:44px;padding-left:2px}
 .lrow-acts .mini span{height:22px;padding:0 7px;font-size:11px}
+/* Option D: Right-rail stacked Verity + Valence mini gauges (Studio, Notebook, Observatory) */
+.lrail{flex:none;width:62px;display:flex;flex-direction:column;justify-content:center;gap:5px;padding-left:7px;border-left:1px solid var(--line)}
+.dg{display:flex;flex-direction:column;gap:2px}
+.dg-lbl{display:flex;justify-content:space-between;align-items:baseline;font-size:9.5px;font-weight:650;font-variant-numeric:tabular-nums;color:var(--ink2);line-height:1}
+.spark{position:relative;display:block;width:100%;height:5px;border-radius:3px;background:var(--line)}
+.spark .sp-band{position:absolute;top:0;bottom:0;border-radius:3px;opacity:.30}
+.spark .sp-fill{position:absolute;top:0;bottom:0;border-radius:3px}
+.spark .sp-mid{position:absolute;left:50%;top:-1.5px;bottom:-1.5px;width:1.5px;margin-left:-.75px;background:var(--ink2);opacity:.7}
+.spark .sp-you{position:absolute;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--ink);border:1.2px solid var(--surface);z-index:2}
+.spark .fill.n{background:var(--ink2)}
+/* Option C: Color-dot signal chips (Professional) */
+.vchips{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px;min-width:0}
+.vchip{display:inline-flex;align-items:center;gap:4px;padding:1px 6px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:10.5px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);line-height:1.35;white-space:nowrap}
+.vchip i{display:inline-block;width:6px;height:6px;border-radius:50%;flex:none;background:var(--ink2)}
+.vchip.t{border-color:color-mix(in srgb,var(--gold-deep) 55%,var(--line))}
+.vchip.t i{background:var(--gold-deep)}
+.vchip.f{border-color:color-mix(in srgb,var(--red) 55%,var(--line))}
+.vchip.f i{background:var(--red)}
+.vchip.g{border-color:color-mix(in srgb,var(--green-deep) 55%,var(--line))}
+.vchip.g i{background:var(--green-deep)}
+.vchip.c{border-color:color-mix(in srgb,var(--coral-deep) 55%,var(--line))}
+.vchip.c i{background:var(--coral-deep)}
+.vchip .vrng{font-weight:400;color:var(--ink2);font-size:9.5px}
+.lref-side{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.lref-side .lrail{width:56px;padding-left:6px}
+.lrep-body{display:flex;align-items:center;gap:7px}
+.lrep-body .lrep-text{flex:1;min-width:0}
+.lrep-body .lrail{width:56px;padding-left:6px}
+/* tucked-under References sheet + hanging Replies thread inside the Iris sidebar */
+.litem-sub{position:relative;display:flex;flex-direction:column}
+.litem-sub.has-thread::before{content:"";position:absolute;left:5px;top:-2px;bottom:14px;width:2px;background:var(--line);pointer-events:none}
+.lref-wrap{position:relative;z-index:1;margin:0 10px}
+.lref-wrap.multi::after{content:"";display:block;height:3px;margin:0 8px;border:1.5px solid var(--line);border-top:0;border-radius:0 0 6px 6px;background:var(--tile);pointer-events:none}
+.lref-peek{position:relative;z-index:2;display:flex;align-items:flex-end;width:100%;min-height:44px;margin-top:-28px;padding:28px 0 0;border:0;background:none;text-align:left;cursor:pointer}
+.lref-bar{display:flex;align-items:center;justify-content:space-between;gap:6px;width:100%;padding:2px 8px 3px;border:1.5px solid var(--line);border-top:0;border-radius:0 0 8px 8px;background:var(--tile);font-size:10.5px;font-weight:650;line-height:1.25;color:var(--ink2);transition:border-color .12s,color .12s}
+.lref-bar i{font-style:normal;font-size:11px;line-height:1}
+.lref-peek:hover .lref-bar,.lref-head:hover .lref-bar{border-color:var(--ink2);color:var(--ink)}
+.lref-sheet{border:1.5px solid var(--line);border-top:0;border-radius:0 0 9px 9px;background:var(--tile);overflow:hidden}
+.lref-head{display:flex;align-items:flex-end;width:100%;min-height:44px;margin-top:-22px;padding:22px 0 0;border:0;background:none;text-align:left;cursor:pointer}
+.lref-head .lref-bar{border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:3px 8px}
+.lref-list{display:flex;flex-direction:column}
+.lref-row{display:flex;align-items:center;gap:4px;min-height:44px;padding:5px 7px 5px 8px;border-top:1px solid var(--line);background:transparent;transition:background .12s}
+.lref-row:first-child{border-top:0}
+.lref-row.lit{background:var(--violet-soft)}
+.lref-jump,.lref-static{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;text-align:left}
+.lref-jump{border:0;background:none;padding:0;min-height:44px;justify-content:center;cursor:pointer}
+.lref-jump:hover .lref-txt{text-decoration:underline}
+.lref-line{display:flex;align-items:flex-start;gap:5px;min-width:0}
+.lref-line .kmark{--km:14px;margin-top:1px}
+.lref-txt{font-size:12px;line-height:1.25;font-weight:600;color:var(--ink);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lref-meta{font-size:10.5px;line-height:1.25;color:var(--ink2)}
+.lref-keep{margin:1px 0 0;font-size:10.5px;line-height:1.25;color:var(--ink2);font-style:italic}
+.lref-gone{padding:6px 8px}
+.lref-row .lrow-tog{margin-block:-8px}
+.lrep-wrap{display:flex;flex-direction:column;gap:4px;padding-top:5px}
+.lrep-card{position:relative;display:flex;flex-direction:column;gap:2px;margin-left:14px;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);transition:border-color .15s,box-shadow .15s}
+.lrep-card::before{content:"";position:absolute;left:-9px;top:14px;width:9px;height:1.5px;background:var(--line);pointer-events:none}
+.lrep-card.lvl-2{margin-left:24px}
+.lrep-card.lvl-2::before{left:-19px;width:19px}
+.lrep-card.pinned{border-color:var(--accent,var(--btn));box-shadow:inset 3px 0 0 var(--accent,var(--btn))}
+.lrep-card.lit{border-color:var(--ink);box-shadow:0 0 0 2px var(--violet-soft)}
+.lrep-head{display:flex;align-items:center;gap:5px;min-height:20px;font-size:11px;color:var(--ink2)}
+.lrep-head .kind{--km:14px;gap:4px;font-size:11px}
+.lrep-head .lrow-tog{margin:-12px -2px -12px auto}
+.lrep-text{font-size:12px;line-height:1.26;font-weight:500;color:var(--ink);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lrep-more{margin-left:14px;font-size:11.5px;min-height:44px;margin-block:-8px}
 .thins-mini{flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:6px;align-items:center}
 .thin-dots{min-height:14px;gap:4px}
 .thin-dots .thin-lbl{width:auto;font-size:10px;flex:none}
@@ -1583,6 +1661,20 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="notebook"]) .iris-pane,:where(:root[data-look="notebook"]) .iris-ledger,:where(:root[data-look="notebook"]) .desk-tray,:where(:root[data-look="notebook"]) .iris-rail{border:1px solid var(--edge);border-radius:4px 10px 10px 4px;background-color:var(--ground);background-image:var(--svg-grain),repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px);background-attachment:local;box-shadow:0 2px 0 var(--stack1),0 4px 0 var(--stack2),0 12px 22px rgba(40,25,5,.26)}
 :where(:root[data-look="notebook"]) .iris-notice{border:1px solid var(--edge2);border-image:none;border-radius:3px;background:var(--white);filter:none;box-shadow:1px 2px 0 rgba(70,50,20,.10);padding:8px 11px}
 :where(:root[data-look="notebook"]) .lrow,:where(:root[data-look="notebook"]) .out-card{border:1px solid var(--edge2);border-radius:2px;background:var(--surface);box-shadow:1px 2px 0 rgba(70,50,20,.12)}
+:where(:root[data-look="notebook"]) .lref-bar,:where(:root[data-look="notebook"]) .lref-sheet{border-color:var(--edge2);border-radius:0 0 2px 2px;background:var(--stack1);box-shadow:1px 2px 0 rgba(70,50,20,.10)}
+:where(:root[data-look="notebook"]) .lref-wrap.multi::after{border-color:var(--edge2);border-radius:0 0 2px 2px;background:var(--stack2)}
+:where(:root[data-look="notebook"]) .lref-head .lref-bar{box-shadow:none;background:transparent;border-bottom-color:var(--edge2)}
+:where(:root[data-look="notebook"]) .lref-row{border-top-color:var(--edge2)}
+:where(:root[data-look="notebook"]) .litem-sub.has-thread::before{width:0;border-left:2px dashed var(--thread);background:none}
+:where(:root[data-look="notebook"]) .lrep-card{border-color:var(--edge2);border-radius:2px;background:var(--white);box-shadow:1px 2px 0 rgba(70,50,20,.10)}
+:where(:root[data-look="notebook"]) .lrep-card::before{background:var(--thread);opacity:.65}
+:where(:root[data-look="notebook"]) .lrep-text,:where(:root[data-look="notebook"]) .lref-txt{font-variation-settings:"MONO" 1,"CASL" .35;font-weight:500}
+:where(:root[data-look="notebook"]) .lrail{border-left-color:var(--edge2)}
+:where(:root[data-look="notebook"]) .dg-lbl{font-variation-settings:"MONO" 1,"CASL" 1}
+:where(:root[data-look="notebook"]) .spark{background:var(--edge2)}
+:where(:root[data-look="notebook"]) .spark .sp-fill,:where(:root[data-look="notebook"]) .spark .sp-band{box-shadow:none;top:0;bottom:0}
+:where(:root[data-look="notebook"]) .lrow-rep span{border-color:var(--edge2);background:var(--white)}
+:where(:root[data-look="notebook"]) .lrow-rep.open span{border-color:var(--ink);background:var(--btn);color:var(--on-btn)}
 :where(:root[data-look="notebook"]) .lrow.pinned{border-color:var(--ink);box-shadow:inset 3px 0 0 var(--ink),1px 2px 0 rgba(70,50,20,.16)}
 :where(:root[data-look="notebook"]) .lrow.lit{border-color:var(--ink);box-shadow:0 0 0 2px var(--violet-soft),2px 3px 0 rgba(43,42,51,.22)}
 :where(:root[data-look="notebook"]) .desk-bar,:where(:root[data-look="notebook"]) .prov{border:1px solid var(--edge2);border-radius:3px;background:var(--white);box-shadow:1px 2px 0 rgba(70,50,20,.10)}
@@ -1856,6 +1948,29 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="future"]) .trow-foot{margin-left:-28px}
 }
 :where(:root[data-look="future"]) .lrow{border-color:var(--line2);border-top-color:var(--rim);border-radius:10px}
+:where(:root[data-look="future"]) .lref-bar,:where(:root[data-look="future"]) .lref-sheet{border:1px solid var(--line2);border-top:0;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+:where(:root[data-look="future"]) .lref-wrap.multi::after{border:1px solid var(--line2);border-top:0;background:transparent}
+:where(:root[data-look="future"]) .lref-peek:hover .lref-bar,:where(:root[data-look="future"]) .lref-head:hover .lref-bar{border-color:var(--accent);color:var(--accent-text)}
+:where(:root[data-look="future"]) .lref-wrap.open .lref-sheet{border-color:var(--line)}
+:where(:root[data-look="future"]) .lref-head .lref-bar{border:0;border-bottom:1px solid var(--line2)}
+:where(:root[data-look="future"]) .lref-row{border-top-color:var(--line2)}
+:where(:root[data-look="future"]) .lref-row.lit{background:var(--glass2)}
+:where(:root[data-look="future"]) .litem-sub.has-thread::before{width:1px;background:var(--accent);opacity:.42;box-shadow:0 0 6px var(--accent)}
+:where(:root[data-look="future"]) .lrep-card{border:1px solid var(--line2);background:rgba(3,7,18,.28);-webkit-backdrop-filter:none;backdrop-filter:none}
+:where(:root[data-look="future"]) .lrep-card::before{height:1px;background:var(--accent);opacity:.42}
+:where(:root[data-look="future"]) .lrep-card.pinned{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+:where(:root[data-look="future"]) .lrep-card.lit{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+:where(:root[data-look="future"]) .lrow-rep span{border:1px solid var(--line2);background:rgba(3,7,18,.34);color:var(--ink2)}
+:where(:root[data-look="future"]) .lrow-rep.open span{border-color:var(--accent);background:var(--glass2);color:var(--accent-text)}
+:where(:root[data-look="future"]) .lrow-rep.has-pin:not(.open) span{border-color:var(--accent);color:var(--accent-text)}
+:where(:root[data-look="future"]) .lrail{border-left-color:var(--line2)}
+:where(:root[data-look="future"]) .spark{background:rgba(255,255,255,.14)}
+:where(:root[data-look="future"]) .spark .sp-mid{background:rgba(255,255,255,.55)}
+:where(:root[data-look="future"]) .spark .fill.t{background:var(--gold)}
+:where(:root[data-look="future"]) .spark .fill.f{background:#d94b5c}
+:where(:root[data-look="future"]) .spark .fill.g{background:var(--green)}
+:where(:root[data-look="future"]) .spark .fill.c{background:var(--coral)}
+:where(:root[data-look="future"]) .spark .sp-you{background:#fff;border-color:var(--ground)}
 :where(:root[data-look="future"]) .iris-notice{border-color:var(--line2);background:var(--glass)}
 :where(:root[data-look="future"]) .kind{gap:0}
 :where(:root[data-look="future"]) .tag{font-weight:600}
@@ -2102,6 +2217,21 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="professional"]) .scrub-zone input:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:6px}
 :where(:root[data-look="professional"]) .count{margin-bottom:8px;font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--ink2)}
 :where(:root[data-look="professional"]) .count .link{margin-left:12px;font-family:var(--mono);font-size:11px}
+:where(:root[data-look="professional"]) .lrow-head .kind{padding:2px 7px;border-radius:999px;font-size:10px;line-height:1.3;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+:where(:root[data-look="professional"]) .lref-bar,:where(:root[data-look="professional"]) .lref-sheet{border:1px solid var(--line2);border-top:0;border-radius:0 0 6px 6px;background:var(--inset)}
+:where(:root[data-look="professional"]) .lref-bar{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+:where(:root[data-look="professional"]) .lref-wrap.multi::after{border:1px solid var(--line2);border-top:0;border-radius:0 0 5px 5px;background:var(--tile)}
+:where(:root[data-look="professional"]) .lref-head .lref-bar{border:0;border-bottom:1px solid var(--line2);border-radius:0;background:transparent}
+:where(:root[data-look="professional"]) .lref-row{border-top-color:var(--line2)}
+:where(:root[data-look="professional"]) .litem-sub.has-thread::before{background:var(--line2)}
+:where(:root[data-look="professional"]) .lrep-card{border-color:var(--line2);border-radius:6px;background:var(--inset)}
+:where(:root[data-look="professional"]) .lrep-card::before{background:var(--line2)}
+:where(:root[data-look="professional"]) .lrep-head .kind{padding:0;border-radius:0;background:none;font-size:11px;letter-spacing:0;text-transform:none;color:var(--ink)}
+:where(:root[data-look="professional"]) .lrow-rep span{height:20px;border:1px solid var(--line);background:var(--inset);font-family:var(--mono);font-size:10px}
+:where(:root[data-look="professional"]) .lrow-rep.open span{border-color:var(--btn);background:var(--btn);color:var(--on-btn)}
+:where(:root[data-look="professional"]) .vchip{font-family:var(--mono);font-size:10px;background:var(--inset)}
+:where(:root[data-look="professional"]) .lrep-card .vchips,:where(:root[data-look="professional"]) .lref-row .vchips{margin-top:2px}
+:where(:root[data-look="professional"]) .lrep-card .vchip,:where(:root[data-look="professional"]) .lref-row .vchip{background:var(--surface);font-size:9.5px;padding:0 5px}
 :where(:root[data-look="professional"]) .list{gap:5px}
 :where(:root[data-look="professional"]) .trow{gap:3px;padding:7px 11px 4px;border:1px solid var(--line2);border-radius:8px;background:var(--surface);transition:border-color .12s,box-shadow .12s}
 :where(:root[data-look="professional"]) .list > .trow{grid-template-columns:minmax(0,1fr)}
@@ -2310,6 +2440,7 @@ var IC = {
   back:'<path d="M15 6l-6 6 6 6"/>',
   share:'<path d="M12 15V4M8 7.5l4-4 4 4M5 12v7.5h14V12"/>',
   bell:'<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 21.5h4"/>',
+  chat:'<path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.7 8.7 0 0 1-3.8-.9L3 20.5l1.4-4.7A8.3 8.3 0 0 1 3.5 11.5a8.5 8.5 0 0 1 17.5 0z"/>',
   you:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'
 };
 function ic(n, s){ s = s || 20; return '<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[n]+'</svg>'; }
@@ -2434,6 +2565,7 @@ var S = {notes:[], sent:[], chat:[], outside:false, view:"first", big:false, due
   deskDir:{dismissed:0}, // human-director lineage counters
   deskOutputs:[], // session outputs collected on the Research Desk (protocol diffs & queued drafts)
   irisLit:null,   // bidirectional hover/click highlight id
+  irisOpen:null,  // expanded sidebar row: {id, refs:bool, rep:bool} | null
   irisLook:null,  // hidden self-restyle overlay: null | "rhizome-roots" | "warm-paper"
   seq:0};
 freshOwner();
@@ -3181,7 +3313,6 @@ function tail(t){
   if (t.none) h += '<p class="after">'+(S.big ? (XP.length + 3 - others(allTakes(t)).length)+" haven't said yet." : t.none)+'</p>';
   if (t.src && t.bridge) h += '<p class="after bridge-line">Introduced by <b>'+esc(t.bridge)+'</b> · came via '+esc(S.gname)+' ↔ '+ELSEWHERE[t.src]+'.</p>';
   if (t.who === "J" && t.vis) h += '<p class="after">'+(t.vis === "me" ? ic("lock",16)+" Only you can see this." : t.vis === "all" ? "Anyone can see this. Nobody has weighed in yet." : "Your node can see this. Nobody has weighed in yet.")+'</p>';
-  h += uptakeEvidenceHTML(t, false);
   if (t.shaped) h += '<p class="fine shaped-line">'+esc(t.shaped)+'</p>';
   h += nudge(t);
   if (t.who === "J" && t.date && !arrived(t)) h += comesBack(t);
@@ -3620,12 +3751,104 @@ function sidebarStatus(t, useAsOf){
   if (res === "miss") return {txt:"Missed", cls:"tag outcome-missed"};
   if (due) return {txt:DATE.rowDue, cls:"tag"};
   if (t.due) return {txt:t.due, cls:"lrow-stat"};
-  var ue = uptakeEvidence(t, useAsOf);
-  var s = ue.ev.replace(/^Tested · /, "").replace(/ \(private to you\)$/, "");
-  if (s === "1 reflection · worked, low good") s = "Worked · low good";
-  return {txt:s, cls:"lrow-stat"+(ue.tested ? " tested" : " untested")};
+  return null;
 }
-function sidebarRow(t, desk){
+function sidebarVisible(t, desk){
+  return !!t && shown(t) && (!desk || inAsOf(t)) && (S.irisScope === "me" || t.vis !== "me");
+}
+function sidebarReplies(id, desk){
+  var out = [];
+  function walk(pid, depth){
+    repliesOf(pid).forEach(function(r){
+      if (!r.src && sidebarVisible(r, desk)){
+        out.push({t:r, depth:depth, parent:T[pid]});
+        walk(r.id, depth + 1);
+      }
+    });
+  }
+  walk(id, 1);
+  return out;
+}
+function sidebarRefs(t, desk){
+  var vis = [], hiddenPriv = 0, ext = 0;
+  (t.refs || []).forEach(function(rid){
+    var r = T[rid]; if (!shown(r)) return;
+    if (r.vis === "me" && S.irisScope !== "me"){ hiddenPriv++; return; }
+    if (!r.src && desk && !inAsOf(r)) return;
+    if (r.src) ext++;
+    vis.push(r);
+  });
+  return {vis:vis, hiddenPriv:hiddenPriv, ext:ext, total:vis.length + hiddenPriv};
+}
+function fmtShort(v, good){
+  if (good){
+    if (Math.abs(v) < 0.005) return "0";
+    var s = Math.abs(v).toFixed(2).replace(/^0/, "");
+    return (v > 0 ? "+" : "−") + s;
+  }
+  return v >= 0.995 ? "1.0" : v.toFixed(2).replace(/^0/, "");
+}
+function meterStats(t){
+  var ts = allTakes(t), gs = allGoods(t);
+  var v = null, g = null;
+  if (ts.length){
+    var vs = ts.map(function(o){ return o.v; });
+    var vMin = Math.min.apply(null, vs), vMax = Math.max.apply(null, vs);
+    var vAvg = vs.reduce(function(a, b){ return a + b; }, 0) / vs.length;
+    v = {min:vMin, max:vMax, avg:vAvg, mine:myTake(t.id), cls:vAvg > 0.52 ? "t" : vAvg < 0.48 ? "f" : "n", n:ts.length};
+  }
+  if (gs.length){
+    var gvs = gs.map(function(o){ return o.v * 2 - 1; });
+    var gMin = Math.min.apply(null, gvs), gMax = Math.max.apply(null, gvs);
+    var gAvg = gvs.reduce(function(a, b){ return a + b; }, 0) / gvs.length;
+    g = {min:gMin, max:gMax, avg:gAvg, mine:myGood(t.id), cls:gAvg > 0.06 ? "g" : gAvg < -0.06 ? "c" : "n", n:gs.length};
+  }
+  return {v:v, g:g};
+}
+function sparkBar(st, good){
+  var p = good ? (st.avg + 1) / 2 : st.avg;
+  var pMin = good ? (st.min + 1) / 2 : st.min;
+  var pMax = good ? (st.max + 1) / 2 : st.max;
+  var pMine = st.mine == null ? null : (good ? (st.mine + 1) / 2 : st.mine);
+  var band = (pMax - pMin >= 0.07)
+    ? '<span class="sp-band fill '+st.cls+'" style="left:'+(pMin*100).toFixed(1)+'%;width:'+((pMax-pMin)*100).toFixed(1)+'%"></span>' : '';
+  var fill = Math.abs(p - 0.5) > 0.015
+    ? '<span class="sp-fill fill '+st.cls+'" style="left:'+(p > 0.5 ? 50 : p*100).toFixed(1)+'%;width:'+(Math.abs(p-0.5)*100).toFixed(1)+'%"></span>' : '';
+  var you = pMine != null
+    ? '<span class="sp-you" style="left:'+Math.min(96, Math.max(4, pMine*100)).toFixed(1)+'%"></span>' : '';
+  return '<span class="spark" aria-hidden="true">'+band+fill+'<span class="sp-mid"></span>'+you+'</span>';
+}
+/* Option D: Right-rail stacked mini gauges (Studio, Notebook, Observatory) */
+function gaugeRailHTML(t){
+  var m = meterStats(t);
+  if (!m.v && !m.g) return '';
+  var tip = [];
+  var h = '';
+  if (m.v){
+    tip.push('Sure '+fmt(m.v.avg)+(m.v.max - m.v.min >= 0.15 ? ' ('+fmt(m.v.min)+'–'+fmt(m.v.max)+')' : ''));
+    h += '<div class="dg"><div class="dg-lbl"><span>S</span><span>'+fmtShort(m.v.avg, false)+'</span></div>'+sparkBar(m.v, false)+'</div>';
+  }
+  if (m.g){
+    tip.push('Good '+fmtGood(m.g.avg)+(m.g.max - m.g.min >= 0.30 ? ' ('+fmtGood(m.g.min)+'–'+fmtGood(m.g.max)+')' : ''));
+    h += '<div class="dg"><div class="dg-lbl"><span>G</span><span>'+fmtShort(m.g.avg, true)+'</span></div>'+sparkBar(m.g, true)+'</div>';
+  }
+  return '<div class="lrail" role="img" aria-label="'+esc(tip.join(', '))+'" title="'+esc(tip.join(' · '))+'">'+h+'</div>';
+}
+/* Option C: Color-dot signal chips (Professional) */
+function signalChipsHTML(t, compact){
+  var m = meterStats(t);
+  if (!m.v && !m.g) return '';
+  var h = '<span class="vchips">';
+  if (m.v){
+    var vr = !compact && (m.v.max - m.v.min >= 0.25) ? ' <span class="vrng">('+m.v.min.toFixed(1)+'–'+m.v.max.toFixed(1)+')</span>' : '';
+    h += '<span class="vchip '+m.v.cls+'" title="Verity '+fmt(m.v.avg)+' ('+m.v.n+' takes)"><i></i>'+(compact ? 'V ' : 'verity ')+fmt(m.v.avg)+vr+'</span>';
+  }
+  if (m.g){
+    h += '<span class="vchip '+m.g.cls+'" title="Valence '+fmtGood(m.g.avg)+' ('+m.g.n+' takes)"><i></i>'+(compact ? 'Val ' : 'valence ')+fmtGood(m.g.avg)+'</span>';
+  }
+  return h + '</span>';
+}
+function sidebarRow(t, desk, flat, listIds){
   var active = desk ? isDeskPinned(t.id) : (C.refs.indexOf(t.id) >= 0);
   var due = dueNow(t), st = sidebarStatus(t, desk);
   var togAct = desk ? "desk-pin" : "iris-refer";
@@ -3635,13 +3858,85 @@ function sidebarRow(t, desk){
     ? '<button class="mini go" data-act="iris-lookback" data-id="'+t.id+'"><span>Look back</span></button>'
     : '<button class="mini" data-act="chat-open" data-id="'+t.id+'"><span>Open</span></button>';
   var headWho = pro() ? KINDS[t.kind].type : '<span class="lrow-who">'+owner(t)+'</span>';
-  return '<article class="lrow'+(desk && active ? ' pinned' : '')+(S.irisLit === t.id ? ' lit' : '')+(S.just === t.id ? ' fresh' : '')+'" data-kind="'+t.kind+'" data-lrow="'+t.id+'">'+
+  var parentNote = flat && t.re && T[t.re] ? '<span class="lrow-to">to '+owner(T[t.re])+'</span>' : '';
+  var reps = flat ? [] : sidebarReplies(t.id, desk);
+  var refs = flat ? {vis:[], hiddenPriv:0, ext:0, total:0} : sidebarRefs(t, desk);
+  var isOpen = !flat && S.irisOpen && S.irisOpen.id === t.id;
+  var refsOpen = !!(isOpen && S.irisOpen.refs && refs.total > 0);
+  var repOpen = !!(isOpen && S.irisOpen.rep && reps.length > 0);
+  var repHasActive = reps.some(function(x){ return desk ? isDeskPinned(x.t.id) : (C.refs.indexOf(x.t.id) >= 0); });
+  var repBtn = reps.length
+    ? '<button class="mini lrow-rep'+(repOpen ? ' open' : '')+(repHasActive ? ' has-pin' : '')+'" data-act="iris-rep-tog" data-id="'+t.id+'" aria-expanded="'+repOpen+'" aria-label="'+(repOpen ? 'Hide' : 'Show')+' '+nReplies(reps.length)+'"><span>'+ic("chat",12)+reps.length+'</span></button>'
+    : '';
+  var cardBody = pro()
+    ? '<p class="lrow-text">'+t.text+'</p>'+(t.shaped ? '<p class="fine shaped-line">'+esc(t.shaped)+'</p>' : '')+
+      '<div class="lrow-foot">'+signalChipsHTML(t, false)+'<span class="lrow-acts">'+footBtn+'</span></div>'
+    : '<div class="lrow-body"><div class="lrow-main"><p class="lrow-text">'+t.text+'</p>'+
+      (t.shaped ? '<p class="fine shaped-line">'+esc(t.shaped)+'</p>' : '')+
+      '<div class="lrow-foot"><span class="lrow-acts">'+footBtn+'</span></div></div>'+gaugeRailHTML(t)+'</div>';
+  var card = '<article class="lrow'+(desk && active ? ' pinned' : '')+(S.irisLit === t.id ? ' lit' : '')+(S.just === t.id ? ' fresh' : '')+(refs.total ? ' has-refs' : '')+'" data-kind="'+t.kind+'" data-lrow="'+t.id+'">'+
     '<div class="lrow-head"><span class="kind">'+kmark(t.kind)+headWho+(t.vis === "me" ? ' '+ic("lock",12) : '')+'</span>'+
-      '<span class="'+st.cls+'">'+st.txt+'</span>'+
+      (parentNote || (st ? '<span class="'+st.cls+'">'+st.txt+'</span>' : '<span class="lrow-when">· '+t.when+'</span>'))+
+      repBtn+
       '<button class="mini lrow-tog'+(active ? ' go' : '')+'" data-act="'+togAct+'" data-id="'+t.id+'" aria-pressed="'+active+'" aria-label="'+togAria+'"><span>'+togLbl+'</span></button></div>'+
-    '<p class="lrow-text">'+t.text+'</p>'+
-    (t.shaped ? '<p class="fine shaped-line">'+esc(t.shaped)+'</p>' : '')+
-    '<div class="lrow-foot">'+(pro() ? proNums(t) : thin(t, true))+'<span class="lrow-acts">'+footBtn+'</span></div></article>';
+    cardBody+'</article>';
+  var refHtml = '';
+  if (refs.total > 0){
+    var extLbl = refs.ext ? ' · '+refs.ext+' from '+ELSEWHERE.lake : '';
+    if (!refsOpen){
+      refHtml = '<div class="lref-wrap'+(refs.total > 1 ? ' multi' : '')+'">'+
+        '<button class="lref-peek" data-act="iris-ref-tog" data-id="'+t.id+'" aria-expanded="false">'+
+          '<span class="lref-bar"><span>Refers to '+refs.total+extLbl+'</span><i aria-hidden="true">▾</i></span></button></div>';
+    } else {
+      var refRows = refs.vis.map(function(r){
+        if (gone(t, r)){
+          return '<div class="lref-row lref-gone"><p class="lref-meta">A thought from '+ELSEWHERE[r.src]+' that can no longer be read here.</p></div>';
+        }
+        var rAct = !r.src && (desk ? isDeskPinned(r.id) : (C.refs.indexOf(r.id) >= 0));
+        var rJump = !r.src && listIds && listIds[r.id];
+        var rReps = r.src ? 0 : sidebarReplies(r.id, desk).length;
+        var rMeta = owner(r)+(r.src ? ' · from '+ELSEWHERE[r.src] : ' · '+(r.due || r.when)+(rReps ? ' · '+nReplies(rReps) : ''));
+        var kNote = (r.src && t.vis !== "me" && (t.who === "J" || S.owner) && keepOf(t, r) !== "kept")
+          ? '<p class="lref-keep">'+KEEP[keepOf(t, r)].replace("%g", ELSEWHERE[r.src])+'</p>' : '';
+        var rChips = pro() ? signalChipsHTML(r, true) : '';
+        var rBody = '<span class="lref-line">'+kmark(r.kind)+'<span class="lref-txt">'+r.text+'</span></span><span class="lref-meta">'+rMeta+'</span>'+rChips+kNote;
+        var rMain = rJump
+          ? '<button class="lref-jump" data-act="iris-cite" data-cite="'+r.id+'">'+rBody+'</button>'
+          : '<div class="lref-static">'+rBody+'</div>';
+        var rSide = '<div class="lref-side">'+(pro() ? '' : gaugeRailHTML(r))+
+          (r.src ? '' : '<button class="mini lrow-tog'+(rAct ? ' go' : '')+'" data-act="'+togAct+'" data-id="'+r.id+'" aria-pressed="'+rAct+'" aria-label="'+(desk ? (rAct ? 'Remove from desk' : 'Pin to Iris desk') : (rAct ? 'Remove reference' : 'Reference in draft'))+'"><span>'+(desk ? (rAct ? '✓ Pin' : '+ Pin') : (rAct ? '✓ Ref' : '+ Ref'))+'</span></button>')+'</div>';
+        return '<div class="lref-row'+(S.irisLit === r.id ? ' lit' : '')+'" data-kind="'+r.kind+'"'+(r.src ? '' : ' data-cite="'+r.id+'"')+'>'+rMain+rSide+'</div>';
+      }).join("");
+      if (refs.hiddenPriv > 0){
+        refRows += '<div class="lref-row lref-gone"><p class="lref-meta">'+ic("lock",11)+' '+refs.hiddenPriv+' private thought'+(refs.hiddenPriv === 1 ? '' : 's')+', hidden here.</p></div>';
+      }
+      refHtml = '<div class="lref-wrap open">'+
+        '<div class="lref-sheet">'+
+          '<button class="lref-head" data-act="iris-ref-tog" data-id="'+t.id+'" aria-expanded="true"><span class="lref-bar"><span>Refers to '+refs.total+'</span><i aria-hidden="true">▴</i></span></button>'+
+          '<div class="lref-list">'+refRows+'</div></div></div>';
+    }
+  }
+  var repHtml = '';
+  if (repOpen){
+    var shownReps = reps.slice(0, 6);
+    var repCards = shownReps.map(function(x){
+      var r = x.t, lvl = Math.min(x.depth, 2), rAct = desk ? isDeskPinned(r.id) : (C.refs.indexOf(r.id) >= 0);
+      var toLbl = x.depth >= 2 && x.parent ? ' <span class="lrow-to">to '+owner(x.parent)+'</span>' : '';
+      var repBody = pro()
+        ? '<p class="lrep-text">'+r.text+'</p>'+signalChipsHTML(r, true)
+        : '<div class="lrep-body"><p class="lrep-text">'+r.text+'</p>'+gaugeRailHTML(r)+'</div>';
+      return '<article class="lrep-card lvl-'+lvl+(desk && rAct ? ' pinned' : '')+(S.irisLit === r.id ? ' lit' : '')+'" data-kind="'+r.kind+'" data-cite="'+r.id+'">'+
+        '<div class="lrep-head"><span class="kind">'+kmark(r.kind)+'<span class="lrow-who">'+owner(r)+'</span>'+toLbl+'</span><span class="lrow-when">· '+r.when+'</span>'+
+        '<button class="mini lrow-tog'+(rAct ? ' go' : '')+'" data-act="'+togAct+'" data-id="'+r.id+'" aria-pressed="'+rAct+'" aria-label="'+(desk ? (rAct ? 'Remove from desk' : 'Pin to Iris desk') : (rAct ? 'Remove reference' : 'Reference in draft'))+'"><span>'+(desk ? (rAct ? '✓ Pin' : '+ Pin') : (rAct ? '✓ Ref' : '+ Ref'))+'</span></button></div>'+
+        repBody+'</article>';
+    }).join("");
+    if (reps.length > 6){
+      repCards += '<button class="link lrep-more" data-act="chat-open" data-id="'+t.id+'">Open thread ('+reps.length+')</button>';
+    }
+    repHtml = '<div class="lrep-wrap">'+repCards+'</div>';
+  }
+  var sub = (refHtml || repHtml) ? '<div class="litem-sub'+(repOpen ? ' has-thread' : '')+'">'+refHtml+repHtml+'</div>' : '';
+  return '<div class="litem'+(repOpen ? ' rep-open' : '')+(refsOpen ? ' ref-open' : '')+'" data-litem="'+t.id+'">'+card+sub+'</div>';
 }
 function viewIrisLedger(){
   if (!S.irisLedger){
@@ -3651,11 +3946,13 @@ function viewIrisLedger(){
   var all = Object.keys(T).map(function(k){ return T[k]; }).filter(function(t){
     return !t.src && shown(t) && (S.irisScope === "me" || t.vis !== "me");
   }).sort(function(a, b){ return b.at - a.at; });
+  var flat = S.irisFilter !== "all";
   var rows = all.filter(function(t){
     if (S.irisFilter === "cited") return !!cited[t.id];
     if (S.irisFilter === "due") return dueNow(t) || !!t.due || !!t.date;
     return !t.re;
   });
+  var listIds = {}; rows.forEach(function(r){ listIds[r.id] = true; });
   return '<aside class="iris-ledger" id="iris-ledger" aria-label="Live ledger">'+
     '<div class="panel-head iris-sh"><h2>Ledger</h2><span class="iris-sh-sub">'+(S.irisScope === "me" ? '+ private' : 'shared')+'</span><button class="x iris-fold-btn" data-act="iris-ledger-close" aria-label="Collapse ledger">›</button></div>'+
     '<div class="iris-seg" role="group" aria-label="Ledger filter">'+
@@ -3663,7 +3960,7 @@ function viewIrisLedger(){
       '<button class="mini'+(S.irisFilter === "all" ? ' go' : '')+'" data-act="iris-filter" data-id="all" aria-pressed="'+(S.irisFilter === "all")+'"><span>All</span></button>'+
       '<button class="mini'+(S.irisFilter === "due" ? ' go' : '')+'" data-act="iris-filter" data-id="due" aria-pressed="'+(S.irisFilter === "due")+'"><span>Due</span></button>'+
     '</div>'+
-    '<div class="iris-lscroll">'+(rows.length ? rows.map(function(t){ return sidebarRow(t, false); }).join("") : '<p class="hint">Nothing in this view yet.</p>')+'</div></aside>';
+    '<div class="iris-lscroll">'+(rows.length ? rows.map(function(t){ return sidebarRow(t, false, flat, listIds); }).join("") : '<p class="hint">Nothing in this view yet.</p>')+'</div></aside>';
 }
 function viewDeskSources(){
   var pins = activeDeskPins(), hid = hiddenByAsOfCount();
@@ -3671,12 +3968,14 @@ function viewDeskSources(){
     return '<aside class="iris-rail iris-rail-l" data-act="iris-ledger-open" role="button" tabindex="0" aria-label="Show sources"><span class="iris-rail-ico">›</span><span class="iris-rail-lbl">Sources'+(pins.length ? ' ('+pins.length+')' : '')+'</span></aside>';
   }
   var cited = irisCitedIds(), all = deskPool();
+  var flat = S.deskFilter !== "all";
   var rows = all.filter(function(t){
     if (S.deskFilter === "pinned") return isDeskPinned(t.id);
     if (S.deskFilter === "cited") return !!cited[t.id];
     if (S.deskFilter === "due") return dueNow(t) || !!t.due || !!t.date;
-    return !t.re || isDeskPinned(t.id);
+    return !t.re;
   });
+  var listIds = {}; rows.forEach(function(r){ listIds[r.id] = true; });
   return '<aside class="iris-ledger iris-sources" id="iris-ledger" aria-label="Research Desk sources">'+
     '<div class="panel-head iris-sh"><h2>Sources</h2>'+sel("desk-asof","Rewind Iris to date",ASOF_OPTS,String(S.deskAsOf))+'<button class="x iris-fold-btn" data-act="iris-ledger-close" aria-label="Collapse sources">‹</button></div>'+
     (S.deskAsOf > 0 ? '<div class="asof-banner"><span>As of <b>'+asOfShort(S.deskAsOf)+'</b> · hiding '+hid+' newer</span><button class="link" data-act="desk-asof-now">Now</button></div>' : '')+
@@ -3686,7 +3985,7 @@ function viewDeskSources(){
       '<button class="mini'+(S.deskFilter === "cited" ? ' go' : '')+'" data-act="desk-filter" data-id="cited" aria-pressed="'+(S.deskFilter === "cited")+'"><span>Cited</span></button>'+
       '<button class="mini'+(S.deskFilter === "due" ? ' go' : '')+'" data-act="desk-filter" data-id="due" aria-pressed="'+(S.deskFilter === "due")+'"><span>Due</span></button>'+
     '</div>'+
-    '<div class="iris-lscroll">'+(rows.length ? rows.map(function(t){ return sidebarRow(t, true); }).join("") : '<p class="hint">'+(S.deskFilter === "pinned" ? 'No thoughts pinned yet. Switch to All and tap + Pin.' : 'Nothing in this view for '+asOfShort(S.deskAsOf)+'.')+'</p>')+'</div></aside>';
+    '<div class="iris-lscroll">'+(rows.length ? rows.map(function(t){ return sidebarRow(t, true, flat, listIds); }).join("") : '<p class="hint">'+(S.deskFilter === "pinned" ? 'No thoughts pinned yet. Switch to All and tap + Pin.' : 'Nothing in this view for '+asOfShort(S.deskAsOf)+'.')+'</p>')+'</div></aside>';
 }
 function deskOutputCard(o){
   var dirHtml = o.dir ? '<p class="fine out-dir">'+esc(dirSummary(o.dir))+'</p>' : '';
@@ -3933,9 +4232,13 @@ function syncIrisLook(){
     bg.style.display = "block";
   } else if (bg){ bg.style.display = "none"; }
 }
-function render(keep){
+function render(keep, anchorId){
   syncIrisLook();
-  var top = main.scrollTop, br = $("#browse"), btop = br ? br.scrollTop : 0, sy = $("#say"), stop = sy ? sy.scrollTop : 0, h, cls;
+  var top = main.scrollTop, br = $("#browse"), btop = br ? br.scrollTop : 0, sy = $("#say"), stop = sy ? sy.scrollTop : 0;
+  var ls = $(".iris-lscroll"), ltop = ls ? ls.scrollTop : 0, ib = $(".iris-body"), ibtop = ib ? ib.scrollTop : 0;
+  var anchorBefore = anchorId ? $('[data-litem="'+anchorId+'"]') : null;
+  var anchorTop = anchorBefore ? anchorBefore.getBoundingClientRect().top : null;
+  var h, cls;
   if (S.view === "first"){ h = viewFirst(); cls = "v-first s-" + S.step; }
   else if (S.tab === "iris"){ h = viewIris(); cls = "v-iris" + (S.irisMode === "desk" ? " iris-desk" : "") + (S.irisDraft ? " draft-open" : "") + (!S.irisLedger ? " ledger-closed" : ""); }
   else if (S.tab === "group"){ h = viewGroup(); cls = "v-page"; }
@@ -3944,7 +4247,19 @@ function render(keep){
   main.className = "scroll gut " + cls;
   main.innerHTML = h;
   main.scrollTop = keep === false ? 0 : top;
-  if (keep !== false){ br = $("#browse"); if (br) br.scrollTop = btop; sy = $("#say"); if (sy) sy.scrollTop = stop; }
+  if (keep !== false){
+    br = $("#browse"); if (br) br.scrollTop = btop;
+    sy = $("#say"); if (sy) sy.scrollTop = stop;
+    ib = $(".iris-body"); if (ib) ib.scrollTop = ibtop;
+    ls = $(".iris-lscroll");
+    if (ls){
+      ls.scrollTop = ltop;
+      if (anchorId && anchorTop != null){
+        var anchorAfter = $('[data-litem="'+anchorId+'"]');
+        if (anchorAfter) ls.scrollTop += anchorAfter.getBoundingClientRect().top - anchorTop;
+      }
+    }
+  }
   $("#tabs").innerHTML = TABS.map(function(t){ return '<button class="tab" data-act="tab" data-id="'+t[0]+'"'+(S.tab===t[0]?' aria-current="page"':'')+'>'+ic(t[0],24)+'<span>'+t[1]+'</span></button>'; }).join("");
   drawBell();
   var first = S.view === "first";
@@ -3972,7 +4287,7 @@ function toast(msg){
 function setView(v, quiet, big, due){
   S.view = v; S.tab = "thoughts"; S.groupHike = false; S.big = v === "day" && !!big; S.due = v === "day" && !big && !!due; S.reflect = null;
   if (S.due){ delete S.results.run; delete S.closed.run; }   // the demo's date arrives afresh each time
-  S.open = null; S.reply = null; S.weigh = null; S.sayOpen = false; S.note = null; S.irisMode = "workbench"; S.irisDraft = defaultIrisDraft(); S.irisLit = null; S.irisLedger = true; S.irisFilter = "cited"; S.deskFilter = "all"; S.deskPinned = ["morning","hike"]; S.deskAsOf = 0; S.deskDir = {dismissed:0}; S.deskOutputs = [];
+  S.open = null; S.reply = null; S.weigh = null; S.sayOpen = false; S.note = null; S.irisMode = "workbench"; S.irisDraft = defaultIrisDraft(); S.irisLit = null; S.irisOpen = null; S.irisLedger = true; S.irisFilter = "cited"; S.deskFilter = "all"; S.deskPinned = ["morning","hike"]; S.deskAsOf = 0; S.deskDir = {dismissed:0}; S.deskOutputs = [];
   F = freshF(); C = freshC();
   // two made-up notifications wait on an ordinary day
   S.notes = v === "day" ? [{id:"n1", who:"T", what:"weighed in on your thought", t:"tent"}, {id:"n2", who:"W", what:"asked for your take", t:"coach", weigh:true}] : [];
@@ -4306,13 +4621,34 @@ document.addEventListener("click", function(e){
     S.irisMode = id; render();
     toast(id === "desk" ? "Research Desk: Sources → Iris → Output tray." : "Workbench: Say it · Iris · Live ledger.");
   }
-  else if (act === "desk-filter"){ S.deskFilter = id; render(); }
+  else if (act === "iris-ref-tog"){
+    if (!T[id]) return;
+    if (S.irisOpen && S.irisOpen.id === id){
+      S.irisOpen.refs = !S.irisOpen.refs;
+      if (!S.irisOpen.refs && !S.irisOpen.rep) S.irisOpen = null;
+    } else {
+      S.irisOpen = {id:id, refs:true, rep:false};
+    }
+    render(true, id);
+  }
+  else if (act === "iris-rep-tog"){
+    if (!T[id]) return;
+    if (S.irisOpen && S.irisOpen.id === id){
+      S.irisOpen.rep = !S.irisOpen.rep;
+      if (!S.irisOpen.refs && !S.irisOpen.rep) S.irisOpen = null;
+    } else {
+      S.irisOpen = {id:id, refs:false, rep:true};
+    }
+    render(true, id);
+  }
+  else if (act === "desk-filter"){ S.deskFilter = id; S.irisOpen = null; render(); }
   else if (act === "desk-pin"){
     if (!T[id]) return;
     var pAt = S.deskPinned.indexOf(id);
     if (pAt >= 0) S.deskPinned.splice(pAt, 1);
     else S.deskPinned.push(id);
-    render();
+    var pAnc = b.closest("[data-litem]");
+    render(true, pAnc ? pAnc.getAttribute("data-litem") : null);
   }
   else if (act === "desk-unpin"){
     S.deskPinned = S.deskPinned.filter(function(x){ return x !== id; });
@@ -4370,7 +4706,9 @@ document.addEventListener("click", function(e){
       C.refs.push(id); if (S.reply === id) S.reply = null;
       if (T[id].vis === "me" && C.vis !== "me"){ C.vis = "me"; toast("Private thought referenced. Draft switched to Just me."); }
     }
-    S.irisDraft = true; S.sayOpen = true; render();
+    S.irisDraft = true; S.sayOpen = true;
+    var rAnc = b.closest("[data-litem]");
+    render(true, rAnc ? rAnc.getAttribute("data-litem") : null);
   }
   else if (act === "iris-lookback"){
     var lt = T[id]; if (!lt) return;
