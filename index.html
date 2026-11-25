@@ -748,9 +748,12 @@ select{font:inherit;color:inherit}
 .iris-seg .mini span{height:24px;padding:0 8px;font-size:11.5px}
 .iris-seg .mini.go span{background:var(--btn);color:var(--on-btn);border-color:var(--btn)}
 /* compact search + collapsible filter tray inside Iris Ledger & Research Desk Sources */
-.iris-fbar{display:flex;align-items:center;gap:4px;margin:-2px 0 -4px}
-.iris-lq{flex:1;min-width:0;width:0;height:44px;padding:0 9px;font-size:12.5px}
-.iris-fbtn{flex:none;min-width:44px;min-height:44px;padding-left:0;margin-block:-4px;justify-content:flex-end}
+.iris-fbar{display:flex;align-items:center;gap:6px;margin:-2px 0 -2px}
+.iris-lq-wrap{position:relative;flex:1;min-width:0;height:28px;display:flex;align-items:center;border-radius:10px;border:1.5px solid var(--line);background:var(--tile);transition:border-color .12s}
+.iris-lq-wrap:focus-within{border-color:var(--ink)}
+.iris-lq{width:100%;min-width:0;height:44px;margin-block:-8px;padding:8px 9px;border:0;background:transparent;font:inherit;font-size:12.5px;color:var(--ink);outline:none}
+.iris-lq::placeholder{color:var(--ink2);opacity:1}
+.iris-fbtn{flex:none;min-width:44px;min-height:44px;padding-left:0;margin-block:-8px;justify-content:flex-end}
 .iris-fbtn span{height:28px;padding:0 9px;font-size:11.5px}
 .iris-fbtn.go span{border-color:var(--btn);background:var(--btn);color:var(--on-btn)}
 .iris-ftray{display:flex;flex-direction:column;gap:5px;padding:6px 7px;border-radius:10px;border:1px solid var(--line);background:var(--ground)}
@@ -1787,6 +1790,7 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="notebook"]) .kf{border-color:var(--edge);background:var(--surface);box-shadow:1px 2px 0 rgba(70,50,20,.10)}
 :where(:root[data-look="notebook"]) .kf[aria-pressed="true"]{border-color:var(--ink);background:var(--chipbg);box-shadow:0 0 0 1.5px var(--ink)}
 :where(:root[data-look="notebook"]) .pick,:where(:root[data-look="notebook"]) .search{border-color:var(--edge2);background-color:var(--field);font-size:14px}
+:where(:root[data-look="notebook"]) .iris-lq-wrap{border-color:var(--edge2);background-color:var(--field);border-radius:9px}
 @container (min-width:750px){
 :where(:root[data-look="notebook"]) .filters{gap:6px}
 :where(:root[data-look="notebook"]) .filters > .pick,:where(:root[data-look="notebook"]) .fmore .pick{flex:0 1 124px;padding:0 6px 0 8px}
@@ -2007,6 +2011,9 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="future"]) .kf[aria-pressed="true"]{border-color:var(--accent);background:var(--glass2);box-shadow:0 0 0 1px var(--accent),0 0 calc(var(--glow)*24px) -6px var(--accent)}
 :where(:root[data-look="future"]) .pick{border:1px solid var(--line2);background:var(--surface)}
 :where(:root[data-look="future"]) .search{border:1px solid var(--line2);background:rgba(0,0,0,.26);caret-color:var(--accent)}
+:where(:root[data-look="future"]) .iris-lq-wrap{border:1px solid var(--line2);background:rgba(0,0,0,.26)}
+:where(:root[data-look="future"]) .iris-lq-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--halo)}
+:where(:root[data-look="future"]) .iris-lq{caret-color:var(--accent)}
 :where(:root[data-look="future"]) .search:focus-visible,:where(:root[data-look="future"]) .pick:focus-visible{box-shadow:0 0 0 6px var(--halo)}
 :where(:root[data-look="future"]) .list{gap:6px}
 :where(:root[data-look="future"]) .replies.sub{margin-top:8px;margin-bottom:4px}
@@ -2301,6 +2308,8 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="professional"]) .lrow-rep span{height:20px;border:1px solid var(--line);background:var(--inset);font-family:var(--mono);font-size:10px}
 :where(:root[data-look="professional"]) .lrow-rep.open span{border-color:var(--btn);background:var(--btn);color:var(--on-btn)}
 :where(:root[data-look="professional"]) .vchip{font-family:var(--mono);font-size:10px;background:var(--inset)}
+:where(:root[data-look="professional"]) .iris-lq-wrap{border:1px solid var(--line2);border-radius:7px;background:var(--inset)}
+:where(:root[data-look="professional"]) .iris-lq-wrap:focus-within{border-color:var(--accent)}
 :where(:root[data-look="professional"]) .lrep-card .vchips,:where(:root[data-look="professional"]) .lref-row .vchips{margin-top:2px}
 :where(:root[data-look="professional"]) .lrep-card .vchip,:where(:root[data-look="professional"]) .lref-row .vchip{background:var(--surface);font-size:9.5px;padding:0 5px}
 :where(:root[data-look="professional"]) .list{gap:5px}
@@ -4152,7 +4161,7 @@ function irisFilterBarHTML(d){
       sel("iris-ftopic", "Filter by topic", [["all","All topics"]].concat(TOPICS), f.topic)+
     '</div></div>';
   return '<div class="iris-fbar">'+
-      '<input class="search iris-lq" id="iris-lq" type="search" placeholder="Search…" aria-label="Search Iris ledger" value="'+esc(f.q)+'">'+
+      '<div class="iris-lq-wrap"><input class="iris-lq" id="iris-lq" type="search" placeholder="Search…" aria-label="Search Iris ledger" value="'+esc(f.q)+'"></div>'+
       '<button class="mini iris-fbtn'+(f.open || n > 0 ? ' go' : '')+'" data-act="iris-fmore" aria-expanded="'+f.open+'" aria-pressed="'+(f.open || n > 0)+'"><span>Filter'+(n > 0 ? ' · '+n : '')+'</span></button>'+
     '</div>'+tray+
     '<div class="iris-fmeta" id="iris-fmeta"'+(d.on ? '' : ' hidden')+'>'+irisFilterMetaHTML(d)+'</div>';
