@@ -756,13 +756,18 @@ select{font:inherit;color:inherit}
 .iris-fbtn{flex:none;min-width:44px;min-height:44px;padding-left:0;margin-block:-8px;justify-content:flex-end}
 .iris-fbtn span{height:28px;padding:0 9px;font-size:11.5px}
 .iris-fbtn.go span{border-color:var(--btn);background:var(--btn);color:var(--on-btn)}
-.iris-ftray{display:flex;flex-direction:column;gap:5px;padding:6px 7px;border-radius:10px;border:1px solid var(--line);background:var(--ground)}
+.iris-ftray{display:flex;flex-direction:column;gap:8px;padding:7px;border-radius:10px;border:1px solid var(--line);background:var(--ground)}
 .iris-kf{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
-.iris-kf .kf{min-width:0;height:44px;padding:0;font-size:12px}
-.iris-kf .kmark{--km:16px}
-.iris-ftray > .pick{width:100%;height:44px;padding:0 8px;font-size:12px}
-.iris-fpicks{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px}
-.iris-fpicks .pick{width:100%;min-width:0;height:44px;padding:0 6px;font-size:12px}
+.iris-kf .kf{min-width:44px;height:44px;margin-block:-8px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;display:flex;align-items:center;justify-content:center}
+.iris-kf .kf > span{display:grid;place-items:center;width:100%;height:28px;border-radius:9px;border:1.5px solid var(--line);background:var(--surface);font-size:12px;font-weight:650;color:var(--ink);transition:border-color .12s,background .12s}
+.iris-kf .kf[aria-pressed="true"] > span{border-color:var(--ink);background:var(--tile);box-shadow:inset 0 0 0 .5px var(--ink)}
+.iris-kf .kmark{--km:15px}
+.iris-fpicks{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px}
+.iris-pick-wrap{position:relative;min-width:0;height:28px;display:flex;align-items:center;border-radius:9px;border:1.5px solid var(--line);background:var(--surface);transition:border-color .12s}
+.iris-pick-wrap:focus-within{border-color:var(--ink)}
+.iris-pick-wrap::after{content:"";position:absolute;right:9px;top:50%;width:5px;height:5px;margin-top:-3.5px;border-right:1.5px solid var(--ink2);border-bottom:1.5px solid var(--ink2);transform:rotate(45deg);pointer-events:none}
+.iris-pick-wrap .pick{width:100%;min-width:0;height:44px;margin-block:-8px;padding:8px 22px 8px 8px;border:0;border-radius:0;background:transparent;box-shadow:none;font-size:12px;font-weight:600;color:var(--ink);appearance:none;-webkit-appearance:none;outline:none;cursor:pointer}
+.iris-pick-wrap .pick option{background:var(--surface);color:var(--ink)}
 .iris-fmeta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:-4px 0 -6px;font-size:11.5px;color:var(--ink2)}
 .iris-fmeta .link{min-width:44px;min-height:44px;margin-block:-11px;text-align:right;font-size:11.5px}
 .iris-lscroll{display:flex;flex-direction:column;gap:5px}
@@ -1791,6 +1796,11 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="notebook"]) .kf[aria-pressed="true"]{border-color:var(--ink);background:var(--chipbg);box-shadow:0 0 0 1.5px var(--ink)}
 :where(:root[data-look="notebook"]) .pick,:where(:root[data-look="notebook"]) .search{border-color:var(--edge2);background-color:var(--field);font-size:14px}
 :where(:root[data-look="notebook"]) .iris-lq-wrap{border-color:var(--edge2);background-color:var(--field);border-radius:9px}
+:where(:root[data-look="notebook"]) .iris-kf .kf{border:0;background:none;box-shadow:none}
+:where(:root[data-look="notebook"]) .iris-kf .kf > span{border-color:var(--edge);background:var(--surface);box-shadow:1px 2px 0 rgba(70,50,20,.10)}
+:where(:root[data-look="notebook"]) .iris-kf .kf[aria-pressed="true"] > span{border-color:var(--ink);background:var(--chipbg);box-shadow:0 0 0 1.5px var(--ink)}
+:where(:root[data-look="notebook"]) .iris-pick-wrap{border-color:var(--edge2);background-color:var(--field);border-radius:9px}
+:where(:root[data-look="notebook"]) .iris-pick-wrap .pick{background:transparent;border:0;box-shadow:none}
 @container (min-width:750px){
 :where(:root[data-look="notebook"]) .filters{gap:6px}
 :where(:root[data-look="notebook"]) .filters > .pick,:where(:root[data-look="notebook"]) .fmore .pick{flex:0 1 124px;padding:0 6px 0 8px}
@@ -2014,6 +2024,12 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="future"]) .iris-lq-wrap{border:1px solid var(--line2);background:rgba(0,0,0,.26)}
 :where(:root[data-look="future"]) .iris-lq-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--halo)}
 :where(:root[data-look="future"]) .iris-lq{caret-color:var(--accent)}
+:where(:root[data-look="future"]) .iris-kf .kf{border:0;background:none;box-shadow:none}
+:where(:root[data-look="future"]) .iris-kf .kf > span{border:1px solid var(--line2);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.015));box-shadow:inset 0 1px 0 rgba(255,255,255,.16)}
+:where(:root[data-look="future"]) .iris-kf .kf[aria-pressed="true"] > span{border-color:var(--accent);background:var(--glass2);box-shadow:0 0 0 1px var(--accent)}
+:where(:root[data-look="future"]) .iris-pick-wrap{border:1px solid var(--line2);background:var(--surface)}
+:where(:root[data-look="future"]) .iris-pick-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--halo)}
+:where(:root[data-look="future"]) .iris-pick-wrap .pick{border:0;background:transparent;box-shadow:none}
 :where(:root[data-look="future"]) .search:focus-visible,:where(:root[data-look="future"]) .pick:focus-visible{box-shadow:0 0 0 6px var(--halo)}
 :where(:root[data-look="future"]) .list{gap:6px}
 :where(:root[data-look="future"]) .replies.sub{margin-top:8px;margin-bottom:4px}
@@ -2310,6 +2326,9 @@ html[data-look][data-palette][data-iris-look="warm-paper"]{color-scheme:light;--
 :where(:root[data-look="professional"]) .vchip{font-family:var(--mono);font-size:10px;background:var(--inset)}
 :where(:root[data-look="professional"]) .iris-lq-wrap{border:1px solid var(--line2);border-radius:7px;background:var(--inset)}
 :where(:root[data-look="professional"]) .iris-lq-wrap:focus-within{border-color:var(--accent)}
+:where(:root[data-look="professional"]) .iris-pick-wrap{border:1px solid var(--line2);border-radius:7px;background:var(--surface)}
+:where(:root[data-look="professional"]) .iris-pick-wrap:focus-within{border-color:var(--accent)}
+:where(:root[data-look="professional"]) .iris-pick-wrap .pick{border:0;background:transparent;box-shadow:none}
 :where(:root[data-look="professional"]) .lrep-card .vchips,:where(:root[data-look="professional"]) .lref-row .vchips{margin-top:2px}
 :where(:root[data-look="professional"]) .lrep-card .vchip,:where(:root[data-look="professional"]) .lref-row .vchip{background:var(--surface);font-size:9.5px;padding:0 5px}
 :where(:root[data-look="professional"]) .list{gap:5px}
@@ -4150,15 +4169,15 @@ function irisFilterBarHTML(d){
   var f = S.irisF, n = irisFCount();
   var who = whoOpts().filter(function(w){ return w[0] !== "new"; });
   var kindCtrl = pro()
-    ? sel("iris-fkind", "Filter by thought kind", [["all","All kinds"]].concat(Object.keys(KINDS).map(function(k){ return [k, KINDS[k].type+"s"]; })), f.kind)
+    ? '<div class="iris-pick-wrap">'+sel("iris-fkind", "Filter by thought kind", [["all","All kinds"]].concat(Object.keys(KINDS).map(function(k){ return [k, KINDS[k].type+"s"]; })), f.kind)+'</div>'
     : '<div class="iris-kf" role="group" aria-label="Filter by thought kind">'+
-        '<button class="kf" data-act="iris-fkind" data-id="all" aria-pressed="'+(f.kind === "all")+'">All</button>'+
-        Object.keys(KINDS).map(function(k){ return '<button class="kf" data-act="iris-fkind" data-id="'+k+'" aria-pressed="'+(f.kind === k)+'" aria-label="'+KINDS[k].type+'s" title="'+KINDS[k].type+'s">'+kmark(k)+'</button>'; }).join("")+
+        '<button class="kf" data-act="iris-fkind" data-id="all" aria-pressed="'+(f.kind === "all")+'"><span>All</span></button>'+
+        Object.keys(KINDS).map(function(k){ return '<button class="kf" data-act="iris-fkind" data-id="'+k+'" aria-pressed="'+(f.kind === k)+'" aria-label="'+KINDS[k].type+'s" title="'+KINDS[k].type+'s"><span>'+kmark(k)+'</span></button>'; }).join("")+
       '</div>';
   var tray = !f.open ? '' : '<div class="iris-ftray">'+kindCtrl+
     '<div class="iris-fpicks">'+
-      '<select class="pick" id="iris-fwho" aria-label="Filter by person">'+who.map(function(w){ return '<option value="'+w[0]+'"'+(f.who === w[0] ? ' selected' : '')+'>'+w[1]+'</option>'; }).join("")+'</select>'+
-      sel("iris-ftopic", "Filter by topic", [["all","All topics"]].concat(TOPICS), f.topic)+
+      '<div class="iris-pick-wrap"><select class="pick" id="iris-fwho" aria-label="Filter by person">'+who.map(function(w){ return '<option value="'+w[0]+'"'+(f.who === w[0] ? ' selected' : '')+'>'+w[1]+'</option>'; }).join("")+'</select></div>'+
+      '<div class="iris-pick-wrap">'+sel("iris-ftopic", "Filter by topic", [["all","All topics"]].concat(TOPICS), f.topic)+'</div>'+
     '</div></div>';
   return '<div class="iris-fbar">'+
       '<div class="iris-lq-wrap"><input class="iris-lq" id="iris-lq" type="search" placeholder="Search…" aria-label="Search Iris ledger" value="'+esc(f.q)+'"></div>'+
